@@ -5,19 +5,19 @@
 </title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="admin_assets/img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon_usms.ico') }}">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="admin_assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet" href="admin_assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('admin_assets/css/font-awesome.min.css') }}">
 
 <!-- Feathericon CSS -->
-<link rel="stylesheet" href="admin_assets/css/feathericon.min.css">
+<link rel="stylesheet" href="{{ asset('admin_assets/css/feathericon.min.css') }}">
 
 <!-- Morris CSS -->
-<link rel="stylesheet" href="admin_assets/plugins/morris/morris.css">
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/morris/morris.css') }}">
 
 <!-- Main CSS -->
-<link rel="stylesheet" href="admin_assets/css/style.css">
+<link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">

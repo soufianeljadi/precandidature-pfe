@@ -125,7 +125,7 @@
       </div>
       <ul class="nav header-navbar-rht header-navbar-rht-eight">
         <li class="nav-item">
-          <a class="nav-link btn btn-register" href="register.html"><i class="fas fa-sign-izn-alt"></i>CONNEXION</a>
+          <a class="nav-link btn btn-register" href="{{ url('/selection') }}"><i class="fas fa-lock"></i>CONNEXION</a>
         </li>
         {{-- <li class="nav-item">
           <a class="nav-link btn btn-login" href="login.html"><i class="fas fa-lock"></i> Sign in</a>

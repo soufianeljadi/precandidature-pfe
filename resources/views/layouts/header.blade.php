@@ -4,10 +4,10 @@
       <!-- Logo -->
       <div class="header-left">
         <a href="index.html" class="logo">
-          <img src="admin_assets/img/logo.png" alt="Logo">
+          <img src="{{ asset('admin_assets/img/logo.png') }}" alt="Logo">
         </a>
         <a href="index.html" class="logo logo-small">
-          <img src="admin_assets/img/logo-small.png" alt="Logo" width="30" height="30">
+          <img src="{{ asset('admin_assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
         </a>
       </div>
       <!-- /Logo -->
@@ -48,7 +48,8 @@
                   <a href="#">
                     <div class="media d-flex">
                       <span class="avatar avatar-sm flex-shrink-0">
-                        <img class="avatar-img rounded-circle" alt="User Image" src="admin_assets/img/user/user.jpg">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="{{ assert('admin_assets/img/user/user.jpg') }}">
                       </span>
                       <div class="media-body flex-grow-1">
                         <p class="noti-details"><span class="noti-title">Jonathan Doe</span> Schedule <span
@@ -62,7 +63,8 @@
                   <a href="#">
                     <div class="media d-flex">
                       <span class="avatar avatar-sm flex-shrink-0">
-                        <img class="avatar-img rounded-circle" alt="User Image" src="admin_assets/img/user/user1.jpg">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="{{ asset('admin_assets/img/user/user1.jpg') }}">
                       </span>
                       <div class="media-body flex-grow-1">
                         <p class="noti-details"><span class="noti-title">Julie Pennington</span> has booked her
@@ -76,7 +78,8 @@
                   <a href="#">
                     <div class="media d-flex">
                       <span class="avatar avatar-sm flex-shrink-0">
-                        <img class="avatar-img rounded-circle" alt="User Image" src="admin_assets/img/user/user2.jpg">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="{{ asset('admin_assets/img/user/user2.jpg') }}">
                       </span>
                       <div class="media-body flex-grow-1">
                         <p class="noti-details"><span class="noti-title">Tyrone Roberts</span> sent a amount of $210 for
@@ -90,7 +93,8 @@
                   <a href="#">
                     <div class="media d-flex">
                       <span class="avatar avatar-sm flex-shrink-0">
-                        <img class="avatar-img rounded-circle" alt="User Image" src="admin_assets/img/user/user4.jpg">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="{{ asset('admin_assets/img/user/user4.jpg') }}">
                       </span>
                       <div class="media-body flex-grow-1">
                         <p class="noti-details"><span class="noti-title">Patricia Manzi</span> send a message <span
@@ -112,13 +116,13 @@
         <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
           <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-            <span class="user-img"><img class="rounded-circle" src="admin_assets/img/profiles/avatar-12.jpg"
-                width="31" alt="Ryan Taylor"></span>
+            <span class="user-img"><img class="rounded-circle"
+                src="{{ asset('admin_assets/img/profiles/avatar-12.jpg') }}" width="31" alt="Ryan Taylor"></span>
           </a>
           <div class="dropdown-menu">
             <div class="user-header">
               <div class="avatar avatar-sm">
-                <img src="admin_assets/img/profiles/avatar-12.jpg" alt="User Image"
+                <img src="{{ asset('admin_assets/img/profiles/avatar-12.jpg') }}" alt="User Image"
                   class="avatar-img rounded-circle">
               </div>
               <div class="user-text">
