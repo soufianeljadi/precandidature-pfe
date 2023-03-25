@@ -6,23 +6,13 @@
           <span><i class="fe fe-home"></i>Etudiant Dashboard</span>
         </li>
         <li class="active">
-          <a href="index.html"><span>Dashboard</span></a>
+          <a href="{{ url('/profile') }}"><span>Profile</span></a>
         </li>
 
         <li>
           <a href="settings.html"><span>Settings</span></a>
         </li>
-        <li class="submenu">
-          <a href="#"><span> Reports</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="invoices.html">Invoices List</a></li>
-            <li><a href="invoice-grid.html">Invoices Grid</a></li>
 
-          </ul>
-        </li>
-        <li>
-          <a href="invoice-items.html"><span>Items</span></a>
-        </li>
 
         <li class="submenu">
           <a href="#"><span>Blog</span> <span class="menu-arrow"></span></a>
@@ -45,53 +35,12 @@
 
           </ul>
         </li>
-        <li>
-          <a href="blank-page.html"><span>Blank Page</span></a>
-        </li>
-        <li class="menu-title">
-          <span><i class="fe fe-star-o"></i> UI Interface</span>
-        </li>
-        <li>
-          <a href="components.html"><span>Components</span></a>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Forms </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-            <li><a href="form-input-groups.html">Input Groups </a></li>
 
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Tables </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="tables-basic.html">Basic Tables </a></li>
-            <li><a href="data-tables.html">Data Table </a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="javascript:void(0);"><span>Multi Level</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li class="submenu">
-              <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-              <ul style="display: none;">
-                <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-                <li class="submenu">
-                  <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-                  <ul style="display: none;">
-                    <li><a href="javascript:void(0);">Level 3</a></li>
-                    <li><a href="javascript:void(0);">Level 3</a></li>
-                  </ul>
-                </li>
-                <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript:void(0);"> <span>Level 1</span></a>
-            </li>
-          </ul>
-        </li>
+
       </ul>
+
+
+
     </div>
   </div>
 </div>

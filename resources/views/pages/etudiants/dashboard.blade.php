@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Admin
+  Espace Etudiant
 @endsection
 @section('sidebar')
   @include('pages.etudiants.sidebar')

@@ -19,7 +19,10 @@ class Authenticate extends Middleware
               return route('etudiant.loginForm');
           }
           elseif(!Auth::guard('enseignant')->check()) {
-            return route('enseignant.loginForm');
+            return route('usms.loginForm');
+          }
+          elseif(!Auth::guard('web')->check()) {
+            return route('usms.loginForm');
           }
           else {
               return route('selection');

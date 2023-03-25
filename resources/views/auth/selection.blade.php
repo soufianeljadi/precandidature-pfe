@@ -38,21 +38,28 @@
           <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white">
             <h3 class="p-2">Choisir Votre Espace</h3>
             <div class="login-fancy pb-40 clearfix">
-              <div class="form-inline" style="display:flex;padding:10px;justify-content: space-between">
+              <div class="form-inline" style="display:flex;padding:10px;justify-content: space-around">
                 <a class="btn btn-default col-lg-3" title="Etudiant" href="{{ route('login.etudiant') }}">
-                  <img alt="user-img" width="100px;" src="{{ URL::asset('admin_assets/img/user/student.png') }}">
-                  <p>Espace Etudiant</p>
+                  <img alt="user-img" width="100px;" height="100px;"
+                    src="{{ URL::asset('admin_assets/img/user/student.png') }}">
+                  <div class="m-1">
+
+                    <p>Espace Etudiant</p>
+                  </div>
                 </a>
-                <a class="btn btn-default col-lg-3" title="Enseignant" href="{{ route('login.enseignant') }}">
-                  <img alt="user-img" width="100px;" src="{{ URL::asset('admin_assets/img/user/teacher.png') }}">
-                  <p>Espace Enseignant</p>
+                <a class="btn btn-default col-lg-3" title="Enseignant" href="{{ route('usms.loginForm') }}">
+                  <img alt="user-img" width="100px;" height="100px;" src="{{ URL::asset('assets/img/usms-logo.png') }}">
+                  <div class="m-1">
+
+                    <p>Espace Administratif</p>
+                  </div>
 
                 </a>
-                <a class="btn btn-default col-lg-3" title="Administrateur" href="{{ route('login') }}">
+                {{-- <a class="btn btn-default col-lg-3" title="Administrateur" href="{{ route('login') }}">
                   <img alt="user-img" width="100px;" src="{{ URL::asset('admin_assets/img/user/admin.png') }}">
                   <p>Espace Administrateur</p>
 
-                </a>
+                </a> --}}
 
               </div>
 

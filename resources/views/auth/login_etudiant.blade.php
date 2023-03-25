@@ -79,13 +79,13 @@
   <!-- /Main Wrapper -->
 
   <!-- jQuery -->
-  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 
   <!-- Bootstrap Core JS -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
   <!-- Custom JS -->
-  <script src="assets/js/script.js"></script>
+  <script src="{{ asset('assets/js/script.js') }}"></script>
 
 </body>
 

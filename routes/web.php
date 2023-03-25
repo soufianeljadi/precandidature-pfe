@@ -29,12 +29,12 @@ Route::post("/etudiant/login",[LoginController::class,"login"])->name("login.etu
 
 Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard",[EtudiantController::class,"index"])->name("etudiant.dashboard");
+  Route::get("/etudiant/profile",[EtudiantController::class,"index"])->name("etudiant.dashboard");
 });
 
 
 // Enseignants routes
-Route::view("/enseignant/login","auth.login_enseignant")->name("enseignant.loginForm")->middleware("guest");
-Route::post("/enseignant/login",[LoginController::class,"login"])->name("login.enseignant");
+
 
 Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard",[EtudiantController::class,"index2"])->name("enseignant.dashboard");
@@ -52,21 +52,20 @@ Route::middleware('auth:web')->group(function () {
 
 
 
-
-
-
 //Commun routes
-Route::view("/selection","auth.selection")->name("selection");
+Route::view("/selection","auth.selection")->name("selection")->middleware("guest");
+Route::view("/usms/login","auth.usms-login")->name("usms.loginForm")->middleware("guest");
+Route::post("/usms/login",[LoginController::class,"login"])->name("login.usms");
 Route::get('/logout', [LoginController::class,"logout"])->name('logout');
 
 
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware(['auth:etudiant'])->group(function () {
+//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
 
 
 

@@ -18,6 +18,7 @@ class LoginController extends Controller
 
   public function login(Request $request)
   {
+    // return $request;
     if($request->type == "etudiant"){
       if (Auth::guard("etudiant")->attempt(['email' => $request->email, 'password' => $request->password])) {
         return redirect()->intended(RouteServiceProvider::ETUDIANT);
@@ -26,12 +27,17 @@ class LoginController extends Controller
     }
 
     if($request->type == "enseignant"){
-
       if (Auth::guard("enseignant")->attempt(['email' => $request->email, 'password' => $request->password])) {
         return redirect()->intended(RouteServiceProvider::ENSEIGNANT);
      }
-     else return redirect()->route("enseignant.login")->with("error","Email ou Mot de pass invalide");
+     else return redirect()->route("usms.loginForm")->with("error","Email ou Mot de pass invalide");
+    }
 
+    if($request->type == "administrateur"){
+      if (Auth::guard("web")->attempt(['email' => $request->email, 'password' => $request->password])) {
+        return redirect()->intended(RouteServiceProvider::HOME);
+     }
+     else return redirect()->route("usms.loginForm")->with("error","Email ou Mot de pass invalide");
     }
 
 
