@@ -29,10 +29,9 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Default Datatable</h4>
+          <h4 class="card-title">Datatable des enseignant</h4>
           <p class="card-text">
-            This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code>
-            class to initialize datatables.
+            Cette table contient la liste des enseignants avec leurs informations ainsi que la filière à laquelle ils sont rattachés.
           </p>
         </div>
         <div class="card-body">
@@ -41,24 +40,32 @@
             <table class="datatable table table-stripped">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Nom et Prénom</th>
+                  <th>Email</th>
+                  <th>CIN</th>
+                  <th>Matricule</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                {{-- <tr>
                   <td>Tiger Nixon</td>
                   <td>System Architect</td>
                   <td>Edinburgh</td>
                   <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
+
+                </tr> --}}
+
+
+                @foreach ($Enseignants as $Enseignant)
                 <tr>
+                    <td>{{ $Enseignant->nom }}{{ $Enseignant->prenom }}</td>
+                    <td>{{ $Enseignant->email }}</td>
+                    <td>{{ $Enseignant->cin }}</td>
+                    <td>{{ $Enseignant->matricule }}</td>
+                </tr>
+            @endforeach
+
+                {{-- <tr>
                   <td>Garrett Winters</td>
                   <td>Accountant</td>
                   <td>Tokyo</td>
@@ -114,7 +121,7 @@
                   <td>20</td>
                   <td>2011/08/14</td>
                   <td>$163,000</td>
-                </tr>
+                </tr> --}}
               </tbody>
             </table>
           </div>

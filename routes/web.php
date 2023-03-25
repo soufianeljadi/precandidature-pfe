@@ -43,10 +43,12 @@ Route::view("/test","test")->middleware("auth:enseignant");
 
 Route::view("/blank","blank");
 // Admin routes
+
 Route::middleware('auth:web')->group(function () {
-  Route::get("/dashboard",[UserController::class,"index"])->name("dashboard");
   Route::get("/enseignants",[EnseignantController::class,"index"])->name("enseignants.index");
+  Route::get("/dashboard",[UserController::class,"index"])->name("dashboard");
   Route::get("/ajouter-enseignant",[EnseignantController::class,"create"])->name("enseignant.create");
+  Route::get("/sauvgarder-enseignant",[EnseignantController::class,"store"])->name("enseignant.store");
 });
 
 
@@ -64,6 +66,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 require __DIR__.'/auth.php';

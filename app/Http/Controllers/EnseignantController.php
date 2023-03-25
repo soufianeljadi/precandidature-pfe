@@ -12,7 +12,8 @@ class EnseignantController extends Controller
      */
     public function index()
     {
-        return view("pages.enseignants.index");
+        $Enseignants = Enseignant::all();
+        return view("pages.enseignants.index",compact("Enseignants"));
     }
 
     /**
@@ -28,8 +29,23 @@ class EnseignantController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // public function enr(Request $request){
+    $Enseignant = new Enseignant();
+    $Enseignant->nom = $request->nom;
+    $Enseignant->prenom = $request->prenom;
+    $Enseignant->date_naissance = $request->date_naissance;
+    $Enseignant->email = $request->email;
+    $Enseignant->telephone = $request->telephone;
+    $Enseignant->age = $request->age;
+    $Enseignant->cin = $request->cin;
+    $Enseignant->adresse = $request->adresse;
+    $Enseignant->ville = $request->ville;
+    $Enseignant->nationalite = $request->nationalite;
+    $Enseignant->matricule = $request->matricule;
+    $Enseignant->save();
+    return view("pages.enseignants.index");
+ }
+
 
     /**
      * Display the specified resource.

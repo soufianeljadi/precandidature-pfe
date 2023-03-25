@@ -24,7 +24,7 @@
     </div>
   </div>
   <!-- /Page Header -->
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-xl-6 d-flex">
       <div class="card flex-fill">
         <div class="card-header">
@@ -125,128 +125,102 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Two Column Horizontal Form</h4>
+          <h4 class="card-title">l'ajoute d'un enseignant</h4>
         </div>
         <div class="card-body">
-          <h4 class="card-title">Personal Information</h4>
-          <form action="#">
+          <h4 class="card-title">Informations personnel</h4>
+          <form action="{{ route('enseignant.create') }}" method="GET">
             <div class="row">
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">First Name</label>
+                  <label class="col-lg-3 col-form-label">Nom</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control">
+                    <input type="text" name ="nom"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Last Name</label>
+                  <label class="col-lg-3 col-form-label">Prénom</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control">
+                    <input type="text" name ="nom"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Gender</label>
+                  <label class="col-lg-3 col-form-label">Date de naissance</label>
                   <div class="col-lg-9">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="gender_male" value="option1"
-                        checked>
-                      <label class="form-check-label" for="gender_male">
-                        Male
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="gender_female"
-                        value="option2">
-                      <label class="form-check-label" for="gender_female">
-                        Female
-                      </label>
-                    </div>
+                    <input type="date" name ="date_naissance"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Blood Group</label>
+                  <label class="col-lg-3 col-form-label">l'âge</label>
                   <div class="col-lg-9">
-                    <select class="select">
-                      <option>Select</option>
-                      <option value="1">A+</option>
-                      <option value="2">O+</option>
-                      <option value="3">B+</option>
-                      <option value="4">AB+</option>
-                    </select>
+                    <input type="number" name ="age"class="form-control">
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">Nationalité</label>
+                  <div class="col-lg-9">
+                    <input type="text" name ="nationalite"class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">Ville</label>
+                  <div class="col-lg-9">
+                    <input type="text" name ="ville"class="form-control">
+                  </div>
+                </div>
+
               </div>
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Username</label>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">L'adresse</label>
+                    <div class="col-lg-9">
+                      <input type="text" name ="adresse"class="form-control">
+                    </div>
+                  </div>
+                  <label class="col-lg-3 col-form-label">CIN</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control">
+                    <input type="text" name ="cin"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Email</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control">
+                    <input type="email" name ="email"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Password</label>
+                  <label class="col-lg-3 col-form-label">Telephone</label>
                   <div class="col-lg-9">
-                    <input type="password" class="form-control">
+                    <input type="number" name ="telephone"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Repeat Password</label>
+                  <label class="col-lg-3 col-form-label">Mot de passe</label>
                   <div class="col-lg-9">
-                    <input type="password" class="form-control">
+                    <input type="password" name ="password"class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">Répéter le mot de passe</label>
+                  <div class="col-lg-9">
+                    <input type="password" name ="password"class="form-control">
                   </div>
                 </div>
               </div>
             </div>
-            <h4 class="card-title">Address</h4>
+            <h4 class="card-title">Informations professionnel</h4>
             <div class="row">
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Address Line 1</label>
+                  <label class="col-lg-3 col-form-label">Matricule</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Address Line 2</label>
-                  <div class="col-lg-9">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">State</label>
-                  <div class="col-lg-9">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">City</label>
-                  <div class="col-lg-9">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Country</label>
-                  <div class="col-lg-9">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Postal Code</label>
-                  <div class="col-lg-9">
-                    <input type="text" class="form-control">
+                    <input type="text" name ="matricule"class="form-control">
                   </div>
                 </div>
               </div>
@@ -259,11 +233,11 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Two Column Horizontal Form</h4>
+        <div class="card-header"> --}}
+          {{-- <h4 class="card-title">Two Column Horizontal Form</h4>
         </div>
         <div class="card-body">
           <form action="#">
@@ -372,7 +346,7 @@
             <div class="text-end">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-          </form>
+          </form> --}}
         </div>
       </div>
     </div>
