@@ -5,13 +5,7 @@
         <li class="menu-title">
           <span><i class="fe fe-home"></i>Enseignant Dashboard</span>
         </li>
-        <li class="active">
-          <a href="index.html"><span>Dashboard</span></a>
-        </li>
 
-        <li>
-          <a href="settings.html"><span>Settings</span></a>
-        </li>
         <li class="submenu">
           <a href="#"><span> Reports</span> <span class="menu-arrow"></span></a>
           <ul style="display: none;">

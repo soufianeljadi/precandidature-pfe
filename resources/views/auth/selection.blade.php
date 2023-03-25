@@ -48,7 +48,7 @@
                   <p>Espace Enseignant</p>
 
                 </a>
-                <a class="btn btn-default col-lg-3" title="Administrateur" href="#">
+                <a class="btn btn-default col-lg-3" title="Administrateur" href="{{ route('login') }}">
                   <img alt="user-img" width="100px;" src="{{ URL::asset('admin_assets/img/user/admin.png') }}">
                   <p>Espace Administrateur</p>
 
