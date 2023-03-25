@@ -2,7 +2,7 @@
 <div class="page-header">
   <div class="row">
     <div class="col-sm-12">
-      <h3 class="page-title">Bonjour {{ auth()->user()->name }}!</h3>
+      <h3 class="page-title">Bonjour {{ auth()->user()->nom }} {{ auth()->user()->prenom }}!</h3>
       <ul class="breadcrumb">
         <li class="breadcrumb-item active">Dashboard (Responsable du Formation)</li>
       </ul>

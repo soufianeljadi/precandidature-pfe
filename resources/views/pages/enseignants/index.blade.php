@@ -18,7 +18,7 @@
         <h3 class="page-title">La liste des enseignants</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-          <li class="breadcrumb-item active">Tous Les enseignants</li>
+          <li class="breadcrumb-item active">Tous les enseignants</li>
         </ul>
       </div>
     </div>
@@ -29,92 +29,51 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Default Datatable</h4>
+          {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code>
-            class to initialize datatables.
+            <a href="{{ route('enseignant.create') }}" type="button" class="btn btn-primary">Ajouter un enseignant</a>
+            {{-- <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
         </div>
         <div class="card-body">
+
+
 
           <div class="table-responsive">
             <table class="datatable table table-stripped">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Nom et Prénom</th>
+                  <th>Email</th>
+                  <th>CIN</th>
+                  <th>Matricule</th>
+                  <th>Telephone</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
-                <tr>
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>63</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-                </tr>
-                <tr>
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                  <td>66</td>
-                  <td>2009/01/12</td>
-                  <td>$86,000</td>
-                </tr>
-                <tr>
-                  <td>Cedric Kelly</td>
-                  <td>Senior Javascript Developer</td>
-                  <td>Edinburgh</td>
-                  <td>22</td>
-                  <td>2012/03/29</td>
-                  <td>$433,060</td>
-                </tr>
-                <tr>
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td>2008/11/28</td>
-                  <td>$162,700</td>
-                </tr>
-                <tr>
-                  <td>Brielle Williamson</td>
-                  <td>Integration Specialist</td>
-                  <td>New York</td>
-                  <td>61</td>
-                  <td>2012/12/02</td>
-                  <td>$372,000</td>
-                </tr>
-                <tr>
-                  <td>Herrod Chandler</td>
-                  <td>Sales Assistant</td>
-                  <td>San Francisco</td>
-                  <td>59</td>
-                  <td>2012/08/06</td>
-                  <td>$137,500</td>
-                </tr>
 
-                <tr>
-                  <td>Shou Itou</td>
-                  <td>Regional Marketing</td>
-                  <td>Tokyo</td>
-                  <td>20</td>
-                  <td>2011/08/14</td>
-                  <td>$163,000</td>
-                </tr>
+
+
+                @foreach ($enseignants as $enseignant)
+                  <tr>
+                    <td>{{ $enseignant->nom }}{{ $enseignant->prenom }}</td>
+                    <td>{{ $enseignant->email }}</td>
+
+                    <td>{{ $enseignant->cin }}</td>
+                    <td>{{ $enseignant->matricule }}</td>
+                    <td>{{ $enseignant->telephone }}</td>
+                    <td>
+                      <a href="profile.html" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
+                      <a href="profile.html" class="btn btn-sm bg-warning-light"><i
+                          class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="profile.html" class="btn btn-sm bg-danger-light"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                  </tr>
+                @endforeach
+
+
               </tbody>
             </table>
           </div>

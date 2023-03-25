@@ -18,9 +18,19 @@ class Enseignant extends Authenticatable
    *
    * @var array<int, string>
    */
+  protected $guard = 'enseignant';
+
   protected $fillable = [
-      'name',
+      'nom',
+      'prenom',
+      'date_naissance',
       'email',
+      'telephone',
+      'age',
+      'cin',
+      'adresse',
+      'ville',
+      'nationalite',
       'password',
       "matricule"
   ];

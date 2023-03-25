@@ -41,12 +41,14 @@ Route::middleware('auth:enseignant')->group(function () {
 });
 Route::view("/test","test")->middleware("auth:enseignant");
 
-
+Route::view("/blank","blank");
 // Admin routes
 Route::middleware('auth:web')->group(function () {
-  Route::get("/dashboard",[UserController::class,"index"])->name("dashboard");
+
   Route::get("/enseignants",[EnseignantController::class,"index"])->name("enseignants.index");
+  Route::get("/dashboard",[UserController::class,"index"])->name("dashboard");
   Route::get("/ajouter-enseignant",[EnseignantController::class,"create"])->name("enseignant.create");
+  Route::post("/sauvgarder-enseignant",[EnseignantController::class,"store"])->name("enseignant.store");
 });
 
 
