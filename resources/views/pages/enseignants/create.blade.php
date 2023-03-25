@@ -134,7 +134,7 @@
         </div>
         <div class="card-body">
           <h4 class="card-title">Informations personnel</h4>
-          <form action="{{ route('enseignant.create') }}" method="GET">
+          <form action="{{ route('enseignant.store') }}" method="GET">
             <div class="row">
               <div class="col-xl-6">
                 <div class="form-group row">
@@ -146,7 +146,7 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Prénom</label>
                   <div class="col-lg-9">
-                    <input type="text" name ="nom"class="form-control">
+                    <input type="text" name ="prenom"class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -206,12 +206,12 @@
                     <input type="password" name ="password"class="form-control">
                   </div>
                 </div>
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Répéter le mot de passe</label>
                   <div class="col-lg-9">
                     <input type="password" name ="password"class="form-control">
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
             <h4 class="card-title">Informations professionnel</h4>

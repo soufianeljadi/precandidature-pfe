@@ -20,7 +20,6 @@ return new class extends Migration
           $table->string('password');
           $table->string('matricule')->unique();
           $table->date('date_naissance');
-          $table->string('email');
           $table->integer('telephone');
           $table->integer('age');
           $table->string('cin');

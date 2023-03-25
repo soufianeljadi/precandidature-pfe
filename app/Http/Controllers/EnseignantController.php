@@ -42,6 +42,7 @@ class EnseignantController extends Controller
     $Enseignant->ville = $request->ville;
     $Enseignant->nationalite = $request->nationalite;
     $Enseignant->matricule = $request->matricule;
+    $Enseignant->password = $request->password;
     $Enseignant->save();
     return view("pages.enseignants.index");
  }
