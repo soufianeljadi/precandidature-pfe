@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enseignant;
 use Illuminate\Http\Request;
 
-class EnseignantController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("pages.enseignants.index");
+        return view("pages.admin.dashboard");
     }
 
     /**
@@ -20,7 +19,7 @@ class EnseignantController extends Controller
      */
     public function create()
     {
-      return view("pages.enseignants.create");
+        //
     }
 
     /**
@@ -34,7 +33,7 @@ class EnseignantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Enseignant $enseignant)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class EnseignantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Enseignant $enseignant)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class EnseignantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Enseignant $enseignant)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class EnseignantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Enseignant $enseignant)
+    public function destroy(string $id)
     {
         //
     }

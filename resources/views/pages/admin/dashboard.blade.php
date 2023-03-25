@@ -1,10 +1,14 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Admin
+  Administrateur
+@endsection
+@section('sidebar')
+  @include('pages.admin.sidebar')
 @endsection
 @section('content')
   {{-- Contennt --}}
-  {{-- @include('layouts.content') --}}
+
+  @include('pages.admin.content')
   {{-- Contennt --}}
 @endsection
