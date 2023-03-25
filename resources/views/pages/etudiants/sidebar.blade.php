@@ -3,7 +3,7 @@
     <div id="sidebar-menu" class="sidebar-menu">
       <ul>
         <li class="menu-title">
-          <span><i class="fe fe-home"></i> Etudiant Dashboard</span>
+          <span><i class="fe fe-home"></i>Etudiant Dashboard</span>
         </li>
         <li class="active">
           <a href="index.html"><span>Dashboard</span></a>

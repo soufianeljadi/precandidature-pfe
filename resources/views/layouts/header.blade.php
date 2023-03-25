@@ -4,7 +4,7 @@
       <!-- Logo -->
       <div class="header-left">
         <a href="index.html" class="logo">
-          <img src="{{ asset('admin_assets/img/logo.png') }}" alt="Logo">
+          <img src="{{ asset('assets/img/usms-test1.png') }}" alt="Logo">
         </a>
         <a href="index.html" class="logo logo-small">
           <img src="{{ asset('admin_assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
@@ -132,7 +132,7 @@
             </div>
             <a class="dropdown-item" href="profile.html">My Profile</a>
             <a class="dropdown-item" href="settings.html">Settings</a>
-            <a class="dropdown-item" href="login.html">Logout</a>
+            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
           </div>
         </li>
         <!-- /User Menu -->

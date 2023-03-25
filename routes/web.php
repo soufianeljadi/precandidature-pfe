@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('pages.frontend.index');
 });
 
+
 Route::view("/etudiant/login","auth.login_etudiant")->name("etudiant.loginForm")->middleware("guest");
 Route::post("/etudiant/login",[LoginController::class,"login"])->name("login.etudiant");
 
@@ -40,6 +41,7 @@ Route::middleware('auth:etudiant')->group(function () {
 Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard",[EtudiantController::class,"index2"])->name("enseignant.dashboard");
 });
+Route::view("/test","test")->middleware("auth:enseignant");
 
 
 Route::view("/admin","pages.admin.index");

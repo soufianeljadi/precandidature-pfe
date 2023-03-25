@@ -127,7 +127,6 @@
 
 @if (Auth::guard('etudiant'))
   @include('pages.etudiants.sidebar');
-@endif
-@if (Auth::guard('enseignant'))
+@elseif (Auth::guard('enseignant'))
   @include('pages.enseignants.sidebar');
 @endif

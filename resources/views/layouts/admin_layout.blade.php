@@ -16,7 +16,7 @@
     {{-- Header --}}
 
     <!-- Sidebar -->
-    @include('layouts.sidebar')
+    @yield('sidebar')
     <!-- /Sidebar -->
 
     <!-- Page Wrapper -->

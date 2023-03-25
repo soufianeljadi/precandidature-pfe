@@ -3,6 +3,9 @@
 @section('title')
   Enseignant
 @endsection
+@section('sidebar')
+  @include('pages.enseignants.sidebar')
+@endsection
 @section('content')
   {{-- Contennt --}}
   <h1>{{ Auth::user()->name }}</h1>
