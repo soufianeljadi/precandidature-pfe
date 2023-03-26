@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 
 class EtudiantController extends Controller
@@ -13,7 +14,10 @@ class EtudiantController extends Controller
 
     public function index()
     {
-        return view("pages.etudiants.dashboard");
+      $villes = Ville::all();
+        return view("pages.etudiants.dashboard")->with([
+          "villes" => $villes,
+        ]);
     }
     public function index2()
     {

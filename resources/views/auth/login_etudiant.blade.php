@@ -60,10 +60,11 @@
                   </div>
                 </div>
                 <div class="text-end">
-                  <a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
+                  <a class="forgot-link" href="forgot-password.html">Mot de passe oublié ?</a>
                 </div>
-                <button class="btn btn-primary login-btn" type="submit">Login</button>
-                <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div>
+                <button class="btn btn-primary login-btn" type="submit">CONNECTE</button>
+                <div class="text-center dont-have"> <a href="{{ route('etudiant.registerForm') }}">Créer un compte</a>
+                </div>
               </form>
             </div>
           </div>

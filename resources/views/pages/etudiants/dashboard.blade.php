@@ -6,6 +6,7 @@
 @section('sidebar')
   @include('pages.etudiants.sidebar')
 @endsection
+
 @section('content')
   {{-- Contennt --}}
   {{-- @include('layouts.content') --}}

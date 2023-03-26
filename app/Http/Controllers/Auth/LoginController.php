@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Etudiant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -40,7 +45,30 @@ class LoginController extends Controller
      else return redirect()->route("usms.loginForm")->with("error","Email ou Mot de pass invalide");
     }
 
+  }
 
+  public function register(Request $request): RedirectResponse
+  {
+    // return $request;
+    $request->validate([
+      'nom' => ['required', 'string', 'max:255'],
+      'prenom' => ['required', 'string', 'max:255'],
+      'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Etudiant::class],
+      'password' => ['required', 'confirmed', Rules\Password::defaults()],
+  ]);
+
+  $etudiant = Etudiant::create([
+      'nom' => "dsd",
+      'prenom' => "fdjf",
+      'email' => $request->email,
+      'password' => Hash::make($request->password),
+  ]);
+
+  // event(new Registered($etudiant));
+
+  Auth::guard("etudiant")->login($etudiant);
+
+  return redirect(RouteServiceProvider::ETUDIANT);
   }
 
 

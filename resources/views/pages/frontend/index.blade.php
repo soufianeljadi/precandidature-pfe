@@ -124,7 +124,8 @@
                 </div>
               </div>
               <p>La plateforme de pré- candidature aux formations doctorales permet aux candidats de postuler aux
-                formations doctorales accréditées dans établissements relevant de runiversité Sultan Moulay Slimane
+                formations licences professionnelles accréditées dans établissements relevant de runiversité Sultan
+                Moulay Slimane
                 exclustvement en ligne.</p>
               <span class="text-green">01</span>
             </div>
@@ -139,7 +140,8 @@
                   <div class="feature-text-eight">Les Informations personnelles</div>
                 </div>
               </div>
-              <p>Informations personnelles Avant de postuler å une formation doctorale, le candidat est invité å saisir
+              <p>Informations personnelles Avant de postuler å une formation licence professionnelle, le candidat est
+                invité å saisir
                 informations personnelles, charger sa photo didentité, son CV et sa Carte Nationale dldentité
                 Electronique (Scannée recto- verso).</p>
               <span class="text-blue">02</span>

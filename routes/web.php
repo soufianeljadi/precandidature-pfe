@@ -25,7 +25,9 @@ Route::get('/', function () {
 
 // Etudiants routes
 Route::view("/etudiant/login","auth.login_etudiant")->name("etudiant.loginForm")->middleware("guest");
+Route::view("/etudiant/register","auth.register_etudiant")->name("etudiant.registerForm")->middleware("guest");
 Route::post("/etudiant/login",[LoginController::class,"login"])->name("login.etudiant");
+Route::post("/etudiant/register",[LoginController::class,"register"])->name("etudiant.register");
 
 Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard",[EtudiantController::class,"index"])->name("etudiant.dashboard");
