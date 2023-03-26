@@ -102,10 +102,9 @@
     <section class="section how-it-works-section">
       <div class="container">
         <div class="section-header-eight text-center aos" data-aos="fade-up">
-          <span>Mentoring Flow</span>
-          <h2>How does it works ?</h2>
-          <p class="sub-title">Are you looking to join online institutions? Now it's very simple, Sign up with
-            mentoring</p>
+          <span>USMS</span>
+          <h2>Comment ça fonctionne ?</h2>
+          <p class="sub-title">plateforme de pré-candidature aux formations licences professionnelles</p>
           <div class="sec-dots">
             <span></span>
             <span></span>

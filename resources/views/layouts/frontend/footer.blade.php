@@ -46,7 +46,7 @@
 
         <div class="col-lg-3 col-md-6">
           <!-- Footer Widget -->
-          <div class="footer-widget footer-contact">
+          <div id="contact" class="footer-widget footer-contact">
             <h2 class="footer-title">Contact </h2>
             <div class="footer-contact-info">
               <div class="footer-address">
