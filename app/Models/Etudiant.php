@@ -12,6 +12,7 @@ class Etudiant extends Authenticatable
   use HasApiTokens, HasFactory, Notifiable;
 
 
+
   protected $table = 'etudiants';
   protected $guard = 'etudiant';
   protected $fillable = [
@@ -40,4 +41,20 @@ class Etudiant extends Authenticatable
   protected $casts = [
       'email_verified_at' => 'datetime',
   ];
+
+
+
+  public function lieu_naissance_etudiant()
+  {
+    return $this->belongsTo(Ville::class,"lieu_naissance");
+  }
+  public function ville_etudiant()
+  {
+    return $this->belongsTo(Ville::class,"ville");
+  }
+  public function dossier()
+  {
+    return $this->hasOne(Dossier::class);
+  }
+
 }

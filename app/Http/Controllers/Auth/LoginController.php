@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dossier;
 use App\Models\Etudiant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -58,10 +59,14 @@ class LoginController extends Controller
   ]);
 
   $etudiant = Etudiant::create([
-      'nom' => "dsd",
-      'prenom' => "fdjf",
+      'nom' => $request->nom,
+      'prenom' => $request->prenom,
       'email' => $request->email,
       'password' => Hash::make($request->password),
+  ]);
+
+  Dossier::create([
+    "etudiant_id" => $etudiant->id
   ]);
 
   // event(new Registered($etudiant));

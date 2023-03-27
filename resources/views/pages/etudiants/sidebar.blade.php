@@ -2,39 +2,29 @@
   <div class="sidebar-inner slimscroll">
     <div id="sidebar-menu" class="sidebar-menu">
       <ul>
-        <li class="menu-title">
-          <span><i class="fe fe-home"></i>Etudiant Dashboard</span>
+        <li class="menu-title ">
+          <span class="text-info"><i class="fe fe-home"></i>Etudiant Dashboard</span>
         </li>
-        <li class="active">
-          <a href="{{ url('/profile') }}"><span>Profile</span></a>
+        <li class="">
+          <a href="{{ route('etudiant.dashboard') }}"><span>Acceuil</span></a>
         </li>
 
         <li>
-          <a href="settings.html"><span>Settings</span></a>
+          <a href="{{ route('etudiant.profile') }}"><span>Profile</span></a>
         </li>
+
 
 
         <li class="submenu">
-          <a href="#"><span>Blog</span> <span class="menu-arrow"></span></a>
+          <a href="#"><span>Candidatures</span> <span class="menu-arrow"></span></a>
           <ul style="display: none;">
-            <li><a href="blog.html"> Blog </a></li>
+            <li><a href="#"> Mes Candidature </a></li>
+            <li><a href="#"> Ajouter une Candidature </a></li>
+            <li><a href="#"> Formations </a></li>
 
           </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Authentication </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="login.html"> Login </a></li>
+        </li> -
 
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Error Pages </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="error-404.html">404 Error </a></li>
-
-          </ul>
-        </li>
 
 
       </ul>

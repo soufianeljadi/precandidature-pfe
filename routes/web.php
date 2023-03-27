@@ -31,7 +31,8 @@ Route::post("/etudiant/register",[LoginController::class,"register"])->name("etu
 
 Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard",[EtudiantController::class,"index"])->name("etudiant.dashboard");
-  Route::get("/etudiant/profile",[EtudiantController::class,"index"])->name("etudiant.dashboard");
+  Route::get("/etudiant/profile",[EtudiantController::class,"profile"])->name("etudiant.profile");
+  Route::post("/etudiant/save",[EtudiantController::class,"store"])->name("etudiant.store");
 });
 
 

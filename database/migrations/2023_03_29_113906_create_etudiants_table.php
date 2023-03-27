@@ -19,11 +19,12 @@ return new class extends Migration
       $table->string('password');
       $table->string('code_massar')->unique()->nullable();
       $table->string('cin')->unique()->nullable();
-      $table->string('lieu_naissance')->nullable();
+      $table->foreignId('lieu_naissance')->nullable()->references("id")->on("villes")->onDelete('cascade');
       $table->date('date_naissance')->nullable();
       $table->integer('telephone')->nullable();
       $table->string('adresse')->nullable();
-      $table->string('ville')->nullable();
+      $table->foreignId('ville')->nullable()->references("id")->on("villes")->onDelete('cascade');
+
       $table->tinyInteger('sexe')->nullable(); // 0 F  --- 1 M
       $table->timestamp('email_verified_at')->nullable();
       $table->rememberToken();
