@@ -126,7 +126,7 @@
                   class="avatar-img rounded-circle">
               </div>
               <div class="user-text">
-                <h6>Allen Davis</h6>
+                <h6>{{ auth()->user()->name }}</h6>
                 <p class="text-muted mb-0">Administrator</p>
               </div>
             </div>

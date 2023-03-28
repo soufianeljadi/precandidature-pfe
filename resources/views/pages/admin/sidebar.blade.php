@@ -19,8 +19,8 @@
         <li class="submenu">
           <a href="#"><span>Formations</span> <span class="menu-arrow"></span></a>
           <ul style="display: none;">
-            <li><a href="blog.html"> Tous les formations </a></li>
-            <li><a href="blog.html"> Ajouter une formation </a></li>
+            <li><a href="{{ route('formations.index') }}"> Tous les formations </a></li>
+            <li><a href="{{ route('formation.create') }}"> Ajouter une formation </a></li>
 
           </ul>
         </li>

@@ -67,24 +67,48 @@ class EnseignantController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Enseignant $enseignant)
+  public function edit($id)
   {
-    //
+    $Enseignant = Enseignant::findOrFail($id);
+    return view('pages.enseignants.edit',compact('Enseignant'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Enseignant $enseignant)
+  public function update(StoreEnseignantRequest $request)
   {
-    //
+    try {
+      $Enseignant = Enseignant::find($request->id);
+      $Enseignant->nom = $request->nom;
+      $Enseignant->prenom = $request->prenom;
+      $Enseignant->date_naissance = $request->date_naissance;
+      $Enseignant->email = $request->email;
+      $Enseignant->telephone = $request->telephone;
+      $Enseignant->age = $request->age;
+      $Enseignant->cin = $request->cin;
+      $Enseignant->adresse = $request->adresse;
+      $Enseignant->ville = $request->ville;
+      $Enseignant->nationalite = $request->nationalite;
+      $Enseignant->matricule = $request->matricule;
+      $Enseignant->password = Hash::make($request->password);
+      $Enseignant->save();
+      toastr()->success('Data saved Successfully !');
+
+      return redirect()->route("enseignants.index");
+    } catch (\Throwable $th) {
+      return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+    }
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Enseignant $enseignant)
+  public function destroy($id)
   {
-    //
+    $enseignant = Enseignant::findOrFail($id);
+    $enseignant->delete();
+    return redirect()->back();
+
   }
 }

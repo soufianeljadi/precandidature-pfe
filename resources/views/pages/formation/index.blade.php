@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Tous Les enseignants
+  Tous Les formations
 @endsection
 @section('sidebar')
   @include('pages.admin.sidebar')
@@ -15,10 +15,10 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title">La liste des enseignants</h3>
+        <h3 class="page-title">La liste des Formations</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-          <li class="breadcrumb-item active">Tous les enseignants</li>
+          <li class="breadcrumb-item active">Tous les Formation</li>
         </ul>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            <a href="{{ route('enseignant.create') }}" type="button" class="btn btn-primary">Ajouter un enseignant</a>
+            <a href="{{ route ("formation.create") }}" type="button" class="btn btn-primary">Ajouter une formation</a>
             {{-- <button type="button" class="btn btn-primary">Primary</button>
             <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
@@ -44,11 +44,9 @@
             <table class="datatable table table-stripped">
               <thead>
                 <tr>
-                  <th>Nom et Prénom</th>
-                  <th>Email</th>
-                  <th>CIN</th>
-                  <th>Matricule</th>
-                  <th>Telephone</th>
+                  <th>Nom de formation</th>
+                  <th>Description</th>
+                  <th>Duree</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -56,19 +54,16 @@
 
 
 
-                @foreach ($enseignants as $enseignant)
+                @foreach ($formations as $formation)
                   <tr>
-                    <td>{{ $enseignant->nom }}   {{ $enseignant->prenom }}</td>
-                    <td>{{ $enseignant->email }}</td>
-
-                    <td>{{ $enseignant->cin }}</td>
-                    <td>{{ $enseignant->matricule }}</td>
-                    <td>{{ $enseignant->telephone }}</td>
+                    <td>{{ $formation->nom }}</td>
+                    <td>{{ $formation->description }}</td>
+                    <td>{{ $formation->duree }}</td>
                     <td>
-                      <a href="profile.html" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a href="{{ route('enseignant.edit', $enseignant->id) }}" class="btn btn-sm bg-warning-light"><i
+                      <a href="" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
+                      <a href="{{ route('formation.edit', $formation->id) }}" class="btn btn-sm bg-warning-light"><i
                           class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i class="fa-solid fa-trash-can"></i></a>
+                      <a href="{{ route('formation.delete', $formation->id) }}" class="btn btn-sm bg-danger-light"><i class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
                 @endforeach
