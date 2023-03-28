@@ -17,8 +17,11 @@ class EtudiantController extends Controller
 
   public function index()
   {
-
     return view("pages.etudiants.dashboard");
+  }
+  public function avis()
+  {
+    return view("pages.etudiants.avis");
   }
   public function profile()
   {
@@ -80,7 +83,7 @@ class EtudiantController extends Controller
 
       // DB::commit();
       toastr()->success("Data Saved successfully!");
-      return redirect()->route("etudiant.dashboard");
+      return redirect()->route("etudiant.profile");
     } catch (\Exception $e) {
       // DB::rollback();
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);

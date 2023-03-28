@@ -122,7 +122,8 @@
                   <div class="feature-text-eight">La plateforme</div>
                 </div>
               </div>
-              <p>La plateforme de pré- candidature aux formations doctorales permet aux candidats de postuler aux
+              <p>La plateforme de pré- candidature aux formations licence professionnelle permet aux candidats de
+                postuler aux
                 formations licences professionnelles accréditées dans établissements relevant de runiversité Sultan
                 Moulay Slimane
                 exclustvement en ligne.</p>

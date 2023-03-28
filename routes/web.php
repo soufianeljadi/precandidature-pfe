@@ -35,7 +35,7 @@ Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard",[EtudiantController::class,"index"])->name("etudiant.dashboard");
   Route::get("/etudiant/profile",[EtudiantController::class,"profile"])->name("etudiant.profile");
   Route::post("/etudiant/save",[EtudiantController::class,"store"])->name("etudiant.store");
-  Route::view("/avisLicencesPro","pages.etudiants.avis")->name("avislicencespro");
+  Route::get("/avisLicencesPro",[EtudiantController::class,"avis"])->name("avislicencespro");
 
 });
 

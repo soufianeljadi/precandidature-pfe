@@ -41,7 +41,7 @@
 
 
           <div class="table-responsive">
-            <table class="datatable table table-stripped table-hover">
+            <table class="datatable table table-stripped">
               <thead>
                 <tr>
                   <th>#</th>
@@ -68,9 +68,8 @@
                       {{ $avis->fin_precandidature }}
                     </td>
 
-                    <td>
-                      <span class="btn btn-sm bg-success-light">
-                        <i class="fas fa-check"></i> Publiée</span>
+                    <td class="text-center">
+                      <span class="badge badge-pill bg-success inv-badge">Publiée</span>
                     </td>
                     {{-- <td>
 
