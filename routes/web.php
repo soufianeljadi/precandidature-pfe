@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\FormationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,13 +45,24 @@ Route::middleware('auth:enseignant')->group(function () {
 Route::view("/test","test")->middleware("auth:enseignant");
 
 Route::view("/blank","blank");
+
 // Admin routes
 Route::middleware('auth:web')->group(function () {
-
-  Route::get("/enseignants",[EnseignantController::class,"index"])->name("enseignants.index");
   Route::get("/dashboard",[UserController::class,"index"])->name("dashboard");
+//enseignant controle
+  Route::get("/enseignants",[EnseignantController::class,"index"])->name("enseignants.index");
   Route::get("/ajouter-enseignant",[EnseignantController::class,"create"])->name("enseignant.create");
   Route::post("/sauvgarder-enseignant",[EnseignantController::class,"store"])->name("enseignant.store");
+  Route::get('/editer-enseignant/{id}', [EnseignantController::class, 'edit'])->name('enseignant.edit');
+  Route::post('/update-enseignant', [EnseignantController::class, 'update'])->name('enseignant.update');
+  Route::get('/supprimer-enseignant/{id}', [EnseignantController::class, 'destroy'])->name('enseignant.delete');
+//formation routes
+  Route::get("/formations",[FormationController::class,"index"])->name("formations.index");
+  Route::get("/ajouter-formation",[FormationController::class,"create"])->name("formation.create");
+  Route::post("/sauvgarder-formation",[FormationController::class,"store"])->name("formation.store");
+  Route::get('/editer-formation/{id}', [FormationController::class, 'edit'])->name('formation.edit');
+  Route::post('/update-formation', [FormationController::class, 'update'])->name('formation.update');
+  Route::get('/supprimer-formation/{id}', [FormationController::class, 'destroy'])->name('formation.delete');
 });
 
 
