@@ -13,10 +13,8 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    \App\Models\User::factory(2)->create();
-    \App\Models\Etudiant::factory(2)->create();
-    \App\Models\Enseignant::factory(2)->create();
-    \App\Models\Enseignant::factory(2)->create();
+    // \App\Models\User::factory(2)->create();
+
 
     // \App\Models\Etudiant::factory()->create([
     //   'name' => 'Anass Nabil',
@@ -24,5 +22,11 @@ class DatabaseSeeder extends Seeder
     //   'password' => Hash::make('anass@etudiant.com'),
     //   "code_massar" => "L1294243",
     // ]);
+
+    $this->call(RegionSeeder::class);
+    $this->call(VilleSeeder::class);
+    $this->call(UserSeeder::class);
+
+
   }
 }

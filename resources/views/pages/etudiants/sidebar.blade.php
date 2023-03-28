@@ -20,7 +20,7 @@
           <ul style="display: none;">
             <li><a href="#"> Mes Candidature </a></li>
             <li><a href="#"> Ajouter une Candidature </a></li>
-            <li><a href="#"> Formations </a></li>
+            <li><a href="{{ route('avislicencespro') }}"> Formations </a></li>
 
           </ul>
         </li> -

@@ -53,4 +53,9 @@ class Enseignant extends Authenticatable
   protected $casts = [
       'email_verified_at' => 'datetime',
   ];
+
+
+  public function formation(){
+    return $this->hasOne(Formation::class);
+  }
 }

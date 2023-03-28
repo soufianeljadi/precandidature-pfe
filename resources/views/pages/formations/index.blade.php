@@ -31,7 +31,7 @@
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            <a href="{{ route ("formation.create") }}" type="button" class="btn btn-primary">Ajouter une formation</a>
+            <a href="{{ route('formation.create') }}" type="button" class="btn btn-primary">Ajouter une formation</a>
             {{-- <button type="button" class="btn btn-primary">Primary</button>
             <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
@@ -45,6 +45,7 @@
               <thead>
                 <tr>
                   <th>Nom de formation</th>
+                  <th>Responsable du formation</th>
                   <th>Description</th>
                   <th>Duree</th>
                   <th>Action</th>
@@ -57,13 +58,15 @@
                 @foreach ($formations as $formation)
                   <tr>
                     <td>{{ $formation->nom }}</td>
+                    <td>{{ $formation->enseignant->nom }}</td>
                     <td>{{ $formation->description }}</td>
                     <td>{{ $formation->duree }}</td>
                     <td>
                       <a href="" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
                       <a href="{{ route('formation.edit', $formation->id) }}" class="btn btn-sm bg-warning-light"><i
                           class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ route('formation.delete', $formation->id) }}" class="btn btn-sm bg-danger-light"><i class="fa-solid fa-trash-can"></i></a>
+                      <a href="{{ route('formation.delete', $formation->id) }}" class="btn btn-sm bg-danger-light"><i
+                          class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
                 @endforeach

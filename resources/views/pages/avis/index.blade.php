@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Tous Les enseignants
+  Tous Les avis
 @endsection
 @section('sidebar')
   @include('pages.admin.sidebar')
@@ -15,10 +15,10 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title">La liste des enseignants</h3>
+        <h3 class="page-title">La liste des avis</h3>
         <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-          <li class="breadcrumb-item active">Tous les enseignants</li>
+          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item active">Tous les avis</li>
         </ul>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            <a href="{{ route('enseignant.create') }}" type="button" class="btn btn-primary">Ajouter un enseignant</a>
+            <a href="{{ route('avis.create') }}" type="button" class="btn btn-success">Ajouter un avis</a>
             {{-- <button type="button" class="btn btn-primary">Primary</button>
             <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
@@ -41,41 +41,43 @@
 
 
           <div class="table-responsive">
-            <table class="datatable table table-stripped">
+            <table class="datatable table table-stripped table-hover">
               <thead>
                 <tr>
-                  <th>Nom et Prénom</th>
+                  <th>#</th>
                   <th>Formation</th>
-                  <th>Email</th>
-                  <th>CIN</th>
-                  <th>Matricule</th>
-                  <th>Telephone</th>
-                  <th>Action</th>
+                  <th>Responsable du Formation</th>
+                  <th>Debut pre-candidature</th>
+                  <th>Fin pre-candidature</th>
+                  <th>Status</th>
+
+                  {{-- <th>Action</th> --}}
                 </tr>
               </thead>
               <tbody>
 
+                <?php $i = 1; ?>
 
-
-                @foreach ($enseignants as $enseignant)
+                @foreach ($tous_avis as $avis)
                   <tr>
-                    <td>{{ $enseignant->nom }} {{ $enseignant->prenom }}</td>
-                    <td>{{ isset($enseignant->formation->nom) != null ? $enseignant->formation->nom : 'NONE' }}</td>
-                    <td>{{ $enseignant->email }}</td>
-
-                    <td>{{ $enseignant->cin }}</td>
-                    <td>{{ $enseignant->matricule }}</td>
-                    <td>{{ $enseignant->telephone }}</td>
-                    <td>
-                      <a href="profile.html" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a data-bs-toggle="modal" href="#edit_enseignant_{{ $enseignant->id }}"
-                        class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
-                          class="fa-solid fa-trash-can"></i></a>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $avis->formation->nom }}</td>
+                    <td>{{ $avis->formation->enseignant->nom }}</td>
+                    <td>{{ $avis->debut_precandidature }}</td>
+                    <td class="text-center">
+                      {{ $avis->fin_precandidature }}
                     </td>
+
+                    <td>
+                      <span class="btn btn-sm bg-success-light">
+                        <i class="fas fa-check"></i> Publiée</span>
+                    </td>
+                    {{-- <td>
+
+                    </td> --}}
                   </tr>
                   <!-- Edit Details Modal -->
-                  <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
+                  {{-- <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -176,7 +178,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   <!-- /Edit Details Modal -->
                 @endforeach
 

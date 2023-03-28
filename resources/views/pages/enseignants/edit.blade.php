@@ -47,12 +47,12 @@
             <div class="row">
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <input type="hidden" name="id" value="{{ $Enseignant->id}}">
+                  <input type="hidden" name="id" value="{{ $Enseignant->id }}">
                   <label class="col-lg-3 col-form-label">Nom</label>
                   <div class="col-lg-9">
 
                     <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror"
-                      value="{{$Enseignant->nom}}">
+                      value="{{ $Enseignant->nom }}">
                     @error('nom')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -65,7 +65,7 @@
                   <label class="col-lg-3 col-form-label">Prénom</label>
                   <div class="col-lg-9">
                     <input type="text" name="prenom" class="form-control @error('prenom') is-invalid @enderror"
-                      value="{{$Enseignant->prenom}}">
+                      value="{{ $Enseignant->prenom }}">
                     @error('nom')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -76,19 +76,31 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Email</label>
                   <div class="col-lg-9">
-                    <input type="email" name="email" class="form-control" value="{{$Enseignant->email}}">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror "
+                      value="{{ $Enseignant->email }}">
+                    @error('email')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Mot de passe</label>
                   <div class="col-lg-9">
-                    <input type="password" name="password" class="form-control" value="{{$Enseignant->password}}">
+                    <input type="password" name="password" class="form-control " value="{{ $Enseignant->password }}">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">CIN</label>
                   <div class="col-lg-9">
-                    <input type="text" name="cin" class="form-control" value="{{$Enseignant->cin}}">
+                    <input type="text" name="cin" class="form-control @error('cin') is-invalid @enderror "
+                      value="{{ $Enseignant->cin }}">
+                    @error('cin')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
               </div>
@@ -97,13 +109,19 @@
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Adresse</label>
                     <div class="col-lg-9">
-                      <input type="text" name="adresse" class="form-control" value="{{$Enseignant->adresse}}">
+                      <input type="text" name="adresse" class="form-control @error('adresse') is-invalid @enderror "
+                        value="{{ $Enseignant->adresse }}">
+                      @error('adresse')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Ville</label>
                     <div class="col-lg-9">
-                      <input type="text" name="ville" class="form-control" value="{{$Enseignant->ville}}">
+                      <input type="text" name="ville" class="form-control" value="{{ $Enseignant->ville }}">
                     </div>
                   </div>
 
@@ -111,19 +129,20 @@
                     <label class="col-lg-3 col-form-label">Date de naissance</label>
                     <div class="col-lg-9">
                       <input type="date" name="date_naissance" class="form-control"
-                        value="{{$Enseignant->date_naissance}}">
+                        value="{{ $Enseignant->date_naissance }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">l'âge</label>
                     <div class="col-lg-9">
-                      <input type="number" name="age" class="form-control" value="{{$Enseignant->age}}">
+                      <input type="number" name="age" class="form-control" value="{{ $Enseignant->age }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Nationalité</label>
                     <div class="col-lg-9">
-                      <input type="text" name="nationalite" class="form-control" value="{{$Enseignant->nationalite}}">
+                      <input type="text" name="nationalite" class="form-control"
+                        value="{{ $Enseignant->nationalite }}">
                     </div>
                   </div>
 
@@ -136,7 +155,8 @@
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Matricule</label>
                     <div class="col-lg-9">
-                      <input type="text" name="matricule" class="form-control" value="{{$Enseignant->matricule}}">
+                      <input type="text" name="matricule" class="form-control"
+                        value="{{ $Enseignant->matricule }}">
                     </div>
                   </div>
                 </div>
@@ -144,7 +164,8 @@
                   <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Telephone</label>
                     <div class="col-lg-9">
-                      <input type="number" name="telephone" class="form-control" value="{{$Enseignant->telephone}}">
+                      <input type="number" name="telephone" class="form-control"
+                        value="{{ $Enseignant->telephone }}">
                     </div>
                   </div>
                 </div>

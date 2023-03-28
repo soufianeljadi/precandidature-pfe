@@ -24,6 +24,14 @@
 
           </ul>
         </li>
+        <li class="submenu">
+          <a href="#"><span>Avis</span> <span class="menu-arrow"></span></a>
+          <ul style="display: none;">
+            <li><a href="{{ route('avis.index') }}"> Tous les avis </a></li>
+            <li><a href="{{ route('avis.create') }}"> Ajouter un avis </a></li>
+
+          </ul>
+        </li>
 
 
       </ul>

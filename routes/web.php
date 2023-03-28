@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AvisController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
@@ -34,6 +35,8 @@ Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard",[EtudiantController::class,"index"])->name("etudiant.dashboard");
   Route::get("/etudiant/profile",[EtudiantController::class,"profile"])->name("etudiant.profile");
   Route::post("/etudiant/save",[EtudiantController::class,"store"])->name("etudiant.store");
+  Route::view("/avisLicencesPro","pages.etudiants.avis")->name("avislicencespro");
+
 });
 
 
@@ -43,8 +46,8 @@ Route::middleware('auth:etudiant')->group(function () {
 Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard",[EtudiantController::class,"index2"])->name("enseignant.dashboard");
 });
-Route::view("/test","test")->middleware("auth:enseignant");
 
+Route::view("/test","test")->middleware("auth:enseignant");
 Route::view("/blank","blank");
 
 // Admin routes
@@ -64,6 +67,12 @@ Route::middleware('auth:web')->group(function () {
   Route::get('/editer-formation/{id}', [FormationController::class, 'edit'])->name('formation.edit');
   Route::post('/update-formation', [FormationController::class, 'update'])->name('formation.update');
   Route::get('/supprimer-formation/{id}', [FormationController::class, 'destroy'])->name('formation.delete');
+  //Gestion avis
+  Route::get("/avis",[AvisController::class,"index"])->name("avis.index");
+  Route::get("/ajouter-avis",[AvisController::class,"create"])->name("avis.create");
+  Route::post("/sauvgarder-avis",[AvisController::class,"store"])->name("avis.store");
+
+
 });
 
 

@@ -48,7 +48,6 @@ class EnseignantController extends Controller
       $Enseignant->password = Hash::make($request->password);
       $Enseignant->save();
       toastr()->success('Data saved Successfully !');
-
       return redirect()->route("enseignants.index");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
@@ -70,6 +69,7 @@ class EnseignantController extends Controller
   public function edit($id)
   {
     $Enseignant = Enseignant::findOrFail($id);
+
     return view('pages.enseignants.edit',compact('Enseignant'));
   }
 
@@ -108,7 +108,8 @@ class EnseignantController extends Controller
   {
     $enseignant = Enseignant::findOrFail($id);
     $enseignant->delete();
-    return redirect()->back();
+    toastr()->error('L\'enseignant a été bien supprimé !'," ");
+    return redirect()->route("enseignants.index");
 
   }
 }

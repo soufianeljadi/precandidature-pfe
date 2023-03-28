@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Models\Formation;
 
@@ -14,8 +15,12 @@ class FormationController extends Controller
    */
   public function index()
   {
-    $formations = Formation::all();
-    return view("pages.formation.index", compact("formations"));
+
+    return view("pages.formations.index")->with([
+      "formations" => Formation::all(),
+
+
+    ]);
   }
 
   /**
@@ -23,7 +28,9 @@ class FormationController extends Controller
    */
   public function create()
   {
-    return view("pages.formation.create");
+    return view("pages.formations.create")->with([
+      "enseignants" => Enseignant::all(),
+    ]);
   }
 
   /**
@@ -37,6 +44,7 @@ class FormationController extends Controller
       $formation->nom = $request->nom;
       $formation->description = $request->description;
       $formation->duree = $request->duree;
+      $formation->enseignant_id = $request->enseignant_id;
       $formation->save();
       toastr()->success('Data saved Successfully !');
 
@@ -62,7 +70,7 @@ class FormationController extends Controller
   {
     //
     $formation = Formation::findOrFail($id);
-    return view('pages.formation.edit',compact('formation'));
+    return view('pages.formations.edit',compact('formation'));
   }
 
   /**
