@@ -67,13 +67,14 @@
                     <td>{{ $enseignant->matricule }}</td>
                     <td>{{ $enseignant->telephone }}</td>
                     <td>
-                      <a href="profile.html" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
+                      <a href="view.blade.php" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
                       <a data-bs-toggle="modal" href="#edit_enseignant_{{ $enseignant->id }}"
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
                       <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
+
                   <!-- Edit Details Modal -->
                   <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -117,67 +118,160 @@
                                   @enderror
                                 </div>
                               </div>
-                              <div class="col-12">
+                              <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                  <label>Date of Birth</label>
-                                  <div class="cal-icon">
-                                    <input type="text" class="form-control" value="24-07-1983">
+
+                                    <label >CIN</label>
+
+                                      <input type="text" name="cin" class="form-control @error('cin') is-invalid @enderror"
+                                      value="{{ $enseignant->cin }}">
+                                      @error('cin')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+
+
+                                </div>
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <div class="form-group">
+
+                                    <label>Date de naissance</label>
+
+                                      <input type="date" name="date_naissance"
+                                        class="form-control @error('date_naissance') is-invalid @enderror"
+                                        value="{{ $enseignant->date_naissance }}">
+                                      @error('date_naissance')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+
+
+                                </div>
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                  <label >Ville</label>
+
+                                    <input type="text" name="ville" class="form-control @error('ville') is-invalid @enderror"
+                                    value="{{ $enseignant->ville }}">
+                                    @error('ville')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
                                   </div>
+
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <div class="form-group">
+
+                                    <label >Nationalité</label>
+
+                                      <input type="text" name="nationalite"
+                                        class="form-control @error('nationalite') is-invalid @enderror" value="{{ $enseignant->nationalite }}">
+                                      @error('nationalite')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+                                    </div>
+
+
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                <div class="form-group">
+
+                                    <label >Email</label>
+
+                                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                      value="{{ $enseignant->email }}">
+                                      @error('email')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+
+
                                 </div>
                               </div>
                               <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                  <label>Email ID</label>
-                                  <input type="email" class="form-control" value="allendavis@example.com">
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                  <label>Mobile</label>
-                                  <input type="text" value="+1 202-555-0125" class="form-control">
+
+
+                                  <label >Mot de passe</label>
+
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ $enseignant->password }}">
+                                    @error('password')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+
+
                                 </div>
                               </div>
                               <div class="col-12">
-                                <h5 class="form-title"><span>Address</span></h5>
+                                <div class="form-group">
+
+
+                                    <label>Adresse</label>
+
+
+                                 <input type="text"  name="adresse" class="form-control @error('adresse') is-invalid @enderror"
+                                 value="{{ $enseignant->adresse }}">
+                                      @error('adresse')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+                                    </div>
+
+
                               </div>
                               <div class="col-12">
+                                <h5 class="form-title"><span>Informations professionnels</span></h5>
+                              </div>
+                              <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                  <label>Address</label>
-                                  <input type="text" class="form-control" value="4663 Agriculture Lane">
+
+                                    <label>Matricule</label>
+
+                                      <input type="text" name="matricule"
+                                        class="form-control @error('matricule') is-invalid @enderror" value="{{ $enseignant->matricule }}">
+                                      @error('matricule')
+                                        <div class="invalid-feedback">
+                                          {{ $message }}
+                                        </div>
+                                      @enderror
+
                                 </div>
                               </div>
                               <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                  <label>City</label>
-                                  <input type="text" class="form-control" value="Miami">
+                                  <label class="col-lg-3 col-form-label">Téléphone</label>
+
+                                    <input type="number" name="telephone"
+                                      class="form-control @error('telephone') is-invalid @enderror" value="{{ $enseignant->telephone }}">
+                                    @error('telephone')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
                                 </div>
                               </div>
-                              <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                  <label>State</label>
-                                  <input type="text" class="form-control" value="Florida">
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                  <label>Zip Code</label>
-                                  <input type="text" class="form-control" value="22434">
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                  <label>Country</label>
-                                  <input type="text" class="form-control" value="United States">
-                                </div>
-                              </div>
+
+
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block w-100">Save Changes</button>
+                            <button type="submit" class="btn btn-primary btn-block w-100">Sauvegarder les modifications</button>
                           </form>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- /Edit Details Modal -->
+
                 @endforeach
 
 
@@ -189,8 +283,4 @@
     </div>
   </div>
 
-
-  <!-- /Page Wrapper -->
-
-  {{-- Contennt --}}
 @endsection

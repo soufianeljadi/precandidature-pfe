@@ -65,7 +65,7 @@
                   <div class="col-lg-9">
                     <input type="text" name="prenom" class="form-control @error('prenom') is-invalid @enderror"
                       value="{{ old('prenom') }}">
-                    @error('nom')
+                    @error('prenom')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
@@ -77,7 +77,7 @@
                   <div class="col-lg-9">
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                       value="{{ old('email') }}">
-                    @error('nom')
+                    @error('email')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
@@ -109,18 +109,7 @@
                 </div>
               </div>
               <div class="col-xl-6">
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Adresse</label>
-                  <div class="col-lg-9">
-                    <input type="text" name="adresse" class="form-control @error('adresse') is-invalid @enderror"
-                      value="{{ old('adresse') }}">
-                    @error('adresse')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Ville</label>
                   <div class="col-lg-9">
@@ -147,7 +136,7 @@
                     @enderror
                   </div>
                 </div>
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label">l'âge</label>
                   <div class="col-lg-9">
                     <input type="number" name="age" class="form-control @error('age') is-invalid @enderror"
@@ -158,7 +147,7 @@
                       </div>
                     @enderror
                   </div>
-                </div>
+                </div> --}}
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Nationalité</label>
                   <div class="col-lg-9">
@@ -171,7 +160,18 @@
                     @enderror
                   </div>
                 </div>
-
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">Adresse</label>
+                  <div class="col-lg-9">
+                    <textarea  type="text" rows="2" cols="2" name="adresse" class="form-control @error('adresse') is-invalid @enderror"
+                      value="{{ old('adresse') }}"></textarea>
+                    @error('adresse')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -193,7 +193,7 @@
               </div>
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Telephone</label>
+                  <label class="col-lg-3 col-form-label">Téléphone</label>
                   <div class="col-lg-9">
                     <input type="number" name="telephone"
                       class="form-control @error('telephone') is-invalid @enderror" value="{{ old('telephone') }}">

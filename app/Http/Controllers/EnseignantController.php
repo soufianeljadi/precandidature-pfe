@@ -39,7 +39,7 @@ class EnseignantController extends Controller
       $Enseignant->date_naissance = $request->date_naissance;
       $Enseignant->email = $request->email;
       $Enseignant->telephone = $request->telephone;
-      $Enseignant->age = $request->age;
+      //$Enseignant->age = $request->age;
       $Enseignant->cin = $request->cin;
       $Enseignant->adresse = $request->adresse;
       $Enseignant->ville = $request->ville;
@@ -85,7 +85,7 @@ class EnseignantController extends Controller
       $Enseignant->date_naissance = $request->date_naissance;
       $Enseignant->email = $request->email;
       $Enseignant->telephone = $request->telephone;
-      $Enseignant->age = $request->age;
+     // $Enseignant->age = $request->age;
       $Enseignant->cin = $request->cin;
       $Enseignant->adresse = $request->adresse;
       $Enseignant->ville = $request->ville;

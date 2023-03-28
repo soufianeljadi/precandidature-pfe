@@ -21,7 +21,7 @@ return new class extends Migration
           $table->string('matricule')->unique();
           $table->date('date_naissance');
           $table->integer('telephone');
-          $table->integer('age')->nullable();
+        //  $table->integer('age')->nullable();
           $table->string('cin');
           $table->string('adresse')->nullable();
           $table->string('ville')->nullable();
