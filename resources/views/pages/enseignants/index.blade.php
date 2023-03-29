@@ -28,6 +28,15 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
+        {{-- @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif --}}
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
@@ -86,7 +95,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form method="POST" action="{{ route('enseignant.update') }}">
+                          <form action="{{ route('enseignant.update') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $enseignant->id }}">
 
@@ -262,9 +271,8 @@
                                     @enderror
                                 </div>
                               </div>
-
-
                             </div>
+
                             <button type="submit" class="btn btn-primary btn-block w-100">Sauvegarder les modifications</button>
                           </form>
                         </div>
