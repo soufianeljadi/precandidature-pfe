@@ -47,7 +47,7 @@ Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard",[EtudiantController::class,"index2"])->name("enseignant.dashboard");
 });
 
-Route::view("/test","test")->middleware("auth:enseignant");
+Route::view("/test","test");
 Route::view("/blank","blank");
 
 // Admin routes

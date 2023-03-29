@@ -1,12 +1,13 @@
 $(function(){
-	
+
 	/* Morris Area Chart */
-	
+
 	window.mA = Morris.Area({
 	    element: 'morrisArea',
 	    data: [
-	        { y: '2013', a: 60},
-	        { y: '2014', a: 100},
+	        { y: '2022', a: 225},
+	        { y: '2024', a: 150},
+	        { y: '2025', a: 0},
 	        { y: '2015', a: 240},
 	        { y: '2016', a: 120},
 	        { y: '2017', a: 80},
@@ -18,16 +19,16 @@ $(function(){
 	    labels: ['Revenue'],
 	    lineColors: ['#1b5a90'],
 	    lineWidth: 2,
-		
+
      	fillOpacity: 0.5,
 	    gridTextSize: 10,
 	    hideHover: 'auto',
 	    resize: true,
 		redraw: true
 	});
-	
+
 	/* Morris Line Chart */
-	
+
 	window.mL = Morris.Line({
 	    element: 'morrisLine',
 	    data: [
