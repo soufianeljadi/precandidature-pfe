@@ -57,9 +57,9 @@ Route::middleware('auth:web')->group(function () {
   Route::get("/enseignants",[EnseignantController::class,"index"])->name("enseignants.index");
   Route::get("/ajouter-enseignant",[EnseignantController::class,"create"])->name("enseignant.create");
   Route::post("/sauvgarder-enseignant",[EnseignantController::class,"store"])->name("enseignant.store");
-  Route::get('/editer-enseignant/{id}', [EnseignantController::class, 'edit'])->name('enseignant.edit');
-  Route::post('/update-enseignant', [EnseignantController::class, 'update'])->name('enseignant.update');
   Route::get('/supprimer-enseignant/{id}', [EnseignantController::class, 'destroy'])->name('enseignant.delete');
+  Route::post('/updateenseign', [EnseignantController::class, 'update'])->name('enseignant.update');
+
 //formation routes
   Route::get("/formations",[FormationController::class,"index"])->name("formations.index");
   Route::get("/ajouter-formation",[FormationController::class,"create"])->name("formation.create");
