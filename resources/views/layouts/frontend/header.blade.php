@@ -10,13 +10,13 @@
           </span>
         </a>
         <a href="{{ url('/') }}" class="navbar-brand navbar-brand-eight logo">
-          <img src="assets/img/usms-test1.png" class="img-fluid" alt="Logo">
+          <img src="{{ asset('assets/img/estfbs_test1.png') }}" class="img-fluid" alt="Logo">
         </a>
       </div>
       <div class="main-menu-wrapper main-menu-wrapper-eight">
         <div class="menu-header menu-header-eight">
           <a href="{{ url('/') }}" class="menu-logo">
-            <img src="{{ asset('assets/img/usms-test1.png') }}" class="img-fluid" alt="Logo">
+            <img src="{{ asset('assets/img/estfbs_test1.png') }}" class="img-fluid" alt="Logo">
           </a>
           <a id="menu_close" class="menu-close" href="javascript:void(0);">
             <i class="fas fa-times"></i>

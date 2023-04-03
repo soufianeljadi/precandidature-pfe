@@ -15473,3 +15473,39 @@ div.dataTables_wrapper div.dataTables_filter input{
 		padding: 60px 0px;
 	}
 }
+
+
+
+.go-down-lin {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .3s;
+}
+
+ .go-down-lin i {
+  animation: bouncing 1.5s infinite;
+  font-size: 30px;
+}
+
+
+@media (max-width: 767.98px) {
+  .go-down-lin i {
+    font-size: 15px;
+  }
+}
+@keyframes bouncing {
+  0%,
+  10%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40%,
+  60% {
+    transform: translateY(-15px);
+  }
+}

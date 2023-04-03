@@ -26,6 +26,10 @@
     <h5 class="comp-title">Guide d'utilisation :</h3>
       <div class="line"></div>
   </div>
+  <div class="alert alert-dark alert-dismissible fade show mb-0 mb-2 mt-2" role="alert">
+    <i class="fa-solid fa-graduation-cap me-2"></i>Cette plateforme vous permet, avec un seul compte, de déposer vos
+    candidatures électroniques pour les concours d'accès au licences professionelles.
+  </div>
   <div class="alert alert-dark alert-dismissible fade show mb-0" role="alert">
 
     <i class="fa-regular fa-address-card me-2"></i>Avant de postuler à une formation veuillez remplir votre profile (pour

@@ -5,10 +5,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-  <title>USMS - Incscription en licences professionnelles </title>
+  <title>ESTFBS - Incscription en licences professionnelles </title>
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/img/favicon_usms.ico" type="image/x-icon">
+  <link rel="icon" href="{{ asset('assets/img/estfbs-ico.png') }}" type="image/x-icon">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -48,7 +48,8 @@
           <div class="banner-header aos" data-aos="fade-up">
             <h1>Portail de pré-candidature en ligne aux formations<span> <br> licences professionnelles <br> </span>
               2023-2024</h1>
-            <p>Bienvenue sur le Portail de pré-candidature en ligne aux formations licences professionnelles de L'USMS.
+            <p>Bienvenue sur le Portail de pré-candidature en ligne aux formations licences professionnelles de L'école
+              Supérieure de Technologie – Fkih Ben Salah.
             </p>
           </div>
 
@@ -86,13 +87,14 @@
                 {{-- <span>120+</span> --}}
                 <h3>La plateforme de pré-candidature aux formations licences professionnelles permet aux
                   candidats de postuler
-                  aux formations licences professionnelles accréditées dans établissements relevant de L'Université
-                  Moulay Slimane exclusivement en ligne.</h3>
+                  aux formations licences professionnelles accréditées dans établissements relevant de L'école
+                  Supérieure de Technologie – Fkih Ben Salah en ligne.</h3>
               </div>
             </div>
+
           </div>
 
-
+          <a href="#" class="go-down-lin" style="color: #FE9445"><i class="fas fa-arrow-down"></i></a>
         </div>
       </div>
     </section>
@@ -102,7 +104,7 @@
     <section class="section how-it-works-section">
       <div class="container">
         <div class="section-header-eight text-center aos" data-aos="fade-up">
-          <span>USMS</span>
+          <span>ESTFBS</span>
           <h2>Comment ça fonctionne ?</h2>
           <p class="sub-title">plateforme de pré-candidature aux formations licences professionnelles</p>
           <div class="sec-dots">
@@ -124,8 +126,7 @@
               </div>
               <p>La plateforme de pré- candidature aux formations licence professionnelle permet aux candidats de
                 postuler aux
-                formations licences professionnelles accréditées dans établissements relevant de runiversité Sultan
-                Moulay Slimane
+                formations licences professionnelles accréditées dans L'école Supérieure de Technologie – Fkih Ben Salah
                 exclustvement en ligne.</p>
               <span class="text-green">01</span>
             </div>
