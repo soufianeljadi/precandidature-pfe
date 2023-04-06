@@ -12,7 +12,9 @@
         <li>
           <a href="{{ route('etudiant.profile') }}"><span>Profile</span></a>
         </li>
-
+        <li>
+          <a href="{{ route('avislicencespro') }}"><span>Formations</span></a>
+        </li>
 
 
         <li class="submenu">
@@ -20,10 +22,11 @@
           <ul style="display: none;">
             <li><a href="#"> Mes Candidature </a></li>
             <li><a href="#"> Ajouter une Candidature </a></li>
-            <li><a href="{{ route('avislicencespro') }}"> Formations </a></li>
+
 
           </ul>
-        </li> -
+        </li>
+
 
 
 

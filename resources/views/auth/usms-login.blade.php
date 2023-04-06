@@ -7,7 +7,7 @@
   <title>USMS - Connexion Espace Administratif</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon_usms.ico') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/estfbs-ico.png') }}">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
@@ -27,7 +27,8 @@
       <div class="container">
         <div class="loginbox">
           <div class="login-left">
-            <img class="img-fluid" src="{{ asset('assets/img/usms_off.png') }}" alt="Logo">
+            <img style="border-radius: 5px;box-shadow: 10px 9px 10px 1px #2196F3;" class="img-fluid"
+              src="{{ asset('assets/img/logos/estfbs-305x107 2.png') }}" alt="Logo">
           </div>
           <div class="login-right">
             <div class="login-right-wrap">

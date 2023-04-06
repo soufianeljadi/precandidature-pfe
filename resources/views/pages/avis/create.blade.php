@@ -41,7 +41,7 @@
               </ul>
             </div>
           @endif
-          <form action="{{ route('avis.store') }}" method="POST">
+          <form action="{{ route('avis.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <h4 class="card-title">Remplir les informations suivants :</h4>
@@ -95,21 +95,20 @@
                     </div>
                   </div>
                 </div>
-                {{-- <div class="col-xl-6">
+                <div class="col-xl-6">
                   <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Date de naissance</label>
+                    <label class="col-lg-3 col-form-label">Image de l'avis </label>
                     <div class="col-lg-9">
-                      <input type="date" name="date_naissance"
-                        class="form-control @error('date_naissance') is-invalid @enderror"
-                        value="{{ old('date_naissance') }}">
-                      @error('date_naissance')
+                      <input type="file" name="image_avis"
+                        class="form-control @error('image_avis') is-invalid @enderror">
+                      @error('image_avis')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
                       @enderror
                     </div>
                   </div>
-                </div> --}}
+                </div>
               </div>
               <div class="text-end">
                 <button type="submit" class="btn btn-primary">Submit</button>

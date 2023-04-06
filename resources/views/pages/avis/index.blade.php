@@ -36,11 +36,72 @@
             <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
         </div>
-        <div class="card-body">
+        <div class="card-body row  ">
+
+
+          <div class="row row-grid">
+            @foreach ($tous_avis as $avis)
+              <div class="col-xl-4 col-lg-3 col p-3">
+                <div class="card-body">
+                  <div class="card widget-profile user-widget-profile">
+                    <div class="pro-widget-content">
+                      <div class="profile-info-widget">
+                        <a href="profile-mentee.html" class="booking-user-img">
+                          <img src="{{ asset('avis/api.png') }}" alt="User Image" height="300" width="300">
+                        </a>
+                        <div class="profile-det-info">
+                          <h3><a href="profile-mentee.html">{{ $avis->formation->nom }}</a></h3>
+
+                          <div class="mentee-details">
+                            <h5><b>Responsable :</b> {{ $avis->formation->enseignant->nom }}</h5>
+                            <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
+                              {{ $avis->formation->enseignant->nom }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mentee-info">
+                      <ul>
+                        <li class="text-success">Debut : <span>{{ $avis->debut_precandidature }}</span></li>
+                        <li class="text-danger">Fin <span>{{ $avis->fin_precandidature }}</span></li>
+                        <li>Blood Group <span>AB+</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endforeach
 
 
 
-          <div class="table-responsive">
+          </div>
+
+          <div class="blog-pagination mt-4">
+            <nav>
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+
+
+
+          {{-- <div class="table-responsive">
             <table class="datatable table table-stripped">
               <thead>
                 <tr>
@@ -51,7 +112,7 @@
                   <th>Fin pre-candidature</th>
                   <th>Status</th>
 
-                  {{-- <th>Action</th> --}}
+
                 </tr>
               </thead>
               <tbody>
@@ -71,12 +132,10 @@
                     <td class="text-center">
                       <span class="badge badge-pill bg-success inv-badge">Publiée</span>
                     </td>
-                    {{-- <td>
 
-                    </td> --}}
                   </tr>
                   <!-- Edit Details Modal -->
-                  {{-- <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
+                   <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -177,14 +236,14 @@
                         </div>
                       </div>
                     </div>
-                  </div> --}}
+                  </div>
                   <!-- /Edit Details Modal -->
                 @endforeach
 
 
               </tbody>
             </table>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

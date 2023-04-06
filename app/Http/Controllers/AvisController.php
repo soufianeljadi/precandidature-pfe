@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Traits\AttachFilesTrait;
 
 use App\Models\Avis;
 use App\Models\Formation;
@@ -8,6 +9,7 @@ use Illuminate\Http\Request;
 
 class AvisController extends Controller
 {
+  use AttachFilesTrait;
   /**
    * Display a listing of the resource.
    */
@@ -40,7 +42,9 @@ class AvisController extends Controller
         "debut_precandidature" => $request->debut_precandidature,
         "fin_precandidature" => $request->fin_precandidature,
         "formation_id" => $request->formation_id,
+        "image_avis" => $request->file('image_avis')->getClientOriginalName(),
       ]);
+      $this->uploadFile($request,"image_avis");
       toastr()->success('Data saved Successfully !');
       return redirect()->route("avis.index");
     } catch (\Throwable $th) {

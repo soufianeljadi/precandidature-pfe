@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date("debut_precandidature");
             $table->date("fin_precandidature");
+            $table->string("image_avis");
             $table->foreignId('formation_id')->references("id")->on("formations")->onDelete('cascade');
             // $table->date("status");
 

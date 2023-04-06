@@ -68,7 +68,7 @@ Route::middleware('auth:web')->group(function () {
   Route::post('/update-formation', [FormationController::class, 'update'])->name('formation.update');
   Route::get('/supprimer-formation/{id}', [FormationController::class, 'destroy'])->name('formation.delete');
   //Gestion avis
-  Route::get("/avis",[AvisController::class,"index"])->name("avis.index");
+  Route::get("/avis-precandidature",[AvisController::class,"index"])->name("avis.index");
   Route::get("/ajouter-avis",[AvisController::class,"create"])->name("avis.create");
   Route::post("/sauvgarder-avis",[AvisController::class,"store"])->name("avis.store");
 
