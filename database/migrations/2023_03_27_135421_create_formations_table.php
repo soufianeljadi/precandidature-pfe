@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->string('slug');
             $table->string('description');
             $table->integer('duree')->nullable();
             $table->foreignId('enseignant_id')->references("id")->on("enseignants")->onDelete('cascade');

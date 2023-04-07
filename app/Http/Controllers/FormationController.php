@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avis;
 use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Models\Formation;
+use Illuminate\Support\Str;
 
 
 
@@ -42,6 +44,7 @@ class FormationController extends Controller
     try {
       $formation = new Formation();
       $formation->nom = $request->nom;
+      $formation->slug = Str::slug($request->nom);
       $formation->description = $request->description;
       $formation->duree = $request->duree;
       $formation->enseignant_id = $request->enseignant_id;
@@ -54,9 +57,19 @@ class FormationController extends Controller
     }
   }
 
-  /**
-   * Display the specified resource.
-   */
+  public function formationDetails(Request $request)
+  {
+    $avis =  Avis::findOrFail($request->id);
+    $formation = $avis->formation;
+    return view("pages.etudiants.avis_details")->with([
+      "avis" => $avis,
+      "formation" => $formation
+    ]);
+  }
+
+
+
+
   public function show(string $id)
   {
     //
@@ -70,7 +83,7 @@ class FormationController extends Controller
   {
     //
     $formation = Formation::findOrFail($id);
-    return view('pages.formations.edit',compact('formation'));
+    return view('pages.formations.edit', compact('formation'));
   }
 
   /**
@@ -82,7 +95,7 @@ class FormationController extends Controller
     try {
       $formation = Formation::findOrFail($request->id);
       $formation->nom = $request->nom;
-      $formation->description = $request->description ;
+      $formation->description = $request->description;
       $formation->duree = $request->duree;
       $formation->save();
       toastr()->success('Data saved Successfully !');
@@ -101,6 +114,5 @@ class FormationController extends Controller
     $formation = Formation::findOrFail($id);
     $formation->delete();
     return redirect()->back();
-
   }
 }

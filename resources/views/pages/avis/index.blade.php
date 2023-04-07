@@ -41,38 +41,60 @@
 
           <div class="row row-grid">
             @foreach ($tous_avis as $avis)
-              <div class="col-xl-4 col-lg-3 col p-3">
-                <div class="card-body">
-                  <div class="card widget-profile user-widget-profile">
-                    <div class="pro-widget-content">
-                      <div class="profile-info-widget">
-                        <a href="profile-mentee.html" class="booking-user-img">
-                          <img src="{{ asset('avis/api.png') }}" alt="User Image" height="300" width="300">
-                        </a>
-                        <div class="profile-det-info">
-                          <h3><a href="profile-mentee.html">{{ $avis->formation->nom }}</a></h3>
+              <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card flex-fill">
+                  <img alt="Card Image" src="{{ asset('avis/' . $avis->image_avis . '') }}" class="card-img-top">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">{{ $avis->formation->nom }}</h5>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">
+                    <h5>Responsable : {{ $avis->formation->enseignant->prenom }}
+                      {{ $avis->formation->enseignant->nom }}</h5>
+                    <ul>
+                      <li class="text-success">Debut : <span>{{ $avis->debut_precandidature }}</span></li>
+                      <li class="text-danger">Fin <span>{{ $avis->fin_precandidature }}</span></li>
+                    </ul>
+                    </p>
+                    <p>Avis Crée en : {{ $avis->created_at }}</p>
 
-                          <div class="mentee-details">
-                            <h5><b>Responsable :</b> {{ $avis->formation->enseignant->nom }}</h5>
-                            <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
-                              {{ $avis->formation->enseignant->nom }}</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mentee-info">
-                      <ul>
-                        <li class="text-success">Debut : <span>{{ $avis->debut_precandidature }}</span></li>
-                        <li class="text-danger">Fin <span>{{ $avis->fin_precandidature }}</span></li>
-                        <li>Blood Group <span>AB+</span></li>
-                      </ul>
-                    </div>
+                    <a class="btn btn-primary" href="#">Go somewhere</a>
                   </div>
                 </div>
               </div>
             @endforeach
 
+            {{-- <div class="col-xl-4 col-lg-3 col p-3">
+              <div class="card-body">
+                <div class="card widget-profile user-widget-profile">
+                  <div class="pro-widget-content">
+                    <div class="profile-info-widget">
+                      <a href="profile-mentee.html" class="booking-user-img">
+                        <img src="{{ asset('avis/' . $avis->image_avis . '') }}" alt="User Image" height="300"
+                          width="300">
+                      </a>
+                      <div class="profile-det-info">
+                        <h3><a href="profile-mentee.html">{{ $avis->formation->nom }}</a></h3>
 
+                        <div class="mentee-details">
+                          <h5><b>Responsable :</b>{{ $avis->formation->enseignant->prenom }}
+                            {{ $avis->formation->enseignant->nom }}</h5>
+                          <h5 class="mb-0">
+                            <small>Avis Crée en : {{ $avis->created_at }}</small>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mentee-info">
+                    <ul>
+                      <li class="text-success">Debut : <span>{{ $avis->debut_precandidature }}</span></li>
+                      <li class="text-danger">Fin <span>{{ $avis->fin_precandidature }}</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div> --}}
 
           </div>
 

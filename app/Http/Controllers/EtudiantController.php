@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avis;
 use App\Models\Dossier;
 use App\Models\Etudiant;
 use App\Models\Ville;
@@ -21,7 +22,10 @@ class EtudiantController extends Controller
   }
   public function avis()
   {
-    return view("pages.etudiants.avis");
+    $avis = Avis::all();
+    return view("pages.etudiants.avis")->with([
+      "avis" => $avis
+    ]);
   }
   public function profile()
   {
