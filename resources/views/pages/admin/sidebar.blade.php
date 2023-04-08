@@ -32,9 +32,10 @@
 
           </ul>
         </li>
-        <li><a href="#"> Étudiants </a></li>
 
-
+        <li>
+          <a href="{{ route('etudiant.list') }}"><span>Étudiants</span></a>
+        </li>
       </ul>
     </div>
   </div>

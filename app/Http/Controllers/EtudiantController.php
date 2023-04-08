@@ -125,4 +125,12 @@ class EtudiantController extends Controller
   {
     //
   }
+
+
+  public function tousEtudiants()
+  {
+    return view("pages.etudiants.index")->with([
+      "etudiants" => Etudiant::all(),
+    ]);
+  }
 }

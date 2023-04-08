@@ -21,3 +21,4 @@
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables/datatables.css') }}">

@@ -78,6 +78,7 @@ Route::middleware('auth:web')->group(function () {
   Route::get("/avis-precandidature",[AvisController::class,"index"])->name("avis.index");
   Route::get("/ajouter-avis",[AvisController::class,"create"])->name("avis.create");
   Route::post("/sauvgarder-avis",[AvisController::class,"store"])->name("avis.store");
+  Route::get("/tous-etudiants",[EtudiantController::class,"tousEtudiants"])->name("etudiant.list");
 
 
 });

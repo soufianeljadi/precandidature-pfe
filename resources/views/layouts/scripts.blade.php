@@ -21,3 +21,4 @@
 
 <!-- Custom JS -->
 <script src="{{ asset('admin_assets/js/script.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables/datatables.js') }}"></script>

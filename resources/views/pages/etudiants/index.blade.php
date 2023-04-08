@@ -1,9 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Tous Les enseignants
-@endsection
-@section('styles')
+  Tous Les etudiants
 @endsection
 @section('sidebar')
   @include('pages.admin.sidebar')
@@ -17,15 +15,16 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title">La liste des enseignants</h3>
+        <h3 class="page-title"> Tous Les etudiants</h3>
         <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-          <li class="breadcrumb-item active">Tous les enseignants</li>
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item active"> Tous Les etudiants</li>
         </ul>
       </div>
     </div>
   </div>
   <!-- /Page Header -->
+
 
   <div class="row">
     <div class="col-sm-12">
@@ -39,14 +38,14 @@
               </ul>
             </div>
           @endif --}}
-        <div class="card-header">
-          {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
-          <p class="card-text">
+        {{--  <div class="card-header">
+           <h4 class="card-title">Datatable des enseignant</h4>
+          {{-- <p class="card-text">
             <a href="{{ route('enseignant.create') }}" type="button" class="btn btn-primary">Ajouter un enseignant</a>
-            {{-- <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-primary">Primary</button> --}}
+             <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary">Primary</button>
           </p>
-        </div>
+        </div> --}}
         <div class="card-body">
 
 
@@ -55,39 +54,38 @@
             <table class="datatable table table-stripped" id="myTable">
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Nom et Prénom</th>
-                  <th>Formation</th>
+                  <th>Code Massar</th>
                   <th>Email</th>
-                  <th>CIN</th>
-                  <th>Matricule</th>
                   <th>Telephone</th>
-                  <th>Action</th>
+                  <th>Controll</th>
+
                 </tr>
               </thead>
               <tbody>
 
 
-
-                @foreach ($enseignants as $enseignant)
+                {{ $i = 1 }}
+                @foreach ($etudiants as $etudiant)
                   <tr>
-                    <td>{{ $enseignant->nom }} {{ $enseignant->prenom }}</td>
-                    <td>{{ isset($enseignant->formation->nom) != null ? $enseignant->formation->nom : 'NONE' }}</td>
-                    <td>{{ $enseignant->email }}</td>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $etudiant->nom }} {{ $etudiant->prenom }}</td>
+                    <td>{{ $etudiant->code_massar }}</td>
+                    <td>{{ $etudiant->email }}</td>
+                    <td>{{ $etudiant->telephone }}</td>
 
-                    <td>{{ $enseignant->cin }}</td>
-                    <td>{{ $enseignant->matricule }}</td>
-                    <td>{{ $enseignant->telephone }}</td>
                     <td>
                       <a href="view.blade.php" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a data-bs-toggle="modal" href="#edit_enseignant_{{ $enseignant->id }}"
+                      <a data-bs-toggle="modal" href="#edit_enseignant_{{ $etudiant->id }}"
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
+                      <a href="{{ route('enseignant.delete', $etudiant->id) }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
 
                   <!-- Edit Details Modal -->
-                  <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
+                  {{-- <div class="modal fade" id="edit_enseignant_{{ $etudiant->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -290,7 +288,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 @endforeach
 
 
