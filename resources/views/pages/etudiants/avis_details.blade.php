@@ -38,23 +38,39 @@
                   {{ $formation->enseignant->nom }}</span>
               </div>
               <div class="blog-details-img">
-                <img class="img-fluid" src="{{ asset('avis/' . $avis->image_avis . '') }}" alt="avis Image">
+                <img class="img-fluid" src="{{ asset('avis/' . $formation->avis->image_avis . '') }}" alt="avis Image">
               </div>
               <div class="blog-content">
                 <p> {{ $formation->description }}</p>
                 <blockquote>
-                  Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean eu leo
-                  quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus,
-                  nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor
-                  fringilla. Vestibulum id ligula porta felis euismod semper.
+                  <ul>
+                    <li>Toute pré-inscription en ligne hors délai sera rejetée.</li>
+                    <li>Tout dossier incomplet sera rejeté,</li>
+                    <li>La sélection sera faite sur la base des informations fournies par les candidats lors de leurs
+                      préinscriptions. Toutefois, toute information erronée entrainera automatiquement l’annulation de la
+                      candidature même après avoir réussi le concours.</li>
+                    {{-- <li>Les candidats doivent consulter régulièrement le site web de l’établissement (estfbs.usms.ac.ma)
+                      pour être au courant des nouvelles introduites.</li> --}}
+                  </ul>
                 </blockquote>
 
               </div>
-              <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-outline-primary active">Postuler</button>
-              </div>
+              @if (auth()->user()->candidatures()->where('formation_id', $formation->id)->exists())
+                <p class="text-info ">Vous avez déjà postulé à cette formation.<br><a class="btn btn-sm btn-dark"
+                    href="{{ route('etudiant.candidature') }}">Mes
+                    candidatures</a></p>
+              @else
+                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                  <form action="{{ route('candidature.create') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="formation_id" value="{{ $formation->id }}">
+                    <button type="submit" class="btn btn-block btn-outline-primary active">Postuler</button>
+
+                  </form>
+                </div>
             </div>
           </div>
+          @endif
           <!-- /Blog details -->
 
         </div>

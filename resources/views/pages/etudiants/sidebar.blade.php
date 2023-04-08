@@ -15,6 +15,9 @@
         <li>
           <a href="{{ route('avislicencespro') }}"><span>Formations</span></a>
         </li>
+        <li>
+          <a href="{{ route('etudiant.candidature') }}"><span>Mes Candidatures</span></a>
+        </li>
 
 
         <li class="submenu">

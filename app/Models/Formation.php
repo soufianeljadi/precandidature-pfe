@@ -20,6 +20,12 @@ class Formation extends Model
     return $this->hasOne(Avis::class);
   }
 
+  public function candidatures()
+  {
+    return $this->hasMany(Candidature::class);
+  }
+
+
   public function getRouteKeyName(): string
   {
     return 'slug';

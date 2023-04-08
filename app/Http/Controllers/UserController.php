@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidature;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,10 @@ class UserController extends Controller
   public function index()
   {
     $nbr_etudiants = Etudiant::count();
+    $nbr_candidatures = Candidature::count();
     return view("pages.admin.dashboard")->with([
       "nbr_etudiants"  => $nbr_etudiants,
+      "nbr_candidatures"  => $nbr_candidatures,
 
     ]);
   }

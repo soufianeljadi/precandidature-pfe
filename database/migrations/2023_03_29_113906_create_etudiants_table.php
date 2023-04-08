@@ -17,16 +17,17 @@ return new class extends Migration
       $table->string('prenom');
       $table->string('email')->unique();
       $table->string('password');
-      $table->string('code_massar')->unique()->nullable();
-      $table->string('cin')->unique()->nullable();
-      $table->foreignId('lieu_naissance')->nullable()->references("id")->on("villes")->onDelete('cascade');
-      $table->date('date_naissance')->nullable();
-      $table->integer('telephone')->nullable();
-      $table->string('adresse')->nullable();
-      $table->foreignId('ville')->nullable()->references("id")->on("villes")->onDelete('cascade');
+      $table->string('code_massar')->unique();
+      $table->string('code_apogee')->unique();
+      $table->string('cin')->unique();
+      $table->foreignId('lieu_naissance')->references("id")->on("villes")->onDelete('cascade');
+      $table->date('date_naissance');
+      $table->integer('telephone');
+      $table->string('adresse');
+      $table->foreignId('ville')->references("id")->on("villes")->onDelete('cascade');
 
-      $table->tinyInteger('sexe')->nullable(); // 0 F  --- 1 M
-      $table->timestamp('email_verified_at')->nullable();
+      $table->tinyInteger('sexe'); // 0 F  --- 1 M
+      $table->timestamp('email_verified_at');
       $table->rememberToken();
       $table->timestamps();
     });

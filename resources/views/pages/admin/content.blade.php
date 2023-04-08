@@ -40,7 +40,7 @@
             <i class="fe fe-folder"></i>
           </span>
           <div class="dash-count">
-            <h3>123</h3>
+            <h3>{{ $nbr_candidatures }}</h3>
           </div>
         </div>
         <div class="dash-widget-info">

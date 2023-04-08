@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AvisController;
+use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
@@ -36,8 +37,13 @@ Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/profile",[EtudiantController::class,"profile"])->name("etudiant.profile");
   Route::post("/etudiant/save",[EtudiantController::class,"store"])->name("etudiant.store");
   Route::get("/avisLicencesPro",[EtudiantController::class,"avis"])->name("avislicencespro");
-  Route::post("/formation-details",[FormationController::class,"formationDetails"])->name("formation.details");
+  Route::get("/formation/{slug}",[FormationController::class,"formationDetails"])->name("formation.details");
+  Route::post("/postuler",[CandidatureController::class,"create"])->name("candidature.create");
 
+
+  //Les candidatures
+  Route::get("mes-candidatures",[CandidatureController::class,"index"])->name("etudiant.candidature");
+  Route::post("candidatures/details",[CandidatureController::class,"show"])->name("etudiant.candidaturedetails");
 });
 
 

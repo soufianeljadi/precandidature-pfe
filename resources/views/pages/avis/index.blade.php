@@ -44,13 +44,15 @@
               <div class="col-12 col-md-6 col-lg-4 d-flex">
                 <div class="card flex-fill">
                   <img alt="Card Image" src="{{ asset('avis/' . $avis->image_avis . '') }}" class="card-img-top">
-                  <div class="card-header">
+                  <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title mb-0">{{ $avis->formation->nom }}</h5>
+                    <h5 class="text-info">{{ count($avis->formation->candidatures) }} candidatures</h5>
                   </div>
                   <div class="card-body">
                     <p class="card-text">
                     <h5>Responsable : {{ $avis->formation->enseignant->prenom }}
                       {{ $avis->formation->enseignant->nom }}</h5>
+
                     <ul>
                       <li class="text-success">Debut : <span>{{ $avis->debut_precandidature }}</span></li>
                       <li class="text-danger">Fin <span>{{ $avis->fin_precandidature }}</span></li>
@@ -58,7 +60,7 @@
                     </p>
                     <p>Avis Crée en : {{ $avis->created_at }}</p>
 
-                    <a class="btn btn-primary" href="#">Go somewhere</a>
+                    <a class="btn btn-sm btn-rounded btn-danger" href="#">Suprimmer</a>
                   </div>
                 </div>
               </div>

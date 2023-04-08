@@ -40,7 +40,9 @@ class FormationController extends Controller
    */
   public function store(Request $request)
   {
-    // return $request;
+    $request->validate([
+      "nom" => "unique:formations",
+    ]);
     try {
       $formation = new Formation();
       $formation->nom = $request->nom;
@@ -57,12 +59,11 @@ class FormationController extends Controller
     }
   }
 
-  public function formationDetails(Request $request)
+  public function formationDetails($slug)
   {
-    $avis =  Avis::findOrFail($request->id);
-    $formation = $avis->formation;
+    $formation =  Formation::where("slug",$slug)->first();
     return view("pages.etudiants.avis_details")->with([
-      "avis" => $avis,
+
       "formation" => $formation
     ]);
   }

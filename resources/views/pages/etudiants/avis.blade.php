@@ -46,8 +46,8 @@
                 <div class="col-12 col-md-6 col-xl-4 d-flex">
                   <div class="course-box blog grid-blog">
                     <div class="blog-image mb-0">
-                      <a href="#postuler"><img class="img-fluid" src="{{ asset('avis/' . $avi->image_avis . '') }}"
-                          alt="Avis Image"></a>
+                      <a href="{{ route('formation.details', $avi->formation->slug) }}"><img class="img-fluid"
+                          src="{{ asset('avis/' . $avi->image_avis . '') }}" alt="Avis Image"></a>
                     </div>
                     <div class="course-content">
                       <span class="date">{{ $avi->created_at->format('d-m-Y') }}</span>
@@ -58,13 +58,10 @@
                           <a href="edit-blog.html" class="text-success"><i class="far fa-edit"></i> Edit</a>
                         </div> --}}
                         <div class="col text-end">
-                          <form action="{{ route('formation.details') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $avi->id }}">
-                            <button id="postuler" type="submit" class="text-info"><i
-                                class="fa-solid fa-circle-info"></i>
-                              Details</button>
-                          </form>
+
+                          <a class="text-info" href="{{ route('formation.details', $avi->formation->slug) }}"><i
+                              class="fa-solid fa-circle-info"></i> Details</a>
+
 
                         </div>
                       </div>

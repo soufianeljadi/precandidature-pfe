@@ -56,5 +56,9 @@ class Etudiant extends Authenticatable
   {
     return $this->hasOne(Dossier::class);
   }
+  public function candidatures()
+  {
+    return $this->hasMany(Candidature::class);
+  }
 
 }
