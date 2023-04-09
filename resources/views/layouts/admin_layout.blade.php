@@ -17,7 +17,7 @@
   <div class="main-wrapper">
 
     {{-- Header --}}
-    @include('layouts.header')
+    @yield('header')
     {{-- Header --}}
 
     <!-- Sidebar -->

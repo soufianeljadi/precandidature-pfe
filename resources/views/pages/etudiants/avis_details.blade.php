@@ -6,7 +6,9 @@
 @section('sidebar')
   @include('pages.etudiants.sidebar')
 @endsection
-
+@section('header')
+  @include('pages.etudiants.header')
+@endsection
 @section('content')
   {{-- Contennt --}}
   <!-- Page Header -->

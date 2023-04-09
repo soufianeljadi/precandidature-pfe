@@ -63,12 +63,107 @@
                     <td>{{ $formation->duree }}</td>
                     <td>
                       <a href="" class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a href="{{ route('formation.edit', $formation->id) }}" class="btn btn-sm bg-warning-light"><i
-                          class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ route('formation.delete', $formation->id) }}" class="btn btn-sm bg-danger-light"><i
+                      <a data-bs-toggle="modal" href="#editformation_{{ $formation->id }}"
+                        class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#editformation_{{ $formation->id }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
+                  <!-- Edit Details Modal -->
+                  <div class="modal fade" id="editformation_{{ $formation->id }}" aria-hidden="true" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Modifier une formation Enseignant</h5>
+                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="{{ route('formation.update') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $formation->id }}">
+
+                            <div class="row form-row">
+                              <div class="col-xl-4 col-md-4 col-sm-6">
+                                <div class="form-group">
+                                  <label>Nom</label>
+                                  <input type="text" name="nom"
+                                    class="form-control @error('nom') is-invalid @enderror"
+                                    value="{{ $formation->nom }}">
+                                  @error('nom')
+                                    <div class="invalid-feedback">
+                                      {{ $message }}
+                                    </div>
+                                  @enderror
+
+                                </div>
+                              </div>
+                              <div class="col-xl-4 col-md-4 col-sm-6">
+                                <div class="form-group">
+                                  <label>Responsable</label>
+                                  <select required class="form-control" name="enseignant_id">
+                                    <option disabled selected>-- Select --</option>
+                                    @forelse ($enseignants as $enseignant)
+                                      @if (!isset($enseignant->formation))
+                                        <option value="{{ $enseignant->id }}">{{ $enseignant->nom }}
+                                          {{ $enseignant->prenom }}</option>
+                                      @elseif ($enseignant->id == $formation->enseignant->id)
+                                        <option selected value="{{ $enseignant->id }}">{{ $enseignant->nom }}
+                                          {{ $enseignant->prenom }}</option>
+                                      @else
+                                        <option disabled value="{{ $enseignant->id }}">{{ $enseignant->nom }}
+                                          {{ $enseignant->prenom }}
+                                        </option>
+                                      @endif
+                                    @empty
+                                      <option disabled>Aucun enseignant</option>
+                                    @endforelse
+                                  </select>
+
+                                </div>
+                              </div>
+                              <div class="col-xl-4 col-md-4 col-sm-6">
+                                <div class="form-group">
+                                  <label>Duree par an</label>
+                                  <input type="text" name="duree"
+                                    class="form-control @error('duree') is-invalid @enderror"
+                                    value="{{ $formation->duree }}">
+                                  @error('duree')
+                                    <div class="invalid-feedback">
+                                      {{ $message }}
+                                    </div>
+                                  @enderror
+
+                                </div>
+                              </div>
+
+
+                              <div class="col-xl-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                  <label>Description</label>
+                                  <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30"
+                                    rows="10">{{ $formation->description }}</textarea>
+
+                                  @error('description')
+                                    <div class="invalid-feedback">
+                                      {{ $message }}
+                                    </div>
+                                  @enderror
+
+                                </div>
+                              </div>
+
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block w-100">Sauvegarder les
+                              modifications</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 @endforeach
 
 

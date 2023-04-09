@@ -6,6 +6,9 @@
 @section('sidebar')
   @include('pages.admin.sidebar')
 @endsection
+@section('header')
+  @include('pages.etudiants.header')
+@endsection
 @section('content')
   {{-- Contennt --}}
   <!-- Page Wrapper -->

@@ -78,7 +78,6 @@ class EnseignantController extends Controller
    */
   public function update(StoreEnseignantRequest $request)
   {
-
     try {
       $Enseignant = Enseignant::find($request->id);
       $Enseignant->nom = $request->nom;
@@ -95,8 +94,8 @@ class EnseignantController extends Controller
       $Enseignant->password = Hash::make($request->password);
       $Enseignant->save();
       toastr()->success('Data saved Successfully !');
-
       return redirect()->route("enseignants.index");
+
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
     }

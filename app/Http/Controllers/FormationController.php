@@ -20,6 +20,7 @@ class FormationController extends Controller
 
     return view("pages.formations.index")->with([
       "formations" => Formation::all(),
+      "enseignants" => Enseignant::all(),
 
 
     ]);
@@ -92,11 +93,11 @@ class FormationController extends Controller
    */
   public function update(Request $request)
   {
-    //
     try {
       $formation = Formation::findOrFail($request->id);
       $formation->nom = $request->nom;
       $formation->description = $request->description;
+      $formation->enseignant_id = $request->enseignant_id;
       $formation->duree = $request->duree;
       $formation->save();
       toastr()->success('Data saved Successfully !');

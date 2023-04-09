@@ -25,7 +25,6 @@ return new class extends Migration
       $table->integer('telephone');
       $table->string('adresse');
       $table->foreignId('ville')->references("id")->on("villes")->onDelete('cascade');
-
       $table->tinyInteger('sexe'); // 0 F  --- 1 M
       $table->timestamp('email_verified_at');
       $table->rememberToken();
