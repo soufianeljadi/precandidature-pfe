@@ -13,28 +13,33 @@ return new class extends Migration
   {
     Schema::create('etudiants', function (Blueprint $table) {
       $table->id();
-      $table->string('nom');
-      $table->string('nom_ar');
-      $table->string('prenom');
-      $table->string('prenom_ar');
+
+      $table->string('nom')->nullable();
+      $table->string('nom_ar')->nullable();
+      $table->string('prenom')->nullable();
+      $table->string('prenom_ar')->nullable();
+      $table->string('code_massar')->nullable()->unique();
+      $table->string('cin')->nullable()->unique();
+
+      $table->string('lieu_naissance')->nullable();
+      $table->string('lieu_naissance_ar')->nullable();
+      $table->date('date_naissance')->nullable();
+      $table->string('pays',60)->nullable();
+      $table->foreignId('province_naissance')->nullable()->references("id")->on("villes")->onDelete('cascade')->nullable();
+      $table->tinyInteger('sexe')->nullable(); // 0 F  --- 1 M
+
       $table->string('email')->unique();
       $table->string('password');
-      $table->string('code_massar')->unique();
-      $table->string('cin')->unique();
-      $table->date('date_naissance');
-      $table->string('lieu_naissance');
-      $table->string('lieu_naissance_ar');
-      $table->foreignId('province_naissance')->references("id")->on("villes")->onDelete('cascade');
-      $table->string('pays',60);
-      $table->string('situation_familiale');
-      $table->tinyInteger('sexe'); // 0 F  --- 1 M
-      $table->integer('telephone');
-      $table->string('photo');
-      $table->string('adresse_perso1');
+      $table->integer('telephone')->nullable();
+      $table->foreignId('ville')->nullable()->references("id")->on("villes")->onDelete('cascade')->nullable();
+      $table->string('situation_familiale')->nullable();
+      $table->string('photo')->nullable();
+      $table->tinyInteger('fonctionnaire')->nullable(); //1 => true - 0 false;
+
+      $table->string('adresse_perso1')->nullable();
       $table->string('adresse_perso2')->nullable();
       $table->string('adresse_perso3')->nullable();
-      $table->foreignId('ville')->references("id")->on("villes")->onDelete('cascade');
-      $table->tinyInteger('fonctionnaire'); //1 => true - 0 false;
+
       $table->timestamp('email_verified_at');
       $table->rememberToken();
       $table->timestamps();

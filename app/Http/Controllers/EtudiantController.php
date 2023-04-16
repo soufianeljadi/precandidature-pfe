@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEtudiantProfilRequest;
 use App\Models\Avis;
 use App\Models\Dossier;
 use App\Models\Etudiant;
@@ -46,13 +47,13 @@ class EtudiantController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreEtudiantProfilRequest $request)
   {
-    // return $request;
+
 
     // DB::beginTransaction();
 
-    try {
+    // try {
       // update in table student
       $student = Etudiant::findOrFail(auth()->user()->id);
       $dossier =  auth()->user()->dossier;
@@ -67,7 +68,6 @@ class EtudiantController extends Controller
       $student->sexe = $request->sexe;
       $student->nom_ar = $request->nom_ar;
       $student->prenom_ar = $request->prenom_ar;
-      $student->date_naissance_ar = $request->date_naissance_ar;
       $student->adresse_perso3 = $request->adresse_perso3;
       $student->adresse_perso2 = $request->adresse_perso2;
       $student->adresse_perso1 = $request->adresse_perso1;
@@ -87,21 +87,22 @@ class EtudiantController extends Controller
       $dossier->serie_bac = $request->serie_bac;
       $dossier->province_bac = $request->province_bac;
       $dossier->mention_bac = $request->mention_bac;
-      $dossier->bac = $request->bac;
+      $dossier->bac_document = $request->bac_document;
       $dossier->academie = $request->academie;
       //bac +2
       $dossier->type_diplome = $request->type_diplome;
       $dossier->annee_obt_diplome = $request->annee_obt_diplome;
       $dossier->moyenne_diplome = $request->moyenne_diplome;
+      $dossier->specialite_diplome = $request->specialite_diplome;
       $dossier->mention_diplome = $request->mention_diplome;
       $dossier->note_s1 = $request->note_s1;
       $dossier->note_s2 = $request->note_s2;
       $dossier->note_s3 = $request->note_s3;
       $dossier->note_s4 = $request->note_s4;
-      $dossier->specialite = $request->specialite;
+      $dossier->type_diplome = $request->type_diplome;
       $dossier->releve_annee_1 = $request->releve_annee_1;
       $dossier->releve_annee_2 = $request->releve_annee_2;
-      $dossier->diplome = $request->diplome;
+      $dossier->diplome_document = $request->diplome_document;
       $dossier->cv = $request->cv;
       $dossier->etablissement = $request->etablissement;
       $dossier->save();
@@ -110,10 +111,10 @@ class EtudiantController extends Controller
       // DB::commit();
       toastr()->success("Data Saved successfully!");
       return redirect()->route("etudiant.profile");
-    } catch (\Exception $e) {
-      // DB::rollback();
-      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    }
+    // } catch (\Exception $e) {
+    //   // DB::rollback();
+    //   return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    // }
   }
 
   /**
