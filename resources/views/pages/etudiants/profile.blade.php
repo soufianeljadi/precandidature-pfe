@@ -601,7 +601,7 @@
                     <div class="row form-row">
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="form-group">
-                                <label>Note S1 : {{ auth()->user()->note_s1 }}</label>
+                                <label>Note S1 : {{ auth()->user()->dossier->note_s1 }}</label>
                                 <input type="text" class="form-control"name="note_s1"
                                     value="{{ auth()->user()->note_s1 }}">
                             </div>
@@ -609,7 +609,7 @@
 
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="form-group">
-                                <label>Note S2 : {{ auth()->user()->note_s2 }}</label>
+                                <label>Note S2 : {{ auth()->user()->dossier->note_s2 }}</label>
                                 <input type="text" class="form-control"name="note_s2"
                                     value="{{ auth()->user()->note_s2 }}">
                             </div>
@@ -617,7 +617,7 @@
 
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="form-group">
-                                <label>Note S3 : {{ auth()->user()->note_s3 }}</label>
+                                <label>Note S3 : {{ auth()->user()->dossier->note_s3 }}</label>
                                 <input type="text" class="form-control"name="note_s3"
                                     value="{{ auth()->user()->note_s3 }}">
                             </div>
@@ -625,7 +625,7 @@
 
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="form-group">
-                                <label>Note S4 : {{ auth()->user()->note_s4 }}</label>
+                                <label>Note S4 : {{ auth()->user()->dossier->note_s4 }}</label>
                                 <input type="text" class="form-control"name="note_s4"
                                     value="{{ auth()->user()->note_s4 }}">
                             </div>
