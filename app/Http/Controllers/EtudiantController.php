@@ -65,23 +65,45 @@ class EtudiantController extends Controller
       $student->telephone = $request->telephone;
       $student->ville = $request->ville;
       $student->sexe = $request->sexe;
-      $student->adresse = $request->adresse;
+      $student->nom_ar = $request->nom_ar;
+      $student->prenom_ar = $request->prenom_ar;
+      $student->date_naissance_ar = $request->date_naissance_ar;
+      $student->adresse_perso3 = $request->adresse_perso3;
+      $student->adresse_perso2 = $request->adresse_perso2;
+      $student->adresse_perso1 = $request->adresse_perso1;
+      $student->situation_familiale = $request->situation_familiale;
+      $student->pays = $request->pays;
+      $student->photo = $request->photo;
+      $student->email = $request->email;
+      $student->fonctionnaire = $request->fonctionnaire;
       $student->save();
 
 
 
       // insert in to Dosiier
+        //bac
       $dossier->annee_obt_bac = $request->annee_obt_bac;
-      $dossier->note_bac = $request->note_bac;
-      $dossier->type_bac = $request->type_bac;
+      $dossier->moyenne_bac = $request->moyenne_bac;
+      $dossier->serie_bac = $request->serie_bac;
+      $dossier->province_bac = $request->province_bac;
       $dossier->mention_bac = $request->mention_bac;
-      $dossier->annee_obt_diplome = $request->annee_obt_diplome;
-      $dossier->note_diplome = $request->note_diplome;
+      $dossier->bac = $request->bac;
+      $dossier->academie = $request->academie;
+      //bac +2
       $dossier->type_diplome = $request->type_diplome;
-      $dossier->specialite_diplome = $request->specialite_diplome;
+      $dossier->annee_obt_diplome = $request->annee_obt_diplome;
+      $dossier->moyenne_diplome = $request->moyenne_diplome;
       $dossier->mention_diplome = $request->mention_diplome;
-      $dossier->etablissement_diplome = $request->etablissement_diplome;
-      $dossier->etablissement_ville = $request->etablissement_ville;
+      $dossier->note_s1 = $request->note_s1;
+      $dossier->note_s2 = $request->note_s2;
+      $dossier->note_s3 = $request->note_s3;
+      $dossier->note_s4 = $request->note_s4;
+      $dossier->specialite = $request->specialite;
+      $dossier->releve_annee_1 = $request->releve_annee_1;
+      $dossier->releve_annee_2 = $request->releve_annee_2;
+      $dossier->diplome = $request->diplome;
+      $dossier->cv = $request->cv;
+      $dossier->etablissement = $request->etablissement;
       $dossier->save();
 
 

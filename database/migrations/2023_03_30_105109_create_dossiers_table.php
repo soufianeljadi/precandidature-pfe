@@ -18,7 +18,7 @@ return new class extends Migration
       $table->integer("annee_obt_bac");
       $table->string("serie_bac");
       $table->foreignId('province_bac')->references("id")->on("villes")->onDelete('cascade');
-      $table->float("note_bac");
+      $table->float("moyenne_bac");
       $table->string("mention_bac");
       $table->string("bac_document");
       $table->string("academie");
@@ -27,14 +27,18 @@ return new class extends Migration
 
       $table->integer("annee_obt_diplome");
       $table->string("type_diplome");
-      $table->string("etablissement_diplome");
+      $table->string("etablissement");
       $table->string("mention_diplome");
-      $table->string("specialite_diplome");
+      $table->string("specialite");
       $table->float("moyenne_diplome");
-      $table->string("notes_diplome"); // s1 - s2  -s3 -s4
-      $table->string("diplome_document");
-      $table->string("notes_document");
-      $table->string("cv_document");
+      $table->float("note_s1"); // -s1
+      $table->float("note_s2"); // -s2
+      $table->float("note_s3"); // -s3
+      $table->float("note_s4"); // -s4
+      $table->string("diplome");
+      $table->string("releve_annee_1");
+      $table->string("releve_annee_2");
+      $table->string("cv");
       $table->timestamps();
     });
   }
