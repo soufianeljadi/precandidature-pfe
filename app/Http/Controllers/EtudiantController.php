@@ -61,6 +61,8 @@ class EtudiantController extends Controller
       $student->prenom = $request->prenom;
       $student->date_naissance = $request->date_naissance;
       $student->lieu_naissance = $request->lieu_naissance;
+      $student->lieu_naissance_ar = $request->lieu_naissance_ar;
+      $student->province_naissance = $request->province_naissance;
       $student->code_massar = $request->code_massar;
       $student->cin = $request->cin;
       $student->telephone = $request->telephone;

@@ -52,6 +52,10 @@ class Etudiant extends Authenticatable
   {
     return $this->belongsTo(Ville::class,"ville");
   }
+  public function province_naissance_etudiant()
+  {
+    return $this->belongsTo(Ville::class,"province_naissance");
+  }
   public function dossier()
   {
     return $this->hasOne(Dossier::class);

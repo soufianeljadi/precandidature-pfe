@@ -104,9 +104,10 @@ class EnseignantController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
-    $enseignant = Enseignant::findOrFail($id);
+
+    $enseignant = Enseignant::findOrFail($request->enseignant_id);
     $enseignant->delete();
     toastr()->error('L\'enseignant a été bien supprimé !'," ");
     return redirect()->route("enseignants.index");

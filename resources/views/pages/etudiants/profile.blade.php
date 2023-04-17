@@ -132,17 +132,50 @@
                 @endif
               </div>
             </div>
+
             <div class="col-12 col-md-6 col-xl-2">
               <div class="form-group">
                 <label>Province de naissance </label>
-                <select required class="form-control" name="province_naissance">
-                  <option disabled selected>-- Sélectionner Ville --</option>
+                <select class="form-control" name="province_naissance">
+
+
+                  @if (auth()->user()->province_naissance != null)
+                    <option value="{{ auth()->user()->province_naissance }}" selected>
+                      {{ auth()->user()->province_naissance_etudiant->nom }}
+                    </option>
+                  @else
+                    <option disabled selected>Changer Ville</option>
+                  @endif
                   @foreach ($villes as $ville)
                     <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
                   @endforeach
+
                 </select>
               </div>
             </div>
+
+
+            {{-- <div class="col-12 col-md-6 col-xl-2">
+              <div class="form-group">
+                <label>Province de naissance </label>
+                <select required class="form-control" name="province_naissance">
+
+                  @if (auth()->user()->province_naissance != null)
+                    <option value="{{ auth()->user()->province_naissance }}" selected>
+                      {{ auth()->user()->province_naissance }}
+                    </option>
+                  @else
+                    <option disabled selected>Changer Ville</option>
+                  @endif
+                  @foreach ($villes as $ville)
+                    <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
+                  @endforeach
+
+
+
+                </select>
+              </div>
+            </div> --}}
 
             <div class="col-12 col-md-6 col-xl-2">
               <div class="form-group">
@@ -375,7 +408,7 @@
             </div>
             <div class="col-12 col-md-6 col-xl-3">
               <div class="form-group">
-                <label>Série du bac :</label>
+                <label>Série du bac </label>
                 <select class="form-control" name="serie_bac">
                   <option disabled selected> Sélectionner un type</option>
                   <option value="sma">Science Math A</option>
