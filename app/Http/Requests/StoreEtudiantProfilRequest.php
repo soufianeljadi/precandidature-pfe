@@ -23,14 +23,14 @@ class StoreEtudiantProfilRequest extends FormRequest
   {
     return [
       //Informations personnelles
-      "nom" => "required",
-      "prenom" => "required",
-      "nom_ar" => "required",
-      "prenom_ar" => "required",
+      "nom" => "required|string",
+      "prenom" => "required|string",
+      "nom_ar" => "required|string|regex:/\p{Arabic}/u",
+      "prenom_ar" => "required|string|regex:/\p{Arabic}/u",
       "code_massar" => "required",
       "cin" => "required",
       "lieu_naissance" => "required",
-      "lieu_naissance_ar" => "required",
+      "lieu_naissance_ar" => "required|regex:/\p{Arabic}/u",
       "date_naissance" => "required",
       "province_naissance" => "required",
       "pays" => "required",
@@ -66,10 +66,10 @@ class StoreEtudiantProfilRequest extends FormRequest
       "note_s2" => "required",
       "note_s3" => "required",
       "note_s4" => "required",
-      "releve_annee_1" => "required",
-      "releve_annee_2" => "required",
-      "diplome_document" => "required",
-      "cv" => "required",
+      // "releve_annee_1" => "required",
+      // "releve_annee_2" => "required",
+      // "diplome_document" => "required",
+      // "cv" => "required",
     ];
   }
 }
