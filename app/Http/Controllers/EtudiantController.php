@@ -85,7 +85,7 @@ class EtudiantController extends Controller
       $photo = $request->file('photo')->getClientOriginalName();
       return $photo;
       $student->photo = $photo;
-      $request->file("photo")->storeAs('documents/' . $request->code_massar , $photo , 'documents_etudiants');
+      $request->file("photo")->storeAs('documents/' . $request->code_massar, $photo, 'documents_etudiants');
 
       // $this->uploadFile($request, 'photo',  $request->code_massar );
     }
@@ -149,24 +149,58 @@ class EtudiantController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Etudiant $etudiant)
+  public function update(Request $request)
   {
     //
+    try {
+      $etudiant = Etudiant::findOrFail($request->id);
+      $etudiant->nom = $request->nom;
+      $etudiant->prenom = $request->prenom;
+      $etudiant->date_naissance = $request->date_naissance;
+      $etudiant->lieu_naissance = $request->lieu_naissance;
+      $etudiant->lieu_naissance_ar = $request->lieu_naissance_ar;
+      $etudiant->province_naissance = $request->province_naissance;
+      $etudiant->code_massar = $request->code_massar;
+      $etudiant->cin = $request->cin;
+      $etudiant->telephone = $request->telephone;
+      $etudiant->ville = $request->ville;
+      $etudiant->sexe = $request->sexe;
+      $etudiant->nom_ar = $request->nom_ar;
+      $etudiant->prenom_ar = $request->prenom_ar;
+      $etudiant->adresse_perso3 = $request->adresse_perso3;
+      $etudiant->adresse_perso2 = $request->adresse_perso2;
+      $etudiant->adresse_perso1 = $request->adresse_perso1;
+      $etudiant->situation_familiale = $request->situation_familiale;
+      $etudiant->pays = $request->pays;
+      $etudiant->email = $request->email;
+      $etudiant->fonctionnaire = $request->fonctionnaire;
+      $etudiant->description = $request->description;
+      $etudiant->save();
+      toastr()->success('Data saved Successfully !');
+      return redirect()->route("etudiants.list");
+    } catch (\Throwable $th) {
+      return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+    }
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Etudiant $etudiant)
+  public function destroy(Request $request)
   {
-    //
+
+    $etudiant = Etudiant::findOrFail($request->etudiant_id);
+    $etudiant->delete();
+    toastr()->error('L\'etudiant a été bien supprimé !', " ");
+    return redirect()->route("etudiant.list");
   }
 
 
   public function tousEtudiants()
   {
+    $villes = Ville::all();
     return view("pages.etudiants.index")->with([
-      "etudiants" => Etudiant::all(),
+      "etudiants" => Etudiant::all(), "villes" => $villes,
     ]);
   }
 }

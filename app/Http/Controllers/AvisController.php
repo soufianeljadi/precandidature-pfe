@@ -79,8 +79,14 @@ class AvisController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Avis $avis)
+  public function destroy(Request $request)
   {
-    //
+
+    $avis = Avis::findOrFail($request->avis_id);
+    $avis->delete();
+    toastr()->error('La avis a été bien supprimé !'," ");
+    return redirect()->route("avis.index");
+
   }
 }
+

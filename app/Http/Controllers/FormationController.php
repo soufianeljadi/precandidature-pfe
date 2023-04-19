@@ -62,7 +62,7 @@ class FormationController extends Controller
 
   public function formationDetails($slug)
   {
-    $formation =  Formation::where("slug",$slug)->first();
+    $formation =  Formation::where("slug", $slug)->first();
     return view("pages.etudiants.avis_details")->with([
 
       "formation" => $formation
@@ -110,11 +110,13 @@ class FormationController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy($id)
+
+  public function destroy(Request $request)
   {
-    //
-    $formation = Formation::findOrFail($id);
+
+    $formation = Formation::findOrFail($request->formation_id);
     $formation->delete();
-    return redirect()->back();
+    toastr()->error('La formation a été bien supprimé !', " ");
+    return redirect()->route("formation.index");
   }
 }
