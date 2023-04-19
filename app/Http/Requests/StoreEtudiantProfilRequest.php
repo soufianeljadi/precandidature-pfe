@@ -39,7 +39,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "email" => "required",
       "situation_familiale" => "required",
       "ville" => "required",
-      "photo" => "required",
+      "photo" => "image|max:200",
 
 
       "adresse_perso1" => "required",

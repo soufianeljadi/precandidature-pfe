@@ -81,13 +81,8 @@ class EtudiantController extends Controller
     $student->email = $request->email;
     $student->fonctionnaire = $request->fonctionnaire;
     if ($request->hasFile('photo')) {
-
-      $photo = $request->file('photo')->getClientOriginalName();
-      return $photo;
-      $student->photo = $photo;
-      $request->file("photo")->storeAs('documents/' . $request->code_massar, $photo, 'documents_etudiants');
-
-      // $this->uploadFile($request, 'photo',  $request->code_massar );
+      $name = $this->uploadDocument($request,"photo","photo",$request->code_massar);
+      $student->photo = $name;
     }
     $student->save();
 
