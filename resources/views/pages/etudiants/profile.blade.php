@@ -88,7 +88,7 @@
               <div class="form-group">
                 <label>الاسم العائلي</label>
                 <input required type="text" class="form-control @error('nom_ar') is-invalid @enderror" name="nom_ar"
-                  value="{{ auth()->user()->nom_ar }}">
+                  value="{{ old('nom_ar', auth()->user()->nom_ar) }}">
                 @error('nom_ar')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -354,9 +354,10 @@
                             target="_blank" download class="">Télécharger <i
                               class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload   @error('photo') is-invalid @enderror" name="photo">
+                        <small class="form-text text-muted">Fichier .JPG Taille maximale de 200Ko</small>
                       @endif
-                      <input type="file" class="upload   @error('photo') is-invalid @enderror" name="photo">
-                      <small class="form-text text-muted">Fichier .JPG Taille maximale de 200Ko</small>
 
                       @error('photo')
                         <div class="invalid-feedback">
@@ -574,7 +575,7 @@
             <div class="col-12 col-md-6 col-xl-3">
               <div class="form-group">
                 <label>Note du baccalauréat </label>
-                <input required placeholder="EX: 16.41" type="number"
+                <input required placeholder="EX: 16.41" type="text"
                   class="form-control @error('moyenne_bac') is-invalid @enderror" name="moyenne_bac"
                   value="{{ auth()->user()->dossier->moyenne_bac }}">
                 @error('moyenne_bac')
@@ -628,22 +629,22 @@
                 <div class="change-avatar">
                   <div class="upload-img">
                     <div class="change-photo-btn">
-                      <span><i class="fa fa-upload"></i>joignez votre baccalauréat</span><br>
+                      <span><i class="fa fa-upload"></i>Joignez votre baccalauréat</span><br>
                       @if (isset(auth()->user()->dossier->bac_document))
                         <div class="d-flex">
-                          <a href="{{ storage_path('app/public/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
-                            target="_blank" download class="">Télécharger <i
-                              class="fa-solid fa-download"></i></a>
+                          <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->bac_document) }}"
+                            target="_blank" download>Télécharger <i class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload" name="bac_document">
+                        <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                       @endif
-                      <input type="file" class="upload" name="bac_document">
                       @error('bac_document')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
                       @enderror
                     </div>
-                    <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                   </div>
                 </div>
               </div>
@@ -759,7 +760,7 @@
             <div class="col-12 col-md-6 col-xl-3">
               <div class="form-group">
                 <label>Note du diplôme</label>
-                <input required type="number" class="form-control @error('moyenne_diplome') is-invalid @enderror"
+                <input required type="text" class="form-control @error('moyenne_diplome') is-invalid @enderror"
                   name="moyenne_diplome" value="{{ auth()->user()->dossier->moyenne_diplome }}">
                 @error('moyenne_diplome')
                   <div class="invalid-feedback">
@@ -881,19 +882,20 @@
                       <span><i class="fa fa-upload"></i>Relevé du notes première année</span><br>
                       @if (isset(auth()->user()->dossier->releve_annee_1))
                         <div class="d-flex">
-                          <a href="{{ storage_path('app/public/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
+                          <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->releve_annee_1) }}"
                             target="_blank" download class="">Télécharger <i
                               class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload" name="releve_annee_1">
+                        <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                       @endif
-                      <input type="file" class="upload" name="releve_annee_1">
                       @error('releve_annee_1')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
                       @enderror
                     </div>
-                    <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                   </div>
                 </div>
               </div>
@@ -908,19 +910,20 @@
                       <span><i class="fa fa-upload"></i>Relevé du notes deuxième année</span><br>
                       @if (isset(auth()->user()->dossier->releve_annee_2))
                         <div class="d-flex">
-                          <a href="{{ storage_path('app/public/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
+                          <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->releve_annee_2) }}"
                             target="_blank" download class="">Télécharger <i
                               class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload"name="releve_annee_2">
+                        <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                       @endif
-                      <input type="file" class="upload"name="releve_annee_2">
                       @error('releve_annee_2')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
                       @enderror
                     </div>
-                    <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                   </div>
                 </div>
               </div>
@@ -933,13 +936,15 @@
                     <div class="change-photo-btn">
                       <span><i class="fa fa-upload"></i>Joignez votre diplôme ou attestation de
                         réussite</span><br>
-                      <input type="file" class="upload"name="diplome_document">
                       @if (isset(auth()->user()->dossier->diplome_document))
                         <div class="d-flex">
-                          <a href="{{ storage_path('app/public/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
+                          <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->diplome_document) }}"
                             target="_blank" download class="">Télécharger <i
                               class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload"name="diplome_document">
+                        <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                       @endif
                       @error('diplome_document')
                         <div class="invalid-feedback">
@@ -947,7 +952,6 @@
                         </div>
                       @enderror
                     </div>
-                    <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                   </div>
                 </div>
               </div>
@@ -958,14 +962,16 @@
                 <div class="change-avatar">
                   <div class="upload-img">
                     <div class="change-photo-btn">
-                      <span><i class="fa fa-upload"></i>Joignez votre CV</span><br>
-                      <input type="file" class="upload"name="cv">
+                      <span><i class="fa fa-upload"></i>Joignez Votre CV</span><br>
                       @if (isset(auth()->user()->dossier->cv))
                         <div class="d-flex">
-                          <a href="{{ storage_path('app/public/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
+                          <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->cv) }}"
                             target="_blank" download class="">Télécharger <i
                               class="fa-solid fa-download"></i></a>
                         </div>
+                      @else
+                        <input type="file" class="upload"name="cv">
+                        <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                       @endif
                       @error('cv')
                         <div class="invalid-feedback">
@@ -973,7 +979,6 @@
                         </div>
                       @enderror
                     </div>
-                    <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
                   </div>
                 </div>
               </div>

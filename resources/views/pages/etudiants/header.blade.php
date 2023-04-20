@@ -116,15 +116,20 @@
         <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
           <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-            <span class="user-img"><img class="rounded-circle" src="{{ asset('assets/img/graduated.png') }}"
+            <span class="user-img"><img class="rounded-circle"
+                src="{{ isset(auth()->user()->photo) ? asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) : asset('assets/img/graduated.png') }}"
                 width="31" alt="Ryan Taylor"></span>
           </a>
           <div class="dropdown-menu">
             <div class="user-header">
               <div class="avatar avatar-sm">
 
-                <img src="{{ asset('assets/img/graduated.png') }}" alt="User Image"
-                  class="avatar-img rounded-circle">
+                {{-- <img
+                  src="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
+                  alt="User Image" class="avatar-img rounded-circle"> --}}
+                <img
+                  src="{{ isset(auth()->user()->photo) ? asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) : asset('assets/img/graduated.png') }}"
+                  alt="User Image" class="avatar-img rounded-circle">
               </div>
               <div class="user-text">
                 <h6>{{ auth()->user()->nom }} {{ auth()->user()->prenom }}</h6>

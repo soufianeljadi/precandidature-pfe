@@ -36,7 +36,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "pays" => "required",
       "sexe" => "required",
       "telephone" => "required",
-      "email" => "required",
+      "email" => "required|email|unique:etudiants",
       "situation_familiale" => "required",
       "ville" => "required",
       "photo" => "image|max:200",
@@ -53,7 +53,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "moyenne_bac" => "required",
       "mention_bac" => "required",
       "province_bac" => "required",
-      "bac_document" => "required",
+      // "bac_document" => "required",
       "academie" => "required",
       //Informations du diplôme (BAC+2)
       "annee_obt_diplome" => "required",

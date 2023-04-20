@@ -95,8 +95,11 @@ class EtudiantController extends Controller
     $dossier->serie_bac = $request->serie_bac;
     $dossier->province_bac = $request->province_bac;
     $dossier->mention_bac = $request->mention_bac;
-    $dossier->bac_document = $request->bac_document;
     $dossier->academie = $request->academie;
+    if ($request->hasFile('bac_document')) {
+      $name_bac = $this->uploadDocument($request,"bac_document","bac_document",$request->code_massar);
+      $dossier->bac_document = $name_bac;
+    }
     //bac +2
     $dossier->type_diplome = $request->type_diplome;
     $dossier->annee_obt_diplome = $request->annee_obt_diplome;
@@ -108,11 +111,27 @@ class EtudiantController extends Controller
     $dossier->note_s3 = $request->note_s3;
     $dossier->note_s4 = $request->note_s4;
     $dossier->type_diplome = $request->type_diplome;
-    $dossier->releve_annee_1 = $request->releve_annee_1;
-    $dossier->releve_annee_2 = $request->releve_annee_2;
-    $dossier->diplome_document = $request->diplome_document;
-    $dossier->cv = $request->cv;
     $dossier->etablissement = $request->etablissement;
+    if ($request->hasFile('releve_annee_1')) {
+      $name_rn1 = $this->uploadDocument($request,"releve_annee_1","releve_annee_1",$request->code_massar);
+      $dossier->releve_annee_1 = $name_rn1;
+    }
+    if ($request->hasFile('releve_annee_2')) {
+      $name_rln2 = $this->uploadDocument($request,"releve_annee_2","releve_annee_2",$request->code_massar);
+      $dossier->releve_annee_2 = $name_rln2;
+    }
+    if ($request->hasFile('diplome_document')) {
+      $name_diplome = $this->uploadDocument($request,"diplome_document","diplome_document",$request->code_massar);
+      $dossier->diplome_document = $name_diplome;
+
+    }
+    if ($request->hasFile('cv')) {
+      $name_cv = $this->uploadDocument($request,"cv","cv",$request->code_massar);
+      $dossier->cv = $name_cv;
+
+    }
+
+
     $dossier->save();
 
 
