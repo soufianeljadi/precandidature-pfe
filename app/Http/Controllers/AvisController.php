@@ -17,7 +17,7 @@ class AvisController extends Controller
   public function index()
   {
 
-    return view("pages.avis.index")->with([
+    return view("pages.admin.avis.index")->with([
       "tous_avis" => Avis::all(),
     ]);
   }
@@ -28,7 +28,7 @@ class AvisController extends Controller
   public function create()
   {
     $formations = Formation::all();
-    return view("pages.avis.create")->with([
+    return view("pages.admin.avis.create")->with([
       "formations" => $formations,
     ]);
   }

@@ -63,10 +63,7 @@
                 <tr>
                   <th>Nom et Prénom</th>
                   <th>Formation</th>
-                  <th>Email</th>
-                  <th>CIN</th>
-                  <th>Matricule</th>
-                  <th>Telephone</th>
+
                   <th>Action</th>
                 </tr>
               </thead>
@@ -78,11 +75,7 @@
                   <tr>
                     <td>{{ $enseignant->nom }} {{ $enseignant->prenom }}</td>
                     <td>{{ isset($enseignant->formation->nom) != null ? $enseignant->formation->nom : 'NONE' }}</td>
-                    <td>{{ $enseignant->email }}</td>
 
-                    <td>{{ $enseignant->cin }}</td>
-                    <td>{{ $enseignant->matricule }}</td>
-                    <td>{{ $enseignant->telephone }}</td>
                     <td>
                       <a data-bs-toggle="modal" href="#view_enseignant_{{ $enseignant->id }}"
                         class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
@@ -90,7 +83,7 @@
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
                       {{-- <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a> --}}
-                      <button type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
+                      <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
                         data-bs-target="#delete_enseignant_{{ $enseignant->id }}">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>

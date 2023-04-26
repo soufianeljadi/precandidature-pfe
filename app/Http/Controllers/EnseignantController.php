@@ -15,7 +15,7 @@ class EnseignantController extends Controller
   public function index()
   {
     $enseignants = Enseignant::all();
-    return view("pages.enseignants.index", compact("enseignants"));
+    return view("pages.admin.enseignants.index", compact("enseignants"));
   }
 
   /**
@@ -23,7 +23,7 @@ class EnseignantController extends Controller
    */
   public function create()
   {
-    return view("pages.enseignants.create");
+    return view("pages.admin.enseignants.create");
   }
 
   /**
@@ -67,9 +67,7 @@ class EnseignantController extends Controller
    */
   public function edit($id)
   {
-    $Enseignant = Enseignant::findOrFail($id);
 
-    return view('pages.enseignants.edit',compact('Enseignant'));
   }
 
   /**

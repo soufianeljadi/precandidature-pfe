@@ -18,7 +18,7 @@ class FormationController extends Controller
   public function index()
   {
 
-    return view("pages.formations.index")->with([
+    return view("pages.admin.formations.index")->with([
       "formations" => Formation::all(),
       "enseignants" => Enseignant::all(),
 
@@ -31,7 +31,7 @@ class FormationController extends Controller
    */
   public function create()
   {
-    return view("pages.formations.create")->with([
+    return view("pages.admin.formations.create")->with([
       "enseignants" => Enseignant::all(),
     ]);
   }
@@ -83,9 +83,7 @@ class FormationController extends Controller
    */
   public function edit($id)
   {
-    //
-    $formation = Formation::findOrFail($id);
-    return view('pages.formations.edit', compact('formation'));
+
   }
 
   /**

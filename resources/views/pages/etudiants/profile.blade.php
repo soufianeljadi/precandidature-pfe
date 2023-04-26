@@ -266,7 +266,7 @@
             <div class="col-12 col-md-6 col-xl-2">
               <div class="form-group">
                 <label>Téléphone </label>
-                <input placeholder="0612345678" type="number"
+                <input placeholder="0612345678" type="text"
                   class="form-control @error('telephone') is-invalid @enderror" name="telephone"
                   value="{{ old('telephone', auth()->user()->telephone) }}">
                 @error('telephone')

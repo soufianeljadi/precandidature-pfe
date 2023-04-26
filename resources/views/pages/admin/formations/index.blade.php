@@ -61,7 +61,7 @@
                 @foreach ($formations as $formation)
                   <tr>
                     <td>{{ $formation->nom }}</td>
-                    <td>{{ $formation->enseignant->nom }}</td>
+                    <td>{{ $formation->enseignant->nom }} {{ $formation->enseignant->prenom }}</td>
                     <td>{{ $formation->duree }} ans</td>
                     <td>
                       <a data-bs-toggle="modal" href="#view_formation_{{ $formation->id }}"
@@ -69,7 +69,7 @@
                       <a data-bs-toggle="modal" href="#editformation_{{ $formation->id }}"
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                      <button type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
+                      <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
                         data-bs-target="#delete_formation_{{ $formation->id }}">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>

@@ -24,10 +24,11 @@ class EtudiantController extends Controller
   {
     return view("pages.etudiants.dashboard");
   }
+
   public function avis()
   {
     $avis = Avis::all();
-    return view("pages.etudiants.avis")->with([
+    return view("pages.admin.etudiants.avis")->with([
       "avis" => $avis
     ]);
   }
@@ -213,7 +214,7 @@ class EtudiantController extends Controller
   public function tousEtudiants()
   {
     $villes = Ville::all();
-    return view("pages.etudiants.index")->with([
+    return view("pages.admin.etudiants.index")->with([
       "etudiants" => Etudiant::all(), "villes" => $villes,
     ]);
   }

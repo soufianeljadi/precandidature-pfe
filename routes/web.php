@@ -58,6 +58,10 @@ Route::middleware('auth:enseignant')->group(function () {
 Route::view("/test", "test");
 Route::view("/blank", "blank");
 
+
+
+
+
 // Admin routes
 Route::middleware('auth:web')->group(function () {
   Route::get("/dashboard", [UserController::class, "index"])->name("dashboard");

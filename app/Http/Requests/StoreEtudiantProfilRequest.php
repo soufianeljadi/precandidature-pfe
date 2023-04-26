@@ -35,7 +35,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "province_naissance" => "required",
       "pays" => "required",
       "sexe" => "required",
-      "telephone" => "required",
+      "telephone" => "required|numeric",
       "email" => "required|email|unique:etudiants,email," . auth()->id(),
 
       "situation_familiale" => "required",
