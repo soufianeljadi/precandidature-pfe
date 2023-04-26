@@ -37,6 +37,7 @@ class AvisController extends Controller
    */
   public function store(Request $request)
   {
+    return $request;
     try {
       Avis::create([
         "debut_precandidature" => $request->debut_precandidature,

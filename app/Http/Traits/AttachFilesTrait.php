@@ -22,7 +22,6 @@ trait AttachFilesTrait
   public function deleteFile($name)
   {
     $exists = Storage::disk('upload_attachments')->exists('attachments/library/' . $name);
-
     if ($exists) {
       Storage::disk('upload_attachments')->delete('attachments/library/' . $name);
     }

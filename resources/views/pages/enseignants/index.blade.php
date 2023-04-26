@@ -3,6 +3,9 @@
 @section('title')
   Tous Les enseignants
 @endsection
+@section('header')
+  @include('pages.admin.header')
+@endsection
 @section('styles')
 @endsection
 @section('header')

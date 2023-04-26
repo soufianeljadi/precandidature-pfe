@@ -64,7 +64,7 @@
               <div class="form-group">
                 <label>Nom</label>
                 <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom"
-                  value="{{ auth()->user()->nom }}">
+                  value="{{ old('nom', auth()->user()->nom) }}">
                 @error('nom')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -76,7 +76,7 @@
               <div class="form-group">
                 <label>Prenom</label>
                 <input required type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom"
-                  value="{{ auth()->user()->prenom }}">
+                  value="{{ old('prenom', auth()->user()->prenom) }}">
                 @error('prenom')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -100,7 +100,7 @@
               <div class="form-group">
                 <label>الاسم الشخصي</label>
                 <input required type="text" class="form-control @error('prenom_ar') is-invalid @enderror"
-                  name="prenom_ar" value="{{ auth()->user()->prenom_ar }}">
+                  name="prenom_ar" value="{{ old('prenom_ar', auth()->user()->prenom_ar) }}">
                 @error('prenom_ar')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -112,7 +112,7 @@
               <div class="form-group">
                 <label>Code Massar (C.N.E) </label>
                 <input required type="text" class="form-control @error('code_massar') is-invalid @enderror"
-                  name="code_massar" value="{{ auth()->user()->code_massar }}">
+                  name="code_massar" value="{{ old('code_massar', auth()->user()->code_massar) }}">
                 @error('code_massar')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -124,7 +124,7 @@
               <div class="form-group">
                 <label>C.I.N بطاقة التعريف الشخصية</label>
                 <input required type="text" class="form-control @error('cin') is-invalid @enderror" name="cin"
-                  value="{{ auth()->user()->cin }}">
+                  value="{{ old('cin', auth()->user()->cin) }}">
                 @error('cin')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -139,7 +139,7 @@
               <div class="form-group">
                 <label>Lieu de naissance </label>
                 <input required type="text" class="form-control @error('lieu_naissance') is-invalid @enderror"
-                  name="lieu_naissance" value="{{ auth()->user()->lieu_naissance }}">
+                  name="lieu_naissance" value="{{ old('lieu_naissance', auth()->user()->lieu_naissance) }}">
                 @error('lieu_naissance')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -151,7 +151,7 @@
               <div class="form-group">
                 <label>مكان الازدياد </label>
                 <input required type="text" class="form-control @error('lieu_naissance_ar') is-invalid @enderror"
-                  name="lieu_naissance_ar" value="{{ auth()->user()->lieu_naissance_ar }}">
+                  name="lieu_naissance_ar" value="{{ old('lieu_naissance_ar', auth()->user()->lieu_naissance_ar) }}">
                 @error('lieu_naissance_ar')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -163,7 +163,7 @@
               <div class="form-group">
                 <label>Pays</label>
                 <input type="text" class="form-control @error('pays') is-invalid @enderror" name="pays"
-                  value="{{ auth()->user()->pays }}">
+                  value="{{ old('pays', auth()->user()->pays) }}">
                 @error('pays')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -176,7 +176,7 @@
                 <label>Date naissance</label>
                 @if (auth()->user()->date_naissance != null)
                   <input type="date" class="form-control @error('date_naissance') is-invalid @enderror"
-                    name="date_naissance" value="{{ auth()->user()->date_naissance }}">
+                    name="date_naissance" value="{{ old('date_naissance', auth()->user()->date_naissance) }}">
                 @else
                   <input required type="date" class="form-control @error('date_naissance') is-invalid @enderror "
                     name="date_naissance">
@@ -268,7 +268,7 @@
                 <label>Téléphone </label>
                 <input placeholder="0612345678" type="number"
                   class="form-control @error('telephone') is-invalid @enderror" name="telephone"
-                  value="{{ auth()->user()->telephone }}">
+                  value="{{ old('telephone', auth()->user()->telephone) }}">
                 @error('telephone')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -281,7 +281,7 @@
               <div class="form-group">
                 <label>Email </label>
                 <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                  value="{{ auth()->user()->email }}">
+                  value="{{ old('email', auth()->user()->email) }}">
                 @error('email')
                   <div class="invalid-feedback">
                     {{ $message }}
