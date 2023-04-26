@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Les avis
+  {{ $formation->nom }}
 @endsection
 @section('sidebar')
   @include('pages.etudiants.sidebar')
@@ -18,7 +18,7 @@
         <h3 class="page-title">Details</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active">Details</li>
+          <li class="breadcrumb-item active">{{ $formation->nom }} </li>
         </ul>
       </div>
     </div>
@@ -66,7 +66,35 @@
                   <form action="{{ route('candidature.create') }}" method="post">
                     @csrf
                     <input type="hidden" name="formation_id" value="{{ $formation->id }}">
-                    <button type="submit" class="btn btn-block btn-outline-primary active">Postuler</button>
+                    {{-- <button class="custom-btn btn-11">Read More<div class="dot"></div></button> --}}
+
+                    <div>
+                      <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-block btn-outline-primary active custom-btn btn-11">Postuler
+                        <div class="dot"></div>
+                      </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              ...
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
 
                   </form>
                 </div>

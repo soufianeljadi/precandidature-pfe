@@ -50,7 +50,6 @@
                 <tr>
                   <th>Nom de formation</th>
                   <th>Responsable du formation</th>
-                  <th>Description</th>
                   <th>Duree</th>
                   <th>Action</th>
                 </tr>
@@ -63,8 +62,7 @@
                   <tr>
                     <td>{{ $formation->nom }}</td>
                     <td>{{ $formation->enseignant->nom }}</td>
-                    <td>{{ $formation->description }}</td>
-                    <td>{{ $formation->duree }}</td>
+                    <td>{{ $formation->duree }} ans</td>
                     <td>
                       <a data-bs-toggle="modal" href="#view_formation_{{ $formation->id }}"
                         class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>

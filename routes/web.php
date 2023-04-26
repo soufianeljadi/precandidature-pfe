@@ -91,8 +91,8 @@ Route::middleware('auth:web')->group(function () {
 
 //Commun routes
 Route::view("/selection", "auth.selection")->name("selection")->middleware("guest");
-Route::view("/usms/login", "auth.usms-login")->name("usms.loginForm")->middleware("guest");
-Route::post("/usms/login", [LoginController::class, "login"])->name("login.usms");
+Route::view("/estfbs/login", "auth.usms-login")->name("usms.loginForm")->middleware("guest");
+Route::post("/estfbs/login", [LoginController::class, "login"])->name("login.usms");
 Route::get('/logout', [LoginController::class, "logout"])->name('logout');
 
 

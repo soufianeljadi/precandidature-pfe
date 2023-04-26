@@ -35,18 +35,17 @@
                   <img src="{{ asset('assets/img/estfbs_test1.png') }}" alt="logo">
                 </div>
                 <div class="invoice-head">
-                  <h2>{{ Auth()->user()->nom }} {{ Auth()->user()->prenom }}</h2>
+                  <h2>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</h2>
                   <p>Candidature du formation : {{ $candidature->formation->nom }}</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="invoice-info">
-                  <strong class="customer-text-one">{{ $candidature->created_at }}</strong>
-                  <h6 class="invoice-name">Company Name</h6>
+                  <strong class="customer-text-one">Ecole Supérieure de Technologie – Fkih Ben Salah</strong>
+                  <h6 class="invoice-name"> Reçu de pré-inscription</h6>
                   <p class="invoice-details">
-                    9087484288 <br>
-                    Address line 1, Address line 2<br>
-                    Zip code ,City - Country
+                    Date : {{ $candidature->created_at->format('d-m-Y') }} <br>
+
                   </p>
                 </div>
               </div>
@@ -87,7 +86,7 @@
           <!-- /Invoice Item -->
 
           <!-- Invoice Item -->
-          <div class="invoice-issues-box">
+          {{-- <div class="invoice-issues-box">
             <div class="row">
               <div class="col-lg-4 col-md-4">
                 <div class="invoice-issues-date">
@@ -105,7 +104,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
           <!-- /Invoice Item -->
 
           <!-- Invoice Item -->
@@ -116,26 +115,27 @@
                   <table class="invoice-table table table-center mb-0">
                     <thead>
                       <tr>
-                        <th>{{ $candidature->etudiant->nom }}</th>
-                        <th>{{ $candidature->etudiant->prenom }}</th>
+                        <th>{{ $candidature->etudiant->nom }} - {{ $candidature->etudiant->nom_ar }}</th>
+                        <th>{{ $candidature->etudiant->prenom }} - {{ $candidature->etudiant->prenom_ar }}</th>
                         <th>{{ $candidature->etudiant->email }}</th>
-                        <th>{{ $candidature->etudiant->code_massar }}</th>
-                        <th class="text-end">{{ $candidature->etudiant->telephone }}</th>
+                        <th>Téléphone : {{ $candidature->etudiant->telephone }}</th>
+                        <th class="text-end">Code Massar : {{ $candidature->etudiant->code_massar }}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>PHP Developer</td>
-                        <td>Developing</td>
-                        <td>$500 - $1000</td>
-                        <th>2%</th>
-                        <td class="text-end">$400</td>
+                        <td>CIN : {{ $candidature->etudiant->cin }}</td>
+                        <td>{{ $candidature->etudiant->lieu_naissance }}</td>
+                        <td>{{ $candidature->etudiant->lieu_naissance_ar }}</td>
+                        <th>{{ $candidature->etudiant->date_naissance }}</th>
+                        <td class="text-end">Province de
+                          naissance : {{ $candidature->etudiant->province_naissance_etudiant->nom }}</td>
                       </tr>
                       <tr>
-                        <td>Digital Marketer</td>
-                        <td>Marketing</td>
-                        <td>$300 - $1000</td>
-                        <th>6%</th>
+                        <td>{{ $candidature->etudiant->pays }}</td>
+                        <td>{{ $candidature->etudiant->sexe == 1 ? 'Masculin' : 'Féminin ' }}</td>
+                        <td>Ville : {{ $candidature->etudiant->ville_etudiant->nom }}</td>
+                        <th>Fonctionnaire : {{ $candidature->etudiant->fonctionnaire == 1 ? 'Oui' : 'Non' }}</th>
                         <td class="text-end">$3,000</td>
                       </tr>
                       <tr>
@@ -156,8 +156,11 @@
           <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 col-md-6">
               <div class="invoice-terms">
-                <h6>Notes:</h6>
-                <p class="mb-0">Enter customer notes or any other details</p>
+                <h6>Adresses Personnels:</h6>
+                <i class="mb-0">{{ $candidature->etudiant->adresse_perso1 }} <br>
+                  {{ $candidature->etudiant->adresse_perso2 }} <br>
+                  {{ $candidature->etudiant->adresse_perso3 }} <br>
+                </i>
               </div>
               <div class="invoice-terms">
                 <h6>Terms and Conditions:</h6>

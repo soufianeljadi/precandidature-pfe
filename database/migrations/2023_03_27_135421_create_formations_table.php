@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('slug');
-            $table->string('description');
+            $table->text('description');
             $table->integer('duree')->nullable();
             $table->foreignId('enseignant_id')->references("id")->on("enseignants")->onDelete('cascade');
             $table->timestamps();

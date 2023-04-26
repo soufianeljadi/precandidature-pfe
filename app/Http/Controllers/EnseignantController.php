@@ -33,20 +33,19 @@ class EnseignantController extends Controller
   {
     // return $request;
     try {
-      $Enseignant = new Enseignant();
-      $Enseignant->nom = $request->nom;
-      $Enseignant->prenom = $request->prenom;
-      $Enseignant->date_naissance = $request->date_naissance;
-      $Enseignant->email = $request->email;
-      $Enseignant->telephone = $request->telephone;
-      //$Enseignant->age = $request->age;
-      $Enseignant->cin = $request->cin;
-      $Enseignant->adresse = $request->adresse;
-      $Enseignant->ville = $request->ville;
-      $Enseignant->nationalite = $request->nationalite;
-      $Enseignant->matricule = $request->matricule;
-      $Enseignant->password = Hash::make($request->password);
-      $Enseignant->save();
+      $enseignant = new Enseignant();
+      $enseignant->nom = $request->nom;
+      $enseignant->prenom = $request->prenom;
+      $enseignant->date_naissance = $request->date_naissance;
+      $enseignant->email = $request->email;
+      $enseignant->telephone = $request->telephone;
+      $enseignant->cin = $request->cin;
+      $enseignant->adresse = $request->adresse;
+      $enseignant->ville = $request->ville;
+      $enseignant->nationalite = $request->nationalite;
+      $enseignant->matricule = $request->matricule;
+      $enseignant->password = Hash::make($request->password);
+      $enseignant->save();
       toastr()->success('Data saved Successfully !');
       return redirect()->route("enseignants.index");
     } catch (\Throwable $th) {
@@ -85,7 +84,6 @@ class EnseignantController extends Controller
       $Enseignant->date_naissance = $request->date_naissance;
       $Enseignant->email = $request->email;
       $Enseignant->telephone = $request->telephone;
-     // $Enseignant->age = $request->age;
       $Enseignant->cin = $request->cin;
       $Enseignant->adresse = $request->adresse;
       $Enseignant->ville = $request->ville;

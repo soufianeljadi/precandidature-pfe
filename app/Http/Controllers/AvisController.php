@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Traits\AttachFilesTrait;
 
 use App\Models\Avis;
@@ -37,7 +38,6 @@ class AvisController extends Controller
    */
   public function store(Request $request)
   {
-    return $request;
     try {
       Avis::create([
         "debut_precandidature" => $request->debut_precandidature,
@@ -45,7 +45,9 @@ class AvisController extends Controller
         "formation_id" => $request->formation_id,
         "image_avis" => $request->file('image_avis')->getClientOriginalName(),
       ]);
-      $this->uploadFile($request,"image_avis");
+      $extension = $request->file("image_avis")->getClientOriginalExtension();
+      $name_file = $request->file('image_avis')->getClientOriginalName() . "." . $extension;
+      $request->file("image_avis")->storeAs('avis/' . $name_file, 'upload_avis');
       toastr()->success('Data saved Successfully !');
       return redirect()->route("avis.index");
     } catch (\Throwable $th) {
@@ -85,9 +87,7 @@ class AvisController extends Controller
 
     $avis = Avis::findOrFail($request->avis_id);
     $avis->delete();
-    toastr()->error('La avis a été bien supprimé !'," ");
+    toastr()->error('La avis a été bien supprimé !', " ");
     return redirect()->route("avis.index");
-
   }
 }
-

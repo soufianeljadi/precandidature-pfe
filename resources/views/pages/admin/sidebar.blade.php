@@ -41,6 +41,11 @@
                 style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
                 class="fa-solid fa-user-graduate"></i>Étudiants</span></a>
         </li>
+        <li>
+          <a href="{{ route('etudiant.list') }}"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+                class="fa-solid fa-users-rectangle"></i>Demandes</span></a>
+        </li>
       </ul>
     </div>
   </div>

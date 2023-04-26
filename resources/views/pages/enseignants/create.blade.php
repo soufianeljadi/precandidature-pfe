@@ -6,6 +6,9 @@
 @section('sidebar')
   @include('pages.admin.sidebar')
 @endsection
+@section('header')
+  @include('pages.admin.header')
+@endsection
 @section('content')
   {{-- Contennt --}}
   <!-- Page Wrapper -->
@@ -163,8 +166,8 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Adresse</label>
                   <div class="col-lg-9">
-                    <textarea  type="text" rows="2" cols="2" name="adresse" class="form-control @error('adresse') is-invalid @enderror"
-                      value="{{ old('adresse') }}"></textarea>
+                    <textarea type="text" rows="2" cols="2" name="adresse"
+                      class="form-control @error('adresse') is-invalid @enderror" value="{{ old('adresse') }}"></textarea>
                     @error('adresse')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -181,8 +184,8 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Matricule</label>
                   <div class="col-lg-9">
-                    <input type="text" name="matricule"
-                      class="form-control @error('matricule') is-invalid @enderror" value="{{ old('matricule') }}">
+                    <input type="text" name="matricule" class="form-control @error('matricule') is-invalid @enderror"
+                      value="{{ old('matricule') }}">
                     @error('matricule')
                       <div class="invalid-feedback">
                         {{ $message }}

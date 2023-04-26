@@ -34,7 +34,7 @@
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            <a href="{{ route('avis.create') }}" type="button" class="btn btn-success">Ajouter un avis</a>
+            <a href="{{ route('avis.create') }}" type="button" class="btn btn-primary">Ajouter un avis</a>
             {{-- <button type="button" class="btn btn-primary">Primary</button>
             <button type="button" class="btn btn-primary">Primary</button> --}}
           </p>
