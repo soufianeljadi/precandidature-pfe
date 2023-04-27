@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 @section('title')
-  Tous Les enseignants
+  Les candidatures
 @endsection
 @section('header')
   @include('pages.admin.header')
@@ -23,10 +23,10 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title">La liste des enseignants</h3>
+        <h3 class="page-title"> Les candidatures </h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-          <li class="breadcrumb-item active">Tous les enseignants</li>
+          <li class="breadcrumb-item active"> Les candidatures </li>
         </ul>
       </div>
     </div>
@@ -36,15 +36,15 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
-        @if ($errors->any())
-          <div class="alert alert-danger">
-            <ul>
-              @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+        {{-- @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif --}}
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
@@ -71,20 +71,20 @@
 
 
 
-                @foreach ($enseignants as $enseignant)
+                @foreach ($candidatures as $candidature)
                   <tr>
-                    <td>{{ $enseignant->nom }} {{ $enseignant->prenom }}</td>
-                    <td>{{ isset($enseignant->formation->nom) != null ? $enseignant->formation->nom : 'NONE' }}</td>
+                    <td>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</td>
+                    <td>{{ $candidature->formation->nom }}</td>
 
                     <td>
-                      <a data-bs-toggle="modal" href="#view_enseignant_{{ $enseignant->id }}"
+                      <a data-bs-toggle="modal" href="#view_candidature_{{ $candidature->id }}"
                         class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a data-bs-toggle="modal" href="#edit_enseignant_{{ $enseignant->id }}"
+                      <a data-bs-toggle="modal" href="#edit_enseignant_{{ $candidature->id }}"
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
                       {{-- <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a> --}}
                       <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
-                        data-bs-target="#delete_enseignant_{{ $enseignant->id }}">
+                        data-bs-target="#delete_enseignant_{{ $candidature->id }}">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
                     </td>
@@ -93,7 +93,7 @@
                   <!-- Delete enseignant  Modal -->
 
                   <!-- Modal -->
-                  <div class="modal fade" id="delete_enseignant_{{ $enseignant->id }}" tabindex="-1"
+                  {{-- <div class="modal fade" id="delete_enseignant_{{ $enseignant->id }}" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -119,9 +119,9 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   <!-- Edit Details Modal -->
-                  <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
+                  {{-- <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -246,7 +246,24 @@
 
                                 </div>
                               </div>
+                              <div class="col-12 col-sm-4">
+                                <div class="form-group">
 
+
+                                  <label>Mot de passe</label>
+
+                                  <input type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    value="{{ $enseignant->password }}">
+                                  @error('password')
+                                    <div class="invalid-feedback">
+                                      {{ $message }}
+                                    </div>
+                                  @enderror
+
+
+                                </div>
+                              </div>
                               <div class="col-12">
                                 <div class="form-group">
 
@@ -307,23 +324,21 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
 
                   {{-- View Modal enseignant --}}
-                  <div class="modal fade" id="view_enseignant_{{ $enseignant->id }}" aria-hidden="true"
-                    role="dialog">
+                  {{-- <div class="modal fade" id="view_candidature_{{ $candidature->id }}" aria-hidden="true" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Details Enseignant</h5>
+                          <h5 class="modal-title">Details Candidature : </h5>
                           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
                           <form action="" method="POST">
-                            {{-- @csrf --}}
-                            {{-- <input type="hidden" name="id" value="{{ $enseignant->id }}"> --}}
+
 
                             <div class="row form-row">
                               <div class="col-12 col-sm-4">
@@ -436,7 +451,24 @@
 
                                 </div>
                               </div>
+                              <div class="col-12 col-sm-4">
+                                <div class="form-group">
 
+
+                                  <label>Mot de passe</label>
+
+                                  <input disabled type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    value="{{ $enseignant->password }}">
+                                  @error('password')
+                                    <div class="invalid-feedback">
+                                      {{ $message }}
+                                    </div>
+                                  @enderror
+
+
+                                </div>
+                              </div>
                               <div class="col-12">
                                 <div class="form-group">
 
@@ -496,7 +528,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 @endforeach
 
               </tbody>

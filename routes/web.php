@@ -39,7 +39,7 @@ Route::middleware('auth:etudiant')->group(function () {
   Route::post("/document/delete", [EtudiantController::class, "deleteFile"])->name("document.delete");
   Route::get("/avisLicencesPro", [EtudiantController::class, "avis"])->name("avislicencespro");
   Route::get("/formation/{slug}", [FormationController::class, "formationDetails"])->name("formation.details");
-  Route::post("/postuler", [CandidatureController::class, "create"])->name("candidature.create");
+  Route::post("/postuler", [CandidatureController::class, "create"])->middleware("profile.complete")->name("candidature.create");
 
 
   //Les candidatures
@@ -88,6 +88,8 @@ Route::middleware('auth:web')->group(function () {
   Route::get("/tous-etudiants", [EtudiantController::class, "tousEtudiants"])->name("etudiant.list");
   Route::post('/supprimer-etudiant', [EtudiantController::class, 'destroy'])->name('etudiant.delete');
   Route::post('/update-etudiant', [EtudiantController::class, 'update'])->name('etudiant.update');
+  //Candidatures
+  Route::get("/tous-candidatures-estfbs", [CandidatureController::class, "candidatures"])->name("candidatures.list");
 });
 
 

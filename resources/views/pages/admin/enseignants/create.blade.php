@@ -18,7 +18,7 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title">Ajouter un enseignant</h3>
+        <h3 class="page-title">Ajouter un enseignant (Possible de metre l'ajout en temps reel )</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
           <li class="breadcrumb-item active">Ajouter un enseignant</li>

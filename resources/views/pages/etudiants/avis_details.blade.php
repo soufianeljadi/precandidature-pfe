@@ -43,7 +43,7 @@
                 <img class="img-fluid" src="{{ asset('avis/' . $formation->avis->image_avis . '') }}" alt="avis Image">
               </div>
               <div class="blog-content">
-                <p> {{ $formation->description }}</p>
+                {!! $formation->description !!}
                 <blockquote>
                   <ul>
                     <li>Toute pré-inscription en ligne hors délai sera rejetée.</li>
@@ -69,26 +69,26 @@
                     {{-- <button class="custom-btn btn-11">Read More<div class="dot"></div></button> --}}
 
                     <div>
-                      <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      <a data-bs-toggle="modal" data-bs-target="#exampleModal"
                         class="btn btn-block btn-outline-primary active custom-btn btn-11">Postuler
                         <div class="dot"></div>
-                      </button>
+                      </a>
                       <!-- Modal -->
                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              ...
+                              Confirmer la candidature pour la formation : {{ $formation->nom }}
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="submit" class="btn btn-primary">Confirmer et Postuler</button>
                             </div>
                           </div>
                         </div>

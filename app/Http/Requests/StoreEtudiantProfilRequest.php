@@ -21,7 +21,13 @@ class StoreEtudiantProfilRequest extends FormRequest
    */
   public function rules(): array
   {
-    return [
+    $userHasPhoto = !empty(auth()->user()->photo);
+    $userHasBac = !empty(auth()->user()->dossier->bac_document);
+    $userHasDiplome = !empty(auth()->user()->dossier->diplome_document);
+    $userHasReleve = !empty(auth()->user()->dossier->releve_note);
+    $userHasCv = !empty(auth()->user()->dossier->cv);
+
+    $rules =  [
       //Informations personnelles
       "nom" => "required|string",
       "prenom" => "required|string",
@@ -40,7 +46,6 @@ class StoreEtudiantProfilRequest extends FormRequest
 
       "situation_familiale" => "required",
       "ville" => "required",
-      "photo" => "image|max:200",
 
 
       "adresse_perso1" => "required",
@@ -51,7 +56,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       //Informations du Baccalauréat
       "annee_obt_bac" => "required",
       "serie_bac" => "required",
-      "moyenne_bac" => "required",
+      "moyenne_bac" => "required|numeric|max:20",
       "mention_bac" => "required",
       "province_bac" => "required",
       // "bac_document" => "required",
@@ -59,18 +64,48 @@ class StoreEtudiantProfilRequest extends FormRequest
       //Informations du diplôme (BAC+2)
       "annee_obt_diplome" => "required",
       "type_diplome" => "required",
-      "moyenne_diplome" => "required",
+      "moyenne_diplome" => "required|numeric|max:20",
       "mention_diplome" => "required",
       "specialite_diplome" => "required",
       "etablissement" => "required",
-      "note_s1" => "required",
-      "note_s2" => "required",
-      "note_s3" => "required",
-      "note_s4" => "required",
-      // "releve_annee_1" => "required",
-      // "releve_annee_2" => "required",
+      "note_s1" => "required|numeric|max:20",
+      "note_s2" => "required|numeric|max:20",
+      "note_s3" => "required|numeric|max:20",
+      "note_s4" => "required|numeric|max:20",
+      // "releve_note" => "required",
       // "diplome_document" => "required",
       // "cv" => "required",
     ];
+
+
+    // Only require the profile_picture field if the user doesn't have a profile picture
+    if (!$userHasPhoto) {
+      $rules['photo'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+    } else {
+      $rules['photo'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+    }
+    if (!$userHasBac) {
+      $rules['bac_document'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+    } else {
+      $rules['bac_document'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+    }
+    if (!$userHasDiplome) {
+      $rules['diplome_document'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+    } else {
+      $rules['diplome_document'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+    }
+    if (!$userHasReleve) {
+      $rules['releve_note'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+    } else {
+      $rules['releve_note'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+    }
+    if (!$userHasCv) {
+      $rules['cv'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+    } else {
+      $rules['cv'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+    }
+
+
+    return $rules;
   }
 }

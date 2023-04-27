@@ -46,7 +46,9 @@
             @foreach ($tous_avis as $avis)
               <div class="col-12 col-md-6 col-lg-4 d-flex">
                 <div class="card flex-fill">
-                  <img alt="Card Image" src="{{ asset('avis/' . $avis->image_avis . '') }}" class="card-img-top">
+                  @if ($avis->image_avis)
+                    <img alt="Avis Image" src=" /avis/{{ $avis->image_avis }}  " class="card-img-top">
+                  @endif
                   <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title mb-0">{{ $avis->formation->nom }}</h5>
                     <h5 class="text-info">{{ count($avis->formation->candidatures) }} candidatures</h5>

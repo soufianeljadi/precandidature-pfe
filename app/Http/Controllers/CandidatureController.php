@@ -12,10 +12,16 @@ class CandidatureController extends Controller
      */
     public function index()
     {
-
         return view("pages.etudiants.candidatures")->with([
 
         ]);
+    }
+
+    public function candidatures()
+    {
+      return view("pages.admin.candidatures.index")->with([
+        "candidatures" => Candidature::all(),
+      ]);
     }
 
     /**

@@ -36,8 +36,7 @@ return new class extends Migration
       $table->float("note_s3")->nullable(); // -s3
       $table->float("note_s4")->nullable(); // -s4
       $table->string("diplome_document")->nullable();
-      $table->string("releve_annee_1")->nullable();
-      $table->string("releve_annee_2")->nullable();
+      $table->string("releve_note")->nullable();
       $table->string("cv")->nullable();
       $table->timestamps();
     });

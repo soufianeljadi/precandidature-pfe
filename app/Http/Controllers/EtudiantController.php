@@ -28,7 +28,7 @@ class EtudiantController extends Controller
   public function avis()
   {
     $avis = Avis::all();
-    return view("pages.admin.etudiants.avis")->with([
+    return view("pages.etudiants.avis")->with([
       "avis" => $avis
     ]);
   }
@@ -113,14 +113,11 @@ class EtudiantController extends Controller
     $dossier->note_s4 = $request->note_s4;
     $dossier->type_diplome = $request->type_diplome;
     $dossier->etablissement = $request->etablissement;
-    if ($request->hasFile('releve_annee_1')) {
-      $name_rn1 = $this->uploadDocument($request,"releve_annee_1","releve_annee_1",$request->code_massar);
-      $dossier->releve_annee_1 = $name_rn1;
+    if ($request->hasFile('releve_note')) {
+      $name_rn = $this->uploadDocument($request,"releve_note","releve_note",$request->code_massar);
+      $dossier->releve_note = $name_rn;
     }
-    if ($request->hasFile('releve_annee_2')) {
-      $name_rln2 = $this->uploadDocument($request,"releve_annee_2","releve_annee_2",$request->code_massar);
-      $dossier->releve_annee_2 = $name_rln2;
-    }
+
     if ($request->hasFile('diplome_document')) {
       $name_diplome = $this->uploadDocument($request,"diplome_document","diplome_document",$request->code_massar);
       $dossier->diplome_document = $name_diplome;

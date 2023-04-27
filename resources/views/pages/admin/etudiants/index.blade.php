@@ -62,6 +62,7 @@
                   <th>Code Massar</th>
                   <th>Email</th>
                   <th>Telephone</th>
+                  <th>Achèvement Du Profil</th>
                   <th>Control</th>
 
                 </tr>
@@ -77,6 +78,9 @@
                     <td>{{ $etudiant->code_massar }}</td>
                     <td>{{ $etudiant->email }}</td>
                     <td>{{ $etudiant->telephone }}</td>
+                    <td class="text-{{ $etudiant->profileCompletionColor() }}">
+                      <strong>{{ $etudiant->profileCompletionPercentage() }} %</strong>
+                    </td>
 
                     <td>
                       <a data-bs-toggle="modal" href="#view_etudiant_{{ $etudiant->id }}"

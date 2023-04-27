@@ -6,6 +6,32 @@
 @section('header')
   @include('pages.admin.header')
 @endsection
+
+
+@section('styles')
+  <script src="https://cdn.tiny.cloud/1/3dkymhq1yu3ge8hdilcdm1ckva18uqtea934kgzpivbbhvb8/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+
+  <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [{
+          value: 'First.Name',
+          title: 'First Name'
+        },
+        {
+          value: 'Email',
+          title: 'Email'
+        },
+      ]
+    });
+  </script>
+@endsection
+
 @section('sidebar')
   @include('pages.admin.sidebar')
 @endsection
@@ -151,8 +177,8 @@
                               <div class="col-xl-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                   <label>Description</label>
-                                  <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30"
-                                    rows="10">{{ $formation->description }}</textarea>
+                                  <textarea name="description" id="mytextarea" class="form-control @error('description') is-invalid @enderror"
+                                    cols="30" rows="10">{{ $formation->description }}</textarea>
 
                                   @error('description')
                                     <div class="invalid-feedback">
@@ -266,8 +292,7 @@
                               <div class="col-xl-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                   <label>Description</label>
-                                  <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30"
-                                    rows="10" disabled>{{ $formation->description }}</textarea>
+                                  {!! $formation->description !!}
 
                                   @error('description')
                                     <div class="invalid-feedback">
