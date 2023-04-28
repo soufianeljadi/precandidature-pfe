@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidature;
+use App\Models\Enseignant;
 use Illuminate\Http\Request;
 
 class CandidatureController extends Controller
@@ -21,6 +22,7 @@ class CandidatureController extends Controller
     {
       return view("pages.admin.candidatures.index")->with([
         "candidatures" => Candidature::all(),
+
       ]);
     }
 

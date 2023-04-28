@@ -23,7 +23,8 @@
   <div class="page-header">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="page-title"> Les candidatures </h3>
+        <h3 class="page-title"> Les candidatures du formation
+          {{ auth()->user()->formation->nom ?? '' }} </h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
           <li class="breadcrumb-item active"> Les candidatures </li>
@@ -45,18 +46,11 @@
               </ul>
             </div>
           @endif --}}
-        <div class="card-header">
-          {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
-          <p class="card-text">
-            <a href="{{ route('enseignant.create') }}" type="button" class="btn btn-primary">Ajouter un enseignant</a>
-            {{-- <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-primary">Primary</button> --}}
-          </p>
-        </div>
+
         <div class="card-body">
-
-
-
+          <a href="/candidats-excel" class="btn btn-sm btn-success m-2"><i class="fa-solid fa-file-excel me-1"></i>Tous
+            les
+            candidats</a>
           <div class="table-responsive ">
             <table class="datatable table table-stripped" id="myTable">
               <thead>
@@ -71,7 +65,7 @@
 
 
 
-                @foreach ($candidatures as $candidature)
+                @foreach (auth()->user()->formation->candidatures as $candidature)
                   <tr>
                     <td>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</td>
                     <td>{{ $candidature->formation->nom }}</td>

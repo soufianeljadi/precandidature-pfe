@@ -14,9 +14,18 @@ class EnseignantController extends Controller
    */
   public function index()
   {
+    return view("pages.enseignants.dashboard")->with([
+      "ens" => Enseignant::all(),
+    ]);
+  }
+
+  //display for the admin
+  public function tousEnseignants()
+  {
     $enseignants = Enseignant::all();
     return view("pages.admin.enseignants.index", compact("enseignants"));
   }
+
 
   /**
    * Show the form for creating a new resource.
@@ -67,7 +76,6 @@ class EnseignantController extends Controller
    */
   public function edit($id)
   {
-
   }
 
   /**
@@ -91,7 +99,6 @@ class EnseignantController extends Controller
       $Enseignant->save();
       toastr()->success('Data saved Successfully !');
       return redirect()->route("enseignants.index");
-
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
     }
@@ -105,8 +112,7 @@ class EnseignantController extends Controller
 
     $enseignant = Enseignant::findOrFail($request->enseignant_id);
     $enseignant->delete();
-    toastr()->error('L\'enseignant a été bien supprimé !'," ");
+    toastr()->error('L\'enseignant a été bien supprimé !', " ");
     return redirect()->route("enseignants.index");
-
   }
 }

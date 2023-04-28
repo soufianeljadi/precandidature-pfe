@@ -58,8 +58,7 @@
 
         @if (Session::has('errorCompleteProfile'))
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> <a href="#profile-section"
-              class="alert-link">{{ Session::get('errorCompleteProfile') }}</a>
+            <a href="#profile-section" class="alert-link">{{ Session::get('errorCompleteProfile') }}</a>
             <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>

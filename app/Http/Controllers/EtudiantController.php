@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EtudiantsExport;
 use App\Http\Requests\StoreEtudiantProfilRequest;
 use App\Http\Traits\AttachFilesTrait;
 use App\Models\Avis;
@@ -11,6 +12,7 @@ use App\Models\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Do_;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EtudiantController extends Controller
 {
@@ -31,6 +33,11 @@ class EtudiantController extends Controller
     return view("pages.etudiants.avis")->with([
       "avis" => $avis
     ]);
+  }
+
+  public function exportExcel()
+  {
+    return Excel::download(new EtudiantsExport, 'candidats.xlsx');
   }
   public function profile()
   {

@@ -101,6 +101,7 @@
                     <div class="col-lg-9">
                       <input type="file" name="image_avis"
                         class="form-control @error('image_avis') is-invalid @enderror">
+                      <small>Taille recommandée : (1200 X 800) </small>
                       @error('image_avis')
                         <div class="invalid-feedback">
                           {{ $message }}

@@ -3,71 +3,21 @@
     <div id="sidebar-menu" class="sidebar-menu">
       <ul>
         <li class="menu-title">
-          <span><i class="fe fe-home"></i>Enseignant Dashboard</span>
+          <span><i class="fe fe-home"></i>Enseignant</span>
         </li>
 
         <li class="submenu">
-          <a href="#"><span> Reports</span> <span class="menu-arrow"></span></a>
+          <a href="#"><span><i style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+                class="fa-solid fa-users"></i>Profil</span> <span class="menu-arrow"></span></a>
           <ul style="display: none;">
-            <li><a href="invoices.html">Invoices List</a></li>
-
+            <li><a href="{{ route('enseignants.index') }}">Tous les enseignants</a></li>
+            <li><a href="{{ route('enseignant.create') }}">Ajouter un enseignant</a></li>
           </ul>
         </li>
         <li>
-          <a href="invoice-items.html"><span>Items</span></a>
-        </li>
-
-        <li class="submenu">
-          <a href="#"><span>Blog</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="blog.html"> Blog </a></li>
-
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Authentication </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="login.html"> Login </a></li>
-
-          </ul>
-        </li>
-
-        <li class="submenu">
-          <a href="#"><span> Forms </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-            <li><a href="form-input-groups.html">Input Groups </a></li>
-
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><span> Tables </span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="tables-basic.html">Basic Tables </a></li>
-            <li><a href="data-tables.html">Data Table </a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="javascript:void(0);"><span>Multi Level</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li class="submenu">
-              <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-              <ul style="display: none;">
-                <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-                <li class="submenu">
-                  <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-                  <ul style="display: none;">
-                    <li><a href="javascript:void(0);">Level 3</a></li>
-                    <li><a href="javascript:void(0);">Level 3</a></li>
-                  </ul>
-                </li>
-                <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript:void(0);"> <span>Level 1</span></a>
-            </li>
-          </ul>
+          <a href="{{ route('candidatures.list') }}"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+                class="fa-solid fa-users-rectangle"></i>Demandes</span></a>
         </li>
       </ul>
     </div>

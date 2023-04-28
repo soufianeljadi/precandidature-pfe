@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidature;
 use App\Models\Etudiant;
+use App\Models\Region;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,11 +17,17 @@ class UserController extends Controller
   {
     $nbr_etudiants = Etudiant::count();
     $nbr_candidatures = Candidature::count();
+    $candidatures = Candidature::all();
+    // $candidaturesParRegion = Region::withCount(['villes.etudiants.candidatures'])
+    // ->orderByDesc('villes_count')
+    // ->get()
+    // ->pluck('villes_count', 'nom');
 
     return view("pages.admin.dashboard")->with([
       "nbr_etudiants"  => $nbr_etudiants,
       "nbr_candidatures"  => $nbr_candidatures,
-
+      "candidatures"  => $candidatures,
+      // "candidaturesParRegion" => $candidaturesParRegion
 
     ]);
   }

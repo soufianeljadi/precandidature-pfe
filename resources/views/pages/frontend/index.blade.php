@@ -45,7 +45,7 @@
     <section class="section section-search-eight">
       <div class="container">
         <div class="banner-wrapper-eight m-auto text-center">
-          <div class="banner-header aos" data-aos="fade-up">
+          <div id="accueil" class="banner-header aos" data-aos="fade-up">
             <h1>Portail de pré-candidature en ligne aux formations<span> <br> licences professionnelles <br> </span>
               2023-2024</h1>
             <p>Bienvenue sur le Portail de pré-candidature en ligne aux formations licences professionnelles de L'école
@@ -103,7 +103,7 @@
     <!-- Work Flow -->
     <section class="section how-it-works-section">
       <div class="container">
-        <div class="section-header-eight text-center aos" data-aos="fade-up">
+        <div id="procedure" class="section-header-eight text-center aos" data-aos="fade-up">
           <span>ESTFBS</span>
           <h2>Comment ça fonctionne ?</h2>
           <p class="sub-title">plateforme de pré-candidature aux formations licences professionnelles</p>

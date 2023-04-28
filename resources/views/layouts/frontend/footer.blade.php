@@ -9,10 +9,11 @@
           <!-- Footer Widget -->
           <div class="footer-widget footer-about">
             <div class="footer-logo">
-              <img src="assets/img/usms-logo.png" alt="logo">
+              <img style="box-shadow: 20px 16px 5px 0px #2f266b;"
+                src="{{ asset('assets/img/logos/estfbs-305x107 2.png') }}" alt="logo">
             </div>
             <div class="footer-about-content">
-              <p>Université Sultan Moulay Slimane Béni Mellal. </p>
+              <p>Ecole Supérieure de Technologie – Fkih Ben Salah </p>
             </div>
           </div>
           <!-- /Footer Widget -->

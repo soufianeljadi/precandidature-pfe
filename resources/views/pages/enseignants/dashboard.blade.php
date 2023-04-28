@@ -6,6 +6,11 @@
 @section('sidebar')
   @include('pages.enseignants.sidebar')
 @endsection
+
+{{-- TODO Change the header , diplay enseignant header --}}
+@section('header')
+  @include('pages.admin.header')
+@endsection
 @section('content')
   {{-- Contennt --}}
 

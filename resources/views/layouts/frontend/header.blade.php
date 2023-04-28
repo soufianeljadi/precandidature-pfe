@@ -24,6 +24,12 @@
         </div>
         <ul class="main-nav main-nav-eight">
           <li class="active has-submenu">
+            <a href="#accueil">Accueil</a>
+          </li>
+          <li class=" has-submenu">
+            <a href="#procedure">Procédure</a>
+          </li>
+          <li class=" has-submenu">
             <a href="#">Étudiant<i class="fas fa-chevron-circle-down"></i></a>
             <ul class="submenu">
               <li><a href="{{ route('etudiant.registerForm') }}">Créer nouveau compte </a></li>
@@ -32,13 +38,10 @@
           </li>
           <li class=" has-submenu">
             <a href="{{ route('usms.loginForm') }}">Administrateur</a>
-
           </li>
           <li class=" has-submenu">
-            <a href="#contact">Contact</a>
-
+            <a href="#contact">Contactez nous</a>
           </li>
-
         </ul>
       </div>
       <ul class="nav header-navbar-rht header-navbar-rht-eight">

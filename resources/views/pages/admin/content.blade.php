@@ -98,13 +98,17 @@
 
 </div>
 <div class="row">
-
+  <div class="col">
+    <p>{{ $candidatures }}</p>
+    <br>
+    {{-- <span>{{ $candidaturesParRegion }}</span> --}}
+  </div>
   <div class="col-md-12 col-lg-12">
 
     <!-- Sales Chart -->
     <div class="card card-chart">
       <div class="card-header">
-        <h4 class="card-title">Revenue</h4>
+        <h4 class="card-title">Nombre des candidatures par région</h4>
       </div>
       <div class="card-body">
         <div id="morrisArea"></div>

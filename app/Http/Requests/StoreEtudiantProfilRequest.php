@@ -41,7 +41,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "province_naissance" => "required",
       "pays" => "required",
       "sexe" => "required",
-      "telephone" => "required|numeric",
+      "telephone" => "required",
       "email" => "required|email|unique:etudiants,email," . auth()->id(),
 
       "situation_familiale" => "required",
@@ -54,7 +54,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       "fonctionnaire" => "required",
 
       //Informations du Baccalauréat
-      "annee_obt_bac" => "required",
+      "annee_obt_bac" => "required|numeric",
       "serie_bac" => "required",
       "moyenne_bac" => "required|numeric|max:20",
       "mention_bac" => "required",
@@ -62,7 +62,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       // "bac_document" => "required",
       "academie" => "required",
       //Informations du diplôme (BAC+2)
-      "annee_obt_diplome" => "required",
+      "annee_obt_diplome" => "required|numeric",
       "type_diplome" => "required",
       "moyenne_diplome" => "required|numeric|max:20",
       "mention_diplome" => "required",

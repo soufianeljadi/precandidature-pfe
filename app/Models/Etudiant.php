@@ -49,18 +49,22 @@ class Etudiant extends Authenticatable
   {
     return $this->belongsTo(Ville::class, "lieu_naissance");
   }
+
   public function ville_etudiant()
   {
     return $this->belongsTo(Ville::class, "ville");
   }
+
   public function province_naissance_etudiant()
   {
     return $this->belongsTo(Ville::class, "province_naissance");
   }
+
   public function dossier()
   {
     return $this->hasOne(Dossier::class);
   }
+
   public function candidatures()
   {
     return $this->hasMany(Candidature::class);
@@ -107,26 +111,18 @@ class Etudiant extends Authenticatable
 
   public function profileCompletionColor()
   {
-      // Define the color based on the profile completion percentage
-      $percentage = $this->profileCompletionPercentage();
-      if ($percentage >= 80) {
-          $color = 'success';
-      } elseif ($percentage >= 50) {
-          $color = 'primary';
-      } elseif ($percentage >= 30) {
-        $color = 'warning';
+    // Define the color based on the profile completion percentage
+    $percentage = $this->profileCompletionPercentage();
+    if ($percentage >= 80) {
+      $color = 'success';
+    } elseif ($percentage >= 50) {
+      $color = 'primary';
+    } elseif ($percentage >= 30) {
+      $color = 'warning';
     } else {
       $color = 'danger';
+    }
+    return $color;
   }
-
-      return $color;
-  }
-
-
-
-
-
-
-
 
 }
