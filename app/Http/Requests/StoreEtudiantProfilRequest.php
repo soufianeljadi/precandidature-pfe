@@ -85,24 +85,24 @@ class StoreEtudiantProfilRequest extends FormRequest
       $rules['photo'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
     }
     if (!$userHasBac) {
-      $rules['bac_document'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['bac_document'] = 'required|file|mimes:pdf|max:700';
     } else {
-      $rules['bac_document'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['bac_document'] = 'nullable|file|mimes:pdf|max:700';
     }
     if (!$userHasDiplome) {
-      $rules['diplome_document'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['diplome_document'] = 'required|file|mimes:pdf|max:700';
     } else {
-      $rules['diplome_document'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['diplome_document'] = 'nullable|file|mimes:pdf|max:700';
     }
     if (!$userHasReleve) {
-      $rules['releve_note'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['releve_note'] = 'required|file|mimes:pdf|max:700';
     } else {
-      $rules['releve_note'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['releve_note'] = 'nullable|file|mimes:pdf|max:700';
     }
     if (!$userHasCv) {
-      $rules['cv'] = 'required|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['cv'] = 'required|image|file|mimes:pdf|max:700';
     } else {
-      $rules['cv'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:200';
+      $rules['cv'] = 'nullable|file|mimes:pdf|max:700';
     }
 
 
