@@ -46,18 +46,32 @@
               <form action="{{ route('login.etudiant') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Email" name="email">
+                  <input required class="form-control" type="text" placeholder="Email" name="email">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="password" placeholder="Password" name="password">
+                  <input required class="form-control" type="password" placeholder="Password" name="password">
                 </div>
-                <div class="form-group">
+
+                {{-- <div class="form-group">
                   <select name="type" class="form-control">
                     <option disabled selected>Type du compte</option>
                     <option value="enseignant">Enseignant</option>
                     <option value="administrateur">Administrateur</option>
                   </select>
+                </div> --}}
+                <div class="form-group">
+                  <label class="d-block">Type du compte :</label>
+                  <div class="form-check form-check-inline">
+                    <input checked class="form-check-input" type="radio" name="type" id="administrateur"
+                      value="administrateur">
+                    <label class="form-check-label" for="administrateur">Administrateur</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="enseignant" value="enseignant">
+                    <label class="form-check-label" for="enseignant">Enseignant</label>
+                  </div>
                 </div>
+
                 <div class="form-group">
                   <button class="btn btn-primary btn-block w-100" type="submit">Login</button>
                 </div>

@@ -227,18 +227,7 @@
                 <label>Province de naissance </label>
                 <select class="form-control @error('province_naissance') is-invalid @enderror"
                   name="province_naissance">
-                  {{-- @if (auth()->user()->province_naissance != null)
-                    <option value="{{ auth()->user()->province_naissance }}" selected>
-                      {{ auth()->user()->province_naissance_etudiant->nom }}
-                    </option>
-                  @else
-                    <option disabled selected>Changer Ville</option>
-                    @endif --}}
                   <option disabled selected>Changer Ville</option>
-
-
-
-
                   @foreach ($villes as $ville)
                     <option
                       {{ auth()->user()->province_naissance == $ville->id || old('province_naissance') == $ville->id ? 'selected' : '' }}
@@ -334,16 +323,11 @@
 
                   <option disabled selected>Changer Ville</option>
                   @foreach ($villes as $ville)
-                    <option {{ auth()->user()->ville || old('ville') == $ville->id ? 'selected' : '' }}
+                    <option {{ auth()->user()->ville == $ville->id || old('ville') == $ville->id ? 'selected' : '' }}
                       value="{{ $ville->id }}">
                       {{ $ville->nom }}</option>
                   @endforeach
 
-
-                  {{-- <option disabled selected>-- Sélectionner Ville --</option>
-                  @foreach ($villes as $ville)
-                    <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
-                  @endforeach --}}
                   @error('ville')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -361,23 +345,23 @@
 
                   <option disabled selected>-- Sélectionner Situation --</option>
                   <option
-                    {{ auth()->user()->situation_familiale || old('situation_familiale') == 'c' ? 'selected' : '' }}
+                    {{ auth()->user()->situation_familiale == 'c' || old('situation_familiale') == 'c' ? 'selected' : '' }}
                     value="c">
                     Célibataire</option>
                   <option
-                    {{ auth()->user()->situation_familiale || old('situation_familiale') == 'm' ? 'selected' : '' }}
+                    {{ auth()->user()->situation_familiale == 'm' || old('situation_familiale') == 'm' ? 'selected' : '' }}
                     value="m">Marié(e)
                   </option>
                   <option
-                    {{ auth()->user()->situation_familiale || old('situation_familiale') == 'd' ? 'selected' : '' }}
+                    {{ auth()->user()->situation_familiale == 'd' || old('situation_familiale') == 'd' ? 'selected' : '' }}
                     value="d">Divorcé(e)
                   </option>
                   <option
-                    {{ auth()->user()->situation_familiale || old('situation_familiale') == 'v' ? 'selected' : '' }}
+                    {{ auth()->user()->situation_familiale == 'v' || old('situation_familiale') == 'v' ? 'selected' : '' }}
                     value="v">Veuf/Veuve
                   </option>
                   <option
-                    {{ auth()->user()->situation_familiale || old('situation_familiale') == 'a' ? 'selected' : '' }}
+                    {{ auth()->user()->situation_familiale == 'a' || old('situation_familiale') == 'a' ? 'selected' : '' }}
                     value="a">Autre
                   </option>
                 </select>
@@ -560,16 +544,20 @@
                 <label>Mention du bac </label>
                 <select class="form-control @error('mention_bac') is-invalid @enderror"name="mention_bac">
                   <option selected> Sélectionner la mention</option>
-                  <option {{ auth()->user()->dossier->mention_bac || old('mention_bac') == '1' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->mention_bac == '1' || old('mention_bac') == '1' ? 'selected' : '' }}
                     value="1">Très Bien
                   </option>
-                  <option {{ auth()->user()->dossier->mention_bac || old('mention_bac') == '2' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->mention_bac == '2' || old('mention_bac') == '2' ? 'selected' : '' }}
                     value="2">Bien
                   </option>
-                  <option {{ auth()->user()->dossier->mention_bac || old('mention_bac') == '3' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->mention_bac == '3' || old('mention_bac') == '3' ? 'selected' : '' }}
                     value="3">Assez Bien
                   </option>
-                  <option {{ auth()->user()->dossier->mention_bac || old('mention_bac') == '4' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->mention_bac == '4' || old('mention_bac') == '4' ? 'selected' : '' }}
                     value="4">Passable
                   </option>
                 </select>
@@ -587,7 +575,7 @@
                   <option disabled selected>-- Sélectionner Ville --</option>
                   @foreach ($villes as $ville)
                     <option
-                      {{ auth()->user()->dossier->province_bac || old('province_bac') == $ville->id ? 'selected' : '' }}
+                      {{ auth()->user()->dossier->province_bac == $ville->id || old('province_bac') == $ville->id ? 'selected' : '' }}
                       value="{{ $ville->id }}">{{ $ville->nom }}</option>
                   @endforeach
                 </select>
@@ -703,10 +691,18 @@
                 <select class="form-control @error('mention_diplome') is-invalid @enderror"name="mention_diplome"
                   value="{{ auth()->user()->dossier->mention_diplome }}">
                   <option selected> Sélectionner la mention</option>
-                  <option value="1">Très Bien</option>
-                  <option value="2">Bien</option>
-                  <option value="3">Assez Bien</option>
-                  <option value="4">Passable</option>
+                  <option
+                    {{ auth()->user()->dossier->mention_diplome == '1' || old('mention_diplome') == '1' ? 'selected' : '' }}
+                    value="1">Très Bien</option>
+                  <option
+                    {{ auth()->user()->dossier->mention_diplome == '2' || old('mention_diplome') == '2' ? 'selected' : '' }}
+                    value="2">Bien</option>
+                  <option
+                    {{ auth()->user()->dossier->mention_diplome == '3' || old('mention_diplome') == '3' ? 'selected' : '' }}
+                    value="3">Assez Bien</option>
+                  <option
+                    {{ auth()->user()->dossier->mention_diplome == '4' || old('mention_diplome') == '4' ? 'selected' : '' }}
+                    value="4">Passable</option>
                 </select>
                 @error('mention_diplome')
                   <div class="invalid-feedback">

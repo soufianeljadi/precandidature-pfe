@@ -100,7 +100,7 @@ class StoreEtudiantProfilRequest extends FormRequest
       $rules['releve_note'] = 'nullable|file|mimes:pdf|max:700';
     }
     if (!$userHasCv) {
-      $rules['cv'] = 'required|image|file|mimes:pdf|max:700';
+      $rules['cv'] = 'required|file|mimes:pdf|max:700';
     } else {
       $rules['cv'] = 'nullable|file|mimes:pdf|max:700';
     }

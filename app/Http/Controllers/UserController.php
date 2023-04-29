@@ -7,6 +7,7 @@ use App\Models\Etudiant;
 use App\Models\Region;
 use App\Models\Ville;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,10 +24,21 @@ class UserController extends Controller
     // ->get()
     // ->pluck('villes_count', 'nom');
 
+    $candidaturesParRegion = DB::table('candidatures')
+      ->join('etudiants', 'candidatures.etudiant_id', '=', 'etudiants.id')
+      ->join('villes', 'etudiants.ville', '=', 'villes.id')
+      ->join('regions', 'villes.region_id', '=', 'regions.id')
+      ->select('regions.nom AS region', DB::raw('count(*) as total'))
+      ->groupBy('region')
+      ->orderBy('total', 'desc')
+      ->get();
+
+
     return view("pages.admin.dashboard")->with([
       "nbr_etudiants"  => $nbr_etudiants,
       "nbr_candidatures"  => $nbr_candidatures,
       "candidatures"  => $candidatures,
+      "candidaturesParRegion"  => $candidaturesParRegion,
       // "candidaturesParRegion" => $candidaturesParRegion
 
     ]);

@@ -51,12 +51,93 @@
           <a href="/candidats-excel" class="btn btn-sm btn-success m-2"><i class="fa-solid fa-file-excel me-1"></i>Tous
             les
             candidats</a>
+          {{-- Filter --}}
+          <div class="card report-card bg-light">
+            <div class="card-body ">
+              <form action="{{ route('candidatures.filter') }}" method="post">
+                @csrf
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul class="app-listing row">
+
+                      <li class="col-2">
+                        <label class="col-form-label ">Année obtention BAC</label>
+                        <input type="text" class="form-control bg-grey" name="annee_bac" placeholder="2021">
+                      </li>
+                      <li class="col-2">
+                        <label class="col-form-label ">Mention Bac</label>
+                        <select class="form-control" name="mention_bac">
+                          <option disabled selected>-- Mention --</option>
+                          <option value="2">Très Bien</option>
+                          <option value="3">Bien</option>
+                          <option value="4">Assez Bien</option>
+                          <option value="5">Passable</option>
+                        </select>
+                      </li>
+                      <li class="col-2">
+                        <label class="col-form-label ">Type Bac</label>
+                        <select class="form-control" name="serie_bac">
+                          <option selected disabled>-- Select --</option>
+                          <option value="sma">Science Math A </option>
+                          <option value="smb">Science Math B </option>
+                          <option value="pc">Science Physiques </option>
+                          <option value="svt">Science vie et terre </option>
+                          <option value="autre">Autre</option>
+                        </select>
+                      </li>
+
+                      <li>
+                        <label class="col-form-label ">Année obtention diplome </label>
+                        <input type="text" class="form-control bg-grey" name="annee_obt_bac" placeholder="2021">
+                      </li>
+                      <li class="col-2">
+                        <label class="col-form-label ">Mention Diplome</label>
+                        <select class="form-control" name="mention_diplome">
+                          <option disabled selected>-- Mention --</option>
+                          <option value="2">Très Bien</option>
+                          <option value="3">Bien</option>
+                          <option value="4">Assez Bien</option>
+                          <option value="5">Passable</option>
+                        </select>
+                      </li>
+                      <li class="col-2">
+                        <label class="col-form-label ">Region</label>
+                        <select class="form-control" name="region">
+                          <option disabled selected>-- Region --</option>
+                          @foreach ($regions as $region)
+                            <option value="{{ $region->id }}">{{ $region->nom }}</option>
+                          @endforeach
+
+                        </select>
+                      </li>
+
+
+
+
+                    </ul>
+                    <div class="my-2">
+                      <button type="submit" class="form-control text-white btn btn-primary">
+                        Filtrer les résultats
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          {{-- Filter --}}
+
           <div class="table-responsive ">
             <table class="datatable table table-stripped" id="myTable">
               <thead>
                 <tr>
                   <th>Nom et Prénom</th>
-                  <th>Formation</th>
+                  <th>Code Massar</th>
+                  <th>CIN</th>
+                  <th>Email</th>
+                  <th>Telephone</th>
+                  <th>Annee Bac</th>
+                  <th>Annee Diplome</th>
 
                   <th>Action</th>
                 </tr>
@@ -68,7 +149,12 @@
                 @foreach (auth()->user()->formation->candidatures as $candidature)
                   <tr>
                     <td>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</td>
-                    <td>{{ $candidature->formation->nom }}</td>
+                    <td>{{ $candidature->etudiant->code_massar }}</td>
+                    <td>{{ $candidature->etudiant->cin }}</td>
+                    <td>{{ $candidature->etudiant->email }}</td>
+                    <td>{{ $candidature->etudiant->telephone }}</td>
+                    <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
+                    <td>{{ $candidature->etudiant->dossier->annee_obt_diplome }}</td>
 
                     <td>
                       <a data-bs-toggle="modal" href="#view_candidature_{{ $candidature->id }}"
@@ -535,9 +621,9 @@
 @endsection
 
 @section('scripts')
-  <script>
+  {{-- <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
     });
-  </script>
+  </script> --}}
 @endsection

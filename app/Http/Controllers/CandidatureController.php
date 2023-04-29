@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidature;
 use App\Models\Enseignant;
+use App\Models\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CandidatureController extends Controller
 {
@@ -20,10 +22,28 @@ class CandidatureController extends Controller
 
     public function candidatures()
     {
+
       return view("pages.admin.candidatures.index")->with([
-        "candidatures" => Candidature::all(),
+        "candidatures" => Candidature::with("etudiant"),
+        "regions" => Region::all(),
 
       ]);
+    }
+    public function filtrer(Request $request)
+    {
+      return $request;
+    }
+    public function candidaturesParRegion()
+    {
+      $candidaturesParRegion = DB::table('candidatures')
+    ->join('etudiants', 'candidatures.etudiant_id', '=', 'etudiants.id')
+    ->join('villes', 'etudiants.ville', '=', 'villes.id')
+    ->join('regions', 'villes.region_id', '=', 'regions.id')
+    ->select('regions.nom AS region', DB::raw('count(*) as total'))
+    ->groupBy('region')
+    ->orderBy('total', 'desc')
+    ->get();
+
     }
 
     /**

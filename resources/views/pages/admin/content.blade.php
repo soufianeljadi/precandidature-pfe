@@ -100,6 +100,8 @@
 <div class="row">
   <div class="col">
     <p>{{ $candidatures }}</p>
+    <p>{{ $candidaturesParRegion }}</p>
+
     <br>
     {{-- <span>{{ $candidaturesParRegion }}</span> --}}
   </div>
@@ -111,8 +113,9 @@
         <h4 class="card-title">Nombre des candidatures par région</h4>
       </div>
       <div class="card-body">
-        <div id="morrisArea"></div>
+        <div id="nbrCandidaturesParRegion"></div>
       </div>
+
     </div>
     <!-- /Sales Chart -->
 
@@ -504,3 +507,92 @@
     <!-- /Recent Orders -->
   </div>
 </div>
+
+
+@section('scripts')
+  <script>
+    $(function() {
+
+
+
+      /* Morris Area Chart */
+
+
+      var candidaturesParRegion = {!! json_encode($candidaturesParRegion) !!};
+      console.log(candidaturesParRegion);
+      window.mA = Morris.Area({
+        element: 'nbrCandidaturesParRegion',
+        data: candidaturesParRegion,
+        xkey: 'region',
+        ykeys: ['total'],
+        labels: ['Nombre des candidatures'],
+        lineColors: ['#1b5a90'],
+        lineWidth: 2,
+        parseTime: false,
+        fillOpacity: 0.5,
+        gridTextSize: 10,
+        hideHover: 'auto',
+        resize: true,
+        redraw: true,
+        yLabelFormat: function(y) {
+          return Math.round(y);
+        },
+        // xLabelAngle: 65
+        xLabelMargin: 10, // Add some margin to the X-axis labels
+        xLabelAngle: 90, // Rotate the X-axis labels by 45 degrees
+        // xLabelFormat: labelFormatter // Use the labelFormatter function to format the X-axis labels
+      });
+      $('svg').height(500);
+
+
+
+
+
+      /* Morris Line Chart */
+
+      window.mL = Morris.Line({
+        element: 'morrisLine',
+        data: [{
+            y: '2015',
+            a: 100,
+            b: 30
+          },
+          {
+            y: '2016',
+            a: 20,
+            b: 60
+          },
+          {
+            y: '2017',
+            a: 90,
+            b: 120
+          },
+          {
+            y: '2018',
+            a: 50,
+            b: 80
+          },
+          {
+            y: '2019',
+            a: 120,
+            b: 150
+          },
+        ],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['Mentors', 'Mentees'],
+        lineColors: ['#1b5a90', '#ff9d00'],
+        lineWidth: 1,
+        gridTextSize: 10,
+        hideHover: 'auto',
+        resize: true,
+        redraw: true
+      });
+      $(window).on("resize", function() {
+        mA.redraw();
+        mL.redraw();
+      });
+
+    });
+  </script>
+@endsection
