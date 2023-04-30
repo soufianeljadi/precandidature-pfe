@@ -66,9 +66,37 @@
                         @csrf
                         <input type="hidden" name="candidature_id" value="{{ $candidature->id }}">
                         <button class="btn btn-sm bg-info-light" type="submit"><i class="far fa-eye"></i> VOIR</button>
+                        <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal" data-bs-target="#delete_candidature_{{ $candidature->id }}" ><i class="fa-solid fa-trash-can"></i> SUPPRIMER</a>
+
                       </form>
                     </td>
                   </tr>
+                  {{-- DELETE CANDIDATURE --}}
+                  <div class="modal fade" id="delete_candidature_{{ $candidature->id }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer la candidature</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div>
+                            Êtes-vous sûr de supprimer la candidature : <br>{{ $candidature->formation->nom }}
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                          <form action="{{ route('etudiant.candidaturedelete') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="candidature_id" value="{{ $candidature->id }}">
+                            <input type="submit" value="Supprimer" class="btn btn-danger">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 @empty
                   <td colspan="4" class="text-danger">Accune Candidature </td>
                 @endforelse

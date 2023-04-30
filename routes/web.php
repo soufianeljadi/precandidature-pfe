@@ -50,6 +50,8 @@ Route::middleware('auth:etudiant')->group(function () {
   //? Les candidatures
   Route::get("mes-candidatures", [CandidatureController::class, "index"])->name("etudiant.candidature");
   Route::post("candidatures/details", [CandidatureController::class, "show"])->name("etudiant.candidaturedetails");
+  Route::post("candidatures/delete", [CandidatureController::class, "destroy"])->name("etudiant.candidaturedelete");
+
 });
 
 

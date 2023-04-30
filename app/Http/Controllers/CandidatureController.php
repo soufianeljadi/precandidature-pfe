@@ -96,8 +96,12 @@ class CandidatureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidature $candidature)
+    public function destroy(Request $request)
     {
-        //
+      // return $request;
+        $candidature = Candidature::findOrFail($request->candidature_id);
+        $candidature->delete();
+        toastr()->error(' La candidature a été bien supprimé !', " ");
+        return redirect()->route("etudiant.candidature");
     }
 }
