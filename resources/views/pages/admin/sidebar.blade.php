@@ -7,9 +7,10 @@
         </li>
 
         <li class="submenu">
-          <a href="#"><span><i style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+          <a href="#" class="subdrop"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
                 class="fa-solid fa-users"></i>Enseignants</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
+          <ul style="display: block;">
             <li><a href="{{ route('enseignants.index') }}">Tous les enseignants</a></li>
             <li><a href="{{ route('enseignant.create') }}">Ajouter un enseignant</a></li>
           </ul>
@@ -18,18 +19,20 @@
 
 
         <li class="submenu">
-          <a href="#"><span><i style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+          <a href="#" class="subdrop"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
                 class="fa-solid fa-book-open"></i>Formations</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
+          <ul style="display: block;">
             <li><a href="{{ route('formations.index') }}"> Tous les formations </a></li>
             <li><a href="{{ route('formation.create') }}"> Ajouter une formation </a></li>
 
           </ul>
         </li>
         <li class="submenu">
-          <a href="#"><span><i style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+          <a href="#" class="subdrop"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
                 class="fa-solid fa-bullhorn"></i>Avis</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
+          <ul style="display: block;">
             <li><a href="{{ route('avis.index') }}"> Tous les avis </a></li>
             <li><a href="{{ route('avis.create') }}"> Ajouter un avis </a></li>
 

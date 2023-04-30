@@ -19,6 +19,8 @@ class UserController extends Controller
     $nbr_etudiants = Etudiant::count();
     $nbr_candidatures = Candidature::count();
     $candidatures = Candidature::all();
+    $nbr_candidatures_today = DB::table('candidatures')->whereDate('created_at', '=', now()->format('Y-m-d'))->count();
+
     // $candidaturesParRegion = Region::withCount(['villes.etudiants.candidatures'])
     // ->orderByDesc('villes_count')
     // ->get()
@@ -39,6 +41,7 @@ class UserController extends Controller
       "nbr_candidatures"  => $nbr_candidatures,
       "candidatures"  => $candidatures,
       "candidaturesParRegion"  => $candidaturesParRegion,
+      "nbr_candidatures_today"  => $nbr_candidatures_today,
       // "candidaturesParRegion" => $candidaturesParRegion
 
     ]);

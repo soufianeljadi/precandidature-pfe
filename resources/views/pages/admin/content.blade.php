@@ -58,15 +58,14 @@
       <div class="card-body">
         <div class="dash-widget-header">
           <span class="dash-widget-icon text-success">
-            <i class="fe fe-credit-card"></i>
-          </span>
+            <i class="fa-regular fa-folder-open"></i> </span>
           <div class="dash-count">
-            <h3>487</h3>
+            <h3>{{ $nbr_candidatures_today }}</h3>
           </div>
         </div>
         <div class="dash-widget-info">
 
-          <h6 class="text-muted">Appointments</h6>
+          <h6 class="text-muted">Candidatures Aujourd'hui</h6>
           <div class="progress progress-sm">
             <div class="progress-bar bg-success w-50"></div>
           </div>

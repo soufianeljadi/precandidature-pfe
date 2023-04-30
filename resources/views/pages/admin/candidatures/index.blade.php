@@ -12,7 +12,7 @@
   @include('pages.admin.header')
 @endsection
 @section('sidebar')
-  @include('pages.admin.sidebar')
+  @include('pages.enseignants.sidebar')
 @endsection
 @section('content')
   {{-- Contennt --}}
@@ -136,8 +136,10 @@
                   <th>CIN</th>
                   <th>Email</th>
                   <th>Telephone</th>
-                  <th>Annee Bac</th>
-                  <th>Annee Diplome</th>
+                  <th>bac document</th>
+                  {{-- <th>Annee Bac</th>
+                  <th>Annee Diplome</th> --}}
+                  {{-- <th>Diplome document</th> --}}
 
                   <th>Action</th>
                 </tr>
@@ -153,8 +155,36 @@
                     <td>{{ $candidature->etudiant->cin }}</td>
                     <td>{{ $candidature->etudiant->email }}</td>
                     <td>{{ $candidature->etudiant->telephone }}</td>
-                    <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
-                    <td>{{ $candidature->etudiant->dossier->annee_obt_diplome }}</td>
+                    {{-- <td>
+                      <a href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->bac_document) }}"
+                        target="_blank" download>Télécharger bac <i class="fa-solid fa-download"></i></a>
+                    </td> --}}
+                    <td>
+                      <div class="dropdown dropdown-action">
+                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
+                          aria-expanded="false"><i class="fa-solid fa-folder-open"></i> Documents</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a class="dropdown-item" target="_blank"
+                            href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->photo) }}"><i
+                              class="fa-solid fa-image-portrait me-2"></i>photo
+                            personnel</a>
+                          <a class="dropdown-item" target="_blank"
+                            href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->bac_document) }}"><i
+                              class="fa-regular fa-file me-2"></i>baccalauréat</a>
+                          <a class="dropdown-item" target="_blank"
+                            href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->diplome_document) }}"><i
+                              class="fa-regular fa-file me-2"></i>diplôme</a>
+                          <a class="dropdown-item" target="_blank"
+                            href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->releve_note) }}"><i
+                              class="fa-regular fa-file me-2"></i>relevé de notes</a>
+                          <a class="dropdown-item" target="_blank"
+                            href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->cv) }}"><i
+                              class="fa-regular fa-file me-2"></i>cv</a>
+                        </div>
+                      </div>
+                    </td>
+                    {{-- <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
+                    <td>{{ $candidature->etudiant->dossier->annee_obt_diplome }}</td> --}}
 
                     <td>
                       <a data-bs-toggle="modal" href="#view_candidature_{{ $candidature->id }}"
@@ -163,8 +193,8 @@
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
                       {{-- <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
                           class="fa-solid fa-trash-can"></i></a> --}}
-                      <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
-                        data-bs-target="#delete_enseignant_{{ $candidature->id }}">
+                      <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light"
+                        data-bs-toggle="modal" data-bs-target="#delete_enseignant_{{ $candidature->id }}">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
                     </td>
