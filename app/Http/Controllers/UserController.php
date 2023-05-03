@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidature;
 use App\Models\Etudiant;
+use App\Models\Formation;
 use App\Models\Region;
 use App\Models\Ville;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +22,7 @@ class UserController extends Controller
     $nbr_etudiants = Etudiant::count();
     $nbr_candidatures = Candidature::count();
     $candidatures = Candidature::all();
+    $formations = Formation::all();
     $nbr_candidatures_today = DB::table('candidatures')->whereDate('created_at', '=', now()->format('Y-m-d'))->count();
 
     // $candidaturesParRegion = Region::withCount(['villes.etudiants.candidatures'])
@@ -35,12 +39,30 @@ class UserController extends Controller
       ->orderBy('total', 'desc')
       ->get();
 
+      $dates = CarbonPeriod::create(Carbon::now()->subDays(30), '1 day', Carbon::now())->toArray();
+
+      $candidaturesParJour = Candidature::selectRaw('date(created_at) as jour, count(*) as nombreCandidatures')
+      ->where('created_at', '>=', Carbon::now()->subDays(30))
+      ->groupBy('jour')
+      ->get();
+
+      $results = collect($dates)->map(function ($date) use ($candidaturesParJour) {
+        $candidature = $candidaturesParJour->firstWhere('jour', $date->toDateString());
+        return [
+            'jour' => $date->toDateString(),
+            'nombreCandidatures' => $candidature ? $candidature->nombreCandidatures : 0,
+        ];
+    });
+
+
 
     return view("pages.admin.dashboard")->with([
       "nbr_etudiants"  => $nbr_etudiants,
       "nbr_candidatures"  => $nbr_candidatures,
       "candidatures"  => $candidatures,
+      "formations"  => $formations,
       "candidaturesParRegion"  => $candidaturesParRegion,
+      "candidaturesParJour"  => $results,
       "nbr_candidatures_today"  => $nbr_candidatures_today,
       // "candidaturesParRegion" => $candidaturesParRegion
 

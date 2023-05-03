@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-  <title>USMS - Connexion Espace Administratif</title>
+  <title>ESTFBS - Connexion Espace Administratif</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/estfbs-ico.png') }}">

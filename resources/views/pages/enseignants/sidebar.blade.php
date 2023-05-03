@@ -6,13 +6,11 @@
           <span><i class="fe fe-home"></i>Enseignant</span>
         </li>
 
-        <li class="submenu">
-          <a href="#"><span><i style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
-                class="fa-solid fa-users"></i>Profil</span> <span class="menu-arrow"></span></a>
-          <ul style="display: none;">
-            <li><a href="{{ route('enseignants.index') }}">Tous les enseignants</a></li>
-            <li><a href="{{ route('enseignant.create') }}">Ajouter un enseignant</a></li>
-          </ul>
+
+        <li>
+          <a href="{{ route('enseignant.dashboard') }}"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+                class="fa-solid fa-chart-line"></i>Dashboard</span></a>
         </li>
         <li>
           <a href="{{ route('candidatures.list') }}"><span><i

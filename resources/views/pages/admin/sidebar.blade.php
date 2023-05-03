@@ -47,7 +47,7 @@
         <li>
           <a href="{{ route('candidatures.list') }}"><span><i
                 style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
-                class="fa-solid fa-users-rectangle"></i>Demandes</span></a>
+                class="fa-solid fa-chalkboard-user"></i>Gestion de locaux</span></a>
         </li>
       </ul>
     </div>

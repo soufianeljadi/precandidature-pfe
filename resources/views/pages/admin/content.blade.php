@@ -97,14 +97,8 @@
 
 </div>
 <div class="row">
-  <div class="col">
-    <p>{{ $candidatures }}</p>
-    <p>{{ $candidaturesParRegion }}</p>
 
-    <br>
-    {{-- <span>{{ $candidaturesParRegion }}</span> --}}
-  </div>
-  <div class="col-md-12 col-lg-12">
+  <div class="col-md-12 col-lg-6">
 
     <!-- Sales Chart -->
     <div class="card card-chart">
@@ -124,7 +118,7 @@
     <!-- Invoice Chart -->
     <div class="card card-chart">
       <div class="card-header">
-        <h4 class="card-title">Status</h4>
+        <h4 class="card-title">Nombre des candidatures par Jour</h4>
       </div>
       <div class="card-body">
         <div id="morrisLine"></div>
@@ -257,80 +251,32 @@
     <!-- Feed Activity -->
     <div class="card  card-table flex-fill">
       <div class="card-header">
-        <h4 class="card-title">Mentee List</h4>
+        <h4 class="card-title">Formations</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-hover table-center mb-0">
             <thead>
               <tr>
-                <th>Mentee Name</th>
-                <th>Phone</th>
-                <th>Last Visit</th>
-                <th class="text-end">Paid</th>
+                <th>Formation</th>
+                <th>Nombre de Candidatures</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jonathan Doe </a>
-                  </h2>
-                </td>
-                <td>8286329170</td>
-                <td>20 Oct 2019</td>
-                <td class="text-end">$100.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user1.jpg" alt="User Image"></a>
-                    <a href="profile.html">Julie Pennington </a>
-                  </h2>
-                </td>
-                <td>2077299974</td>
-                <td>22 Oct 2019</td>
-                <td class="text-end">$200.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user2.jpg" alt="User Image"></a>
-                    <a href="profile.html">Tyrone Roberts</a>
-                  </h2>
-                </td>
-                <td>2607247769</td>
-                <td>21 Oct 2019</td>
-                <td class="text-end">$250.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user3.jpg" alt="User Image"></a>
-                    <a href="profile.html">Allen Davis </a>
-                  </h2>
-                </td>
-                <td>5043686874</td>
-                <td>21 Sep 2019</td>
-                <td class="text-end">$150.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user4.jpg" alt="User Image"></a>
-                    <a href="profile.html">Patricia Manzi </a>
-                  </h2>
-                </td>
-                <td>9548207887</td>
-                <td>18 Sep 2019</td>
-                <td class="text-end">$350.00</td>
-              </tr>
+              @foreach ($formations as $formation)
+                <tr>
+                  <td>
+                    <h2 class="table-avatar">
+                      <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
+                          src="admin_assets/img/user/user.jpg" alt="User Image"></a>
+                      <a href="profile.html">{{ $formation->nom }}</a>
+                    </h2>
+                  </td>
+                  <td>{{ count($formation->candidatures) }}</td>
+                </tr>
+              @endforeach
+
+
             </tbody>
           </table>
         </div>
@@ -340,172 +286,7 @@
 
   </div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <!-- Recent Orders -->
-    <div class="card card-table">
-      <div class="card-header">
-        <h4 class="card-title">Booking List</h4>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover table-center mb-0">
-            <thead>
-              <tr>
-                <th>Mentor Name</th>
-                <th>Course</th>
-                <th>Mentee Name</th>
-                <th>Booking Time</th>
-                <th>Status</th>
-                <th class="text-end">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-08.jpg" alt="User Image"></a>
-                    <a href="profile.html">James Amen</a>
-                  </h2>
-                </td>
-                <td>Maths</td>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jonathan Doe </a>
-                  </h2>
-                </td>
-                <td>9 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.15 AM</span></td>
-                <td>
-                  <div class="status-toggle">
-                    <input type="checkbox" id="status_1" class="check" checked>
-                    <label for="status_1" class="checktoggle">checkbox</label>
-                  </div>
-                </td>
-                <td class="text-end">
-                  $200.00
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-07.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jessica Fogarty</a>
-                  </h2>
-                </td>
-                <td>Business Maths</td>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user1.jpg" alt="User Image"></a>
-                    <a href="profile.html">Julie Pennington </a>
-                  </h2>
-                </td>
 
-                <td>5 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.35 AM</span></td>
-                <td>
-                  <div class="status-toggle">
-                    <input type="checkbox" id="status_2" class="check" checked>
-                    <label for="status_2" class="checktoggle">checkbox</label>
-                  </div>
-                </td>
-                <td class="text-end">
-                  $300.00
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-17.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jose Anderson</a>
-                  </h2>
-                </td>
-                <td>Algebra</td>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user2.jpg" alt="User Image"></a>
-                    <a href="profile.html">Tyrone Roberts</a>
-                  </h2>
-                </td>
-                <td>11 Nov 2019 <span class="text-primary d-block">12.00 PM - 12.15 PM</span></td>
-                <td>
-                  <div class="status-toggle">
-                    <input type="checkbox" id="status_3" class="check" checked>
-                    <label for="status_3" class="checktoggle">checkbox</label>
-                  </div>
-                </td>
-                <td class="text-end">
-                  $150.00
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-06.jpg" alt="User Image"></a>
-                    <a href="profile.html">Sofia Brient</a>
-                  </h2>
-                </td>
-                <td>Integrated Sum</td>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user3.jpg" alt="User Image"></a>
-                    <a href="profile.html">Allen Davis </a>
-                  </h2>
-                </td>
-                <td>7 Nov 2019<span class="text-primary d-block">1.00 PM - 1.20 PM</span></td>
-                <td>
-                  <div class="status-toggle">
-                    <input type="checkbox" id="status_4" class="check" checked>
-                    <label for="status_4" class="checktoggle">checkbox</label>
-                  </div>
-                </td>
-                <td class="text-end">
-                  $150.00
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-14.jpg" alt="User Image"></a>
-                    <a href="profile.html">Marvin Campbell</a>
-                  </h2>
-                </td>
-                <td>Flow chart</td>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/user/user4.jpg" alt="User Image"></a>
-                    <a href="profile.html">Patricia Manzi </a>
-                  </h2>
-                </td>
-
-                <td>15 Nov 2019 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
-                <td>
-                  <div class="status-toggle">
-                    <input type="checkbox" id="status_5" class="check" checked>
-                    <label for="status_5" class="checktoggle">checkbox</label>
-                  </div>
-                </td>
-                <td class="text-end">
-                  $200.00
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- /Recent Orders -->
-  </div>
-</div>
 
 
 @section('scripts')
@@ -548,45 +329,39 @@
 
 
       /* Morris Line Chart */
+      var candidaturesParJour = {!! json_encode($candidaturesParJour) !!};
+      var maxCandidatures = Math.max.apply(Math, candidaturesParJour.map(function(c) {
+        return c.nombreCandidatures;
+      }));
+      var yLabelInterval = Math.ceil(maxCandidatures / 5);
 
       window.mL = Morris.Line({
         element: 'morrisLine',
-        data: [{
-            y: '2015',
-            a: 100,
-            b: 30
-          },
-          {
-            y: '2016',
-            a: 20,
-            b: 60
-          },
-          {
-            y: '2017',
-            a: 90,
-            b: 120
-          },
-          {
-            y: '2018',
-            a: 50,
-            b: 80
-          },
-          {
-            y: '2019',
-            a: 120,
-            b: 150
-          },
-        ],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Mentors', 'Mentees'],
-        lineColors: ['#1b5a90', '#ff9d00'],
+        data: candidaturesParJour,
+        xkey: 'jour',
+        ykeys: ['nombreCandidatures'],
+        labels: ['nombre des Candidatures'],
+        lineColors: ['#ff9d00'],
         lineWidth: 1,
         gridTextSize: 10,
         hideHover: 'auto',
         resize: true,
+        parseTime: false,
+        ymin: 0,
+        ymax: maxCandidatures,
+        xLabelMargin: 10, // Add some margin to the X-axis labels
+        xLabelAngle: 90, // Rotate the X-axis labels by 45 degrees
+
+        yLabelFormat: function(y) {
+          return Math.round(y); // format labels as integers
+        },
+        yLabelInterval: Math.ceil(maxCandidatures / 5), // set interval between labels based on maximum value
+
+
         redraw: true
       });
+      $('svg').height(500);
+
       $(window).on("resize", function() {
         mA.redraw();
         mL.redraw();

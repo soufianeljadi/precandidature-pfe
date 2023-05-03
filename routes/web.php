@@ -66,8 +66,8 @@ Route::middleware('auth:etudiant')->group(function () {
 Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard", [EnseignantController::class, "index"])->name("enseignant.dashboard");
   Route::get("/tous-candidatures-estfbs", [CandidatureController::class, "candidatures"])->name("candidatures.list");
-  Route::get("/candidats-excel", [EtudiantController::class, "exportExcel"])->name("candidats.excel");
-  Route::post("/filtrer-resultats",[CandidatureController::class,"filtrer"])->name("candidatures.filter");
+  Route::get("/export-excel", [CandidatureController::class, "exportExcel"])->name("export.excel");
+  // Route::get("/filtrer-resultats",[CandidatureController::class,"filtrer"])->name("candidatures.filter");
 });
 
 Route::view("/test", "test");

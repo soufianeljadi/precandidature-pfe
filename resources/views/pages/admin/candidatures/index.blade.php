@@ -48,21 +48,24 @@
           @endif --}}
 
         <div class="card-body">
-          <a href="/candidats-excel" class="btn btn-sm btn-success m-2"><i class="fa-solid fa-file-excel me-1"></i>Tous
-            les
-            candidats</a>
+
           {{-- Filter --}}
           <div class="card report-card bg-light">
             <div class="card-body ">
-              <form action="{{ route('candidatures.filter') }}" method="post">
-                @csrf
+              <form id="filterForm" action="{{ url('/tous-candidatures-estfbs') }}" method="GET">
                 <div class="row">
                   <div class="col-md-12">
                     <ul class="app-listing row">
 
                       <li class="col-2">
                         <label class="col-form-label ">Année obtention BAC</label>
-                        <input type="text" class="form-control bg-grey" name="annee_bac" placeholder="2021">
+                        <input type="text" class="form-control bg-grey" name="annee_bac" placeholder="2021"
+                          value="{{ Request::get('annee_bac') }}">
+                      </li>
+                      <li class="col-2">
+                        <label class="col-form-label ">Note BAC</label>
+                        <input type="text" class="form-control bg-grey" name="moyenne_bac" placeholder="17.2"
+                          value="{{ Request::get('moyenne_bac') }}">
                       </li>
                       <li class="col-2">
                         <label class="col-form-label ">Mention Bac</label>
@@ -78,17 +81,23 @@
                         <label class="col-form-label ">Type Bac</label>
                         <select class="form-control" name="serie_bac">
                           <option selected disabled>-- Select --</option>
-                          <option value="sma">Science Math A </option>
-                          <option value="smb">Science Math B </option>
-                          <option value="pc">Science Physiques </option>
-                          <option value="svt">Science vie et terre </option>
-                          <option value="autre">Autre</option>
+                          <option {{ Request::get('serie_bac') == 'sma' ? 'selected' : '' }} value="sma">Science Math A
+                          </option>
+                          <option {{ Request::get('serie_bac') == 'smb' ? 'selected' : '' }} value="smb">Science Math B
+                          </option>
+                          <option {{ Request::get('serie_bac') == 'pc' ? 'selected' : '' }} value="pc">Science
+                            Physiques
+                          </option>
+                          <option {{ Request::get('serie_bac') == 'svt' ? 'selected' : '' }} value="svt">Science vie et
+                            terre </option>
+                          <option {{ Request::get('serie_bac') == 'autre' ? 'selected' : '' }} value="autre">Autre
+                          </option>
                         </select>
                       </li>
 
                       <li>
                         <label class="col-form-label ">Année obtention diplome </label>
-                        <input type="text" class="form-control bg-grey" name="annee_obt_bac" placeholder="2021">
+                        <input type="text" class="form-control bg-grey" name="annee_diplome" placeholder="2021">
                       </li>
                       <li class="col-2">
                         <label class="col-form-label ">Mention Diplome</label>
@@ -115,14 +124,26 @@
 
 
                     </ul>
-                    <div class="my-2">
-                      <button type="submit" class="form-control text-white btn btn-primary">
-                        Filtrer les résultats
-                      </button>
+                    <div class="row">
+                      <div class="my-2 col">
+                        <button type="submit" class="form-control text-white btn btn-primary">
+                          Filtrer les résultats
+                        </button>
+                      </div>
+                      <div class="my-2 col">
+                        <button id="resetbtn" type="reset" class="form-control text-white btn btn-secondary">
+                          Reset
+                        </button>
+
+                      </div>
+                      <div class="my-2 col">
+                        <a href="{{ route('export.excel') }}" class="btn btn-success">Excel</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
           {{-- Filter --}}
@@ -132,11 +153,14 @@
               <thead>
                 <tr>
                   <th>Nom et Prénom</th>
+                  <th>Annee Bac</th>
+                  <th>Moyenne Bac</th>
+                  <th>Type Bac</th>
                   <th>Code Massar</th>
                   <th>CIN</th>
-                  <th>Email</th>
-                  <th>Telephone</th>
-                  <th>bac document</th>
+
+
+                  <th>Dossier d'inscription</th>
                   {{-- <th>Annee Bac</th>
                   <th>Annee Diplome</th> --}}
                   {{-- <th>Diplome document</th> --}}
@@ -148,13 +172,15 @@
 
 
 
-                @foreach (auth()->user()->formation->candidatures as $candidature)
+                @foreach ($candidatures as $candidature)
                   <tr>
                     <td>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</td>
+                    <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
+                    <td>{{ $candidature->etudiant->dossier->moyenne_bac }}</td>
+                    <td>{{ $candidature->etudiant->dossier->serie_bac }}</td>
                     <td>{{ $candidature->etudiant->code_massar }}</td>
                     <td>{{ $candidature->etudiant->cin }}</td>
-                    <td>{{ $candidature->etudiant->email }}</td>
-                    <td>{{ $candidature->etudiant->telephone }}</td>
+
                     {{-- <td>
                       <a href="{{ asset('storage/documents/' . $candidature->etudiant->code_massar . '/' . $candidature->etudiant->dossier->bac_document) }}"
                         target="_blank" download>Télécharger bac <i class="fa-solid fa-download"></i></a>
@@ -199,446 +225,6 @@
                       </button>
                     </td>
                   </tr>
-
-                  <!-- Delete enseignant  Modal -->
-
-                  <!-- Modal -->
-                  {{-- <div class="modal fade" id="delete_enseignant_{{ $enseignant->id }}" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer Enseignant</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div>
-                            Êtes-vous sûr de supprimer l'enseignant : <br>{{ $enseignant->nom }}
-                            {{ $enseignant->prenom }}
-
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                          <form action="{{ route('enseignant.delete') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="enseignant_id" value="{{ $enseignant->id }}">
-                            <input type="submit" value="Supprimer" class="btn btn-danger">
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div> --}}
-                  <!-- Edit Details Modal -->
-                  {{-- <div class="modal fade" id="edit_enseignant_{{ $enseignant->id }}" aria-hidden="true" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Details Enseignant</h5>
-                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form action="{{ route('enseignant.update') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $enseignant->id }}">
-
-                            <div class="row form-row">
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Nom</label>
-                                  <input type="text" name="nom"
-                                    class="form-control @error('nom') is-invalid @enderror"
-                                    value="{{ $enseignant->nom }}">
-                                  @error('nom')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Prénom</label>
-                                  <input type="text" name="prenom"
-                                    class="form-control @error('prenom') is-invalid @enderror"
-                                    value="{{ $enseignant->prenom }}">
-                                  @error('nom')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>CIN</label>
-
-                                  <input type="text" name="cin"
-                                    class="form-control @error('cin') is-invalid @enderror"
-                                    value="{{ $enseignant->cin }}">
-                                  @error('cin')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Date de naissance</label>
-
-                                  <input type="date" name="date_naissance"
-                                    class="form-control @error('date_naissance') is-invalid @enderror"
-                                    value="{{ $enseignant->date_naissance }}">
-                                  @error('date_naissance')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Ville</label>
-
-                                  <input type="text" name="ville"
-                                    class="form-control @error('ville') is-invalid @enderror"
-                                    value="{{ $enseignant->ville }}">
-                                  @error('ville')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Nationalité</label>
-
-                                  <input type="text" name="nationalite"
-                                    class="form-control @error('nationalite') is-invalid @enderror"
-                                    value="{{ $enseignant->nationalite }}">
-                                  @error('nationalite')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Email</label>
-
-                                  <input type="email" name="email"
-                                    class="form-control @error('email') is-invalid @enderror"
-                                    value="{{ $enseignant->email }}">
-                                  @error('email')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-
-                                  <label>Mot de passe</label>
-
-                                  <input type="password" name="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    value="{{ $enseignant->password }}">
-                                  @error('password')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12">
-                                <div class="form-group">
-
-
-                                  <label>Adresse</label>
-
-
-                                  <input type="text" name="adresse"
-                                    class="form-control @error('adresse') is-invalid @enderror"
-                                    value="{{ $enseignant->adresse }}">
-                                  @error('adresse')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-
-                              </div>
-                              <div class="col-12">
-                                <h5 class="form-title"><span>Informations professionnels</span></h5>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Matricule</label>
-
-                                  <input type="text" name="matricule"
-                                    class="form-control @error('matricule') is-invalid @enderror"
-                                    value="{{ $enseignant->matricule }}">
-                                  @error('matricule')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label class="col-lg-3 col-form-label">Téléphone</label>
-
-                                  <input type="number" name="telephone"
-                                    class="form-control @error('telephone') is-invalid @enderror"
-                                    value="{{ $enseignant->telephone }}">
-                                  @error('telephone')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-                              </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-block w-100">Sauvegarder les
-                              modifications</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div> --}}
-
-                  {{-- View Modal enseignant --}}
-                  {{-- <div class="modal fade" id="view_candidature_{{ $candidature->id }}" aria-hidden="true" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Details Candidature : </h5>
-                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form action="" method="POST">
-
-
-                            <div class="row form-row">
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Nom</label>
-                                  <input disabled type="text" name="nom" disabled
-                                    class="form-control @error('nom') is-invalid @enderror"
-                                    value="{{ $enseignant->nom }}">
-                                  @error('nom')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Prénom</label>
-                                  <input disabled type="text" name="prenom" disabled
-                                    class="form-control @error('prenom') is-invalid @enderror"
-                                    value="{{ $enseignant->prenom }}">
-                                  @error('prenom')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>CIN</label>
-
-                                  <input disabled type="text" name="cin"
-                                    class="form-control @error('cin') is-invalid @enderror"
-                                    value="{{ $enseignant->cin }}">
-                                  @error('cin')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Date de naissance</label>
-
-                                  <input disabled type="date" name="date_naissance"
-                                    class="form-control @error('date_naissance') is-invalid @enderror"
-                                    value="{{ $enseignant->date_naissance }}">
-                                  @error('date_naissance')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label>Ville</label>
-
-                                  <input disabled type="text" name="ville"
-                                    class="form-control @error('ville') is-invalid @enderror"
-                                    value="{{ $enseignant->ville }}">
-                                  @error('ville')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Nationalité</label>
-
-                                  <input disabled type="text" name="nationalite"
-                                    class="form-control @error('nationalite') is-invalid @enderror"
-                                    value="{{ $enseignant->nationalite }}">
-                                  @error('nationalite')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Email</label>
-
-                                  <input disabled type="email" name="email"
-                                    class="form-control @error('email') is-invalid @enderror"
-                                    value="{{ $enseignant->email }}">
-                                  @error('email')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-
-                                  <label>Mot de passe</label>
-
-                                  <input disabled type="password" name="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    value="{{ $enseignant->password }}">
-                                  @error('password')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-
-                                </div>
-                              </div>
-                              <div class="col-12">
-                                <div class="form-group">
-
-
-                                  <label>Adresse</label>
-
-
-                                  <input disabled type="text" name="adresse"
-                                    class="form-control @error('adresse') is-invalid @enderror"
-                                    value="{{ $enseignant->adresse }}">
-                                  @error('adresse')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-
-
-                              </div>
-                              <div class="col-12">
-                                <h5 class="form-title"><span>Informations professionnels</span></h5>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-
-                                  <label>Matricule</label>
-
-                                  <input disabled type="text" name="matricule"
-                                    class="form-control @error('matricule') is-invalid @enderror"
-                                    value="{{ $enseignant->matricule }}">
-                                  @error('matricule')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-
-                                </div>
-                              </div>
-                              <div class="col-12 col-sm-4">
-                                <div class="form-group">
-                                  <label class="col-lg-3 col-form-label">Téléphone</label>
-
-                                  <input disabled type="number" name="telephone"
-                                    class="form-control @error('telephone') is-invalid @enderror"
-                                    value="{{ $enseignant->telephone }}">
-                                  @error('telephone')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
-                              </div>
-                            </div>
-
-
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div> --}}
                 @endforeach
 
               </tbody>
@@ -656,4 +242,25 @@
       $('#myTable').DataTable();
     });
   </script> --}}
+  <script>
+    document.getElementById('filter-button').addEventListener('click', function() {
+      // Retrieve filter values
+      var annee_bac = document.getElementById('annee_bac').value;
+      var serie_bac = document.getElementById('serie_bac').value;
+
+      // Send AJAX request
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/candidatures?annee_bac=' + annee_bac + '&serie_bac=' + serie_bac);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Update table with filtered data
+          var table = document.getElementById('candidatures-table');
+          table.innerHTML = xhr.responseText;
+        } else {
+          console.error('Error: ' + xhr.statusText);
+        }
+      };
+      xhr.send();
+    });
+  </script>
 @endsection
