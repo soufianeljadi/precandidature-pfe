@@ -74,7 +74,9 @@ class Etudiant extends Authenticatable
   //Check the student has enter all informations in his profile
   public function isProfileComplete()
   {
-    $requiredFields = ['nom', 'nom_ar', 'prenom', 'prenom_ar', 'code_massar', 'cin', 'lieu_naissance', 'lieu_naissance_ar'];
+    $requiredFields = ['nom', 'nom_ar', 'prenom', 'prenom_ar', 'code_massar', 'cin', 'lieu_naissance', 'lieu_naissance_ar','date_naissance','province_naissance',
+  'telephone','ville','sexe','adresse_perso3','adresse_perso2','adresse_perso1','situation_familiale','pays','email','fonctionnaire'];
+    $requiredFields = array_merge($requiredFields,'annee_obt_bac','moyenne_bac','serie_bac','province_bac','mention_bac','academie','type_diplome','etablissement');
     foreach ($requiredFields as $field) {
       if (empty($this->$field)) {
         return false;
@@ -88,7 +90,9 @@ class Etudiant extends Authenticatable
   // calculate the percentage of profile completion
   public function profileCompletionPercentage()
   {
-    $requiredFields = ['nom', 'nom_ar', 'prenom', 'prenom_ar', 'code_massar', 'cin', 'lieu_naissance', 'lieu_naissance_ar'];
+    $requiredFields = ['nom', 'nom_ar', 'prenom', 'prenom_ar', 'code_massar', 'cin', 'lieu_naissance', 'lieu_naissance_ar','date_naissance','province_naissance',
+    'telephone','ville','sexe','adresse_perso3','adresse_perso2','adresse_perso1','situation_familiale','pays','email','fonctionnaire'];
+      $requiredFields = array_merge($requiredFields,['annee_obt_bac','moyenne_bac','serie_bac','province_bac','mention_bac','academie','type_diplome','etablissement']);
 
     $totalFields = count($requiredFields);
 
@@ -103,7 +107,7 @@ class Etudiant extends Authenticatable
 
     // Calculate the percentage of filled fields
     $percentage = $filledFields / $totalFields * 100;
-
+    $percentage = number_format($percentage, 2);
     return $percentage;
   }
 
