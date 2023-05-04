@@ -47,13 +47,13 @@ class EnseignantController extends Controller
       $enseignant->prenom = $request->prenom;
       $enseignant->date_naissance = $request->date_naissance;
       $enseignant->email = $request->email;
+      $enseignant->password = Hash::make($request->password);
       $enseignant->telephone = $request->telephone;
       $enseignant->cin = $request->cin;
       $enseignant->adresse = $request->adresse;
       $enseignant->ville = $request->ville;
       $enseignant->nationalite = $request->nationalite;
       $enseignant->matricule = $request->matricule;
-      $enseignant->password = Hash::make($request->password);
       $enseignant->save();
       toastr()->success('Data saved Successfully !');
       return redirect()->route("enseignants.index");
@@ -84,19 +84,19 @@ class EnseignantController extends Controller
   public function update(StoreEnseignantRequest $request)
   {
     try {
-      $Enseignant = Enseignant::find($request->id);
-      $Enseignant->nom = $request->nom;
-      $Enseignant->prenom = $request->prenom;
-      $Enseignant->date_naissance = $request->date_naissance;
-      $Enseignant->email = $request->email;
-      $Enseignant->telephone = $request->telephone;
-      $Enseignant->cin = $request->cin;
-      $Enseignant->adresse = $request->adresse;
-      $Enseignant->ville = $request->ville;
-      $Enseignant->nationalite = $request->nationalite;
-      $Enseignant->matricule = $request->matricule;
-      $Enseignant->password = Hash::make($request->password);
-      $Enseignant->save();
+      $enseignant = Enseignant::find($request->id);
+      $enseignant->nom = $request->nom;
+      $enseignant->prenom = $request->prenom;
+      $enseignant->date_naissance = $request->date_naissance;
+      $enseignant->email = $request->email;
+      $enseignant->telephone = $request->telephone;
+      $enseignant->cin = $request->cin;
+      $enseignant->adresse = $request->adresse;
+      $enseignant->ville = $request->ville;
+      $enseignant->nationalite = $request->nationalite;
+      $enseignant->matricule = $request->matricule;
+      $enseignant->password = Hash::make($request->password);
+      $enseignant->save();
       toastr()->success('Data saved Successfully !');
       return redirect()->route("enseignants.index");
     } catch (\Throwable $th) {

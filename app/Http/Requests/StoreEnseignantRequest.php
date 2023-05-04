@@ -21,7 +21,7 @@ class StoreEnseignantRequest extends FormRequest
    */
   public function rules(): array
   {
-    return [
+    $rules =  [
       "nom" => "required",
       "prenom" => "required",
       "date_naissance" => "required",
@@ -31,9 +31,9 @@ class StoreEnseignantRequest extends FormRequest
       "ville" => "required",
       "adresse" => "required",
       "email" => "required|email|unique:enseignants,email,". $this->id,
-      "password" => "required|min:8",
       "matricule" => "required|unique:enseignants,matricule," . $this->id
     ];
+    return $rules;
   }
   // public function messages()
   // {

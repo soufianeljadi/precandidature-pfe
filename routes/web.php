@@ -6,6 +6,7 @@ use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\LocalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -87,7 +88,7 @@ Route::middleware('auth:web')->group(function () {
   //? enseignant controle
   Route::get("/enseignants", [EnseignantController::class, "tousEnseignants"])->name("enseignants.index");
   Route::get("/ajouter-enseignant", [EnseignantController::class, "create"])->name("enseignant.create");
-  Route::post("/sauvgarder-enseignant", [EnseignantController::class, "store"])->name("enseignant.store");
+  Route::post("/save-enseignant", [EnseignantController::class, "store"])->name("enseignant.store");
   Route::post('/supprimer-enseignant', [EnseignantController::class, 'destroy'])->name('enseignant.delete');
   Route::post('/updateenseign', [EnseignantController::class, 'update'])->name('enseignant.update');
 
@@ -107,7 +108,9 @@ Route::middleware('auth:web')->group(function () {
   Route::get("/tous-etudiants", [EtudiantController::class, "tousEtudiants"])->name("etudiant.list");
   Route::post('/supprimer-etudiant', [EtudiantController::class, 'destroy'])->name('etudiant.delete');
   Route::post('/update-etudiant', [EtudiantController::class, 'update'])->name('etudiant.update');
-  //? Candidatures
+  //? Gestion des locaux
+  Route::get('/gestion-locaux', [LocalController::class, 'index'])->name('locaux.index');
+  Route::post('/gestion-locaux', [LocalController::class, 'store'])->name('locaux.store');
 });
 
 

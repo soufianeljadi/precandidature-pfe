@@ -85,8 +85,9 @@
                     <td>
                       <a data-bs-toggle="modal" href="#view_etudiant_{{ $etudiant->id }}"
                         class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
-                      <a data-bs-toggle="modal" href="#editetudiant_{{ $etudiant->id }}"
-                        class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
+                      {{-- Edit btn --}}
+                      {{-- <a data-bs-toggle="modal" href="#editetudiant_{{ $etudiant->id }}"
+                        class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a> --}}
 
                       <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
                         data-bs-target="#delete_etudiant_{{ $etudiant->id }}">

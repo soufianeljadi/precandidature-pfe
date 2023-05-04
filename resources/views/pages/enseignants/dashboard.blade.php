@@ -9,7 +9,7 @@
 
 {{-- TODO Change the header , diplay enseignant header --}}
 @section('header')
-  @include('pages.admin.header')
+  @include('pages.enseignants.header')
 @endsection
 @section('content')
   {{-- Contennt --}}

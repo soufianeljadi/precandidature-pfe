@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidature;
+use App\Models\Enseignant;
 use App\Models\Etudiant;
 use App\Models\Formation;
 use App\Models\Region;
@@ -20,6 +21,7 @@ class UserController extends Controller
   public function index()
   {
     $nbr_etudiants = Etudiant::count();
+    $nbr_enseignants = Enseignant::count();
     $nbr_candidatures = Candidature::count();
     $candidatures = Candidature::all();
     $formations = Formation::all();
@@ -58,6 +60,7 @@ class UserController extends Controller
 
     return view("pages.admin.dashboard")->with([
       "nbr_etudiants"  => $nbr_etudiants,
+      "nbr_enseignants"  => $nbr_enseignants,
       "nbr_candidatures"  => $nbr_candidatures,
       "candidatures"  => $candidatures,
       "formations"  => $formations,

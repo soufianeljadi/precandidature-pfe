@@ -17,9 +17,13 @@ class EtudiantsExport implements FromView
 
     private $candidatures;
 
-    public function __construct($candidatures)
+    public function __construct(array $candidatures)
     {
         $this->candidatures = $candidatures;
+    }
+    public function array(): array
+    {
+        return $this->candidatures;
     }
 
     public function view() : View

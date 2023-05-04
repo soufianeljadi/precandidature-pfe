@@ -44,6 +44,12 @@ class AvisController extends Controller
       'debut_precandidature' => 'required',
       'fin_precandidature' => 'required',
     ]);
+    if($request->formation_id == null ){
+      $formation = Formation::findOrFail($request->formation_id);
+      if($formation->avis){
+        return redirect()->back()->withErrors(['error' => "Un avis est deja cree pour la formation : " . $formation->nom ]);
+      }
+    }
     try {
       Avis::create([
         "debut_precandidature" => $request->debut_precandidature,

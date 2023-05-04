@@ -3,6 +3,9 @@
 @section('title')
   Lancer un avis
 @endsection
+@section('header')
+  @include('pages.admin.header')
+@endsection
 @section('sidebar')
   @include('pages.admin.sidebar')
 @endsection
@@ -86,7 +89,7 @@
                           @if (!isset($formation->avis))
                             <option value="{{ $formation->id }}">{{ $formation->nom }} </option>
                           @else
-                            <option disabled value="{{ $formation->id }}">{{ $formation->nom }} </option>
+                            <option disabled>{{ $formation->nom }} </option>
                           @endif
                         @empty
                           <option disabled>Aucunne formation</option>

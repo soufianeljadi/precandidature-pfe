@@ -384,7 +384,7 @@
                       @if (isset(auth()->user()->photo))
                         <div class="d-flex">
                           <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
-                            target="_blank" download class="">p hoto_personnelle<i
+                            target="_blank" download class="">photo_personnelle.png<i
                               class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
@@ -596,7 +596,7 @@
                       @if (isset(auth()->user()->dossier->bac_document))
                         <div class="d-flex">
                           <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->bac_document) }}"
-                            target="_blank" download>Télécharger <i class="fa-solid fa-download"></i></a>
+                            target="_blank" download>bac.pdf <i class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
 
@@ -839,7 +839,7 @@
                       @if (isset(auth()->user()->dossier->diplome_document))
                         <div class="d-flex">
                           <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->diplome_document) }}"
-                            target="_blank" download class="">Télécharger <i
+                            target="_blank" download class="">diplôme.pdf <i
                               class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
@@ -867,8 +867,7 @@
                       @if (isset(auth()->user()->dossier->cv))
                         <div class="d-flex">
                           <a href="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->dossier->cv) }}"
-                            target="_blank" download class="">Télécharger <i
-                              class="fa-solid fa-download"></i></a>
+                            target="_blank" download class="">cv.pdf <i class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
 
