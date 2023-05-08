@@ -77,7 +77,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="copyright-text">
-              <p class="mb-0">&copy; 2023 USMS.</p>
+              <p class="mb-0">&copy; 2023 USMS. <span style="color: #FF9800;">Créé par Anass Nabil & Soufiane EL Jadi
+                </span>
+              </p>
             </div>
           </div>
           <div class="col-md-6">

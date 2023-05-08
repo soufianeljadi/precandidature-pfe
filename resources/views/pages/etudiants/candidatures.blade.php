@@ -65,8 +65,10 @@
                       <form action="{{ route('etudiant.candidaturedetails') }}" method="post">
                         @csrf
                         <input type="hidden" name="candidature_id" value="{{ $candidature->id }}">
-                        <button class="btn btn-sm bg-info-light" type="submit"><i class="far fa-eye"></i> VOIR</button>
-                        <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal" data-bs-target="#delete_candidature_{{ $candidature->id }}" ><i class="fa-solid fa-trash-can"></i> SUPPRIMER</a>
+                        <button class="btn btn-sm bg-info-light" type="submit"><i class="far fa-eye"></i> Reçu</button>
+                        <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal"
+                          data-bs-target="#delete_candidature_{{ $candidature->id }}"><i
+                            class="fa-solid fa-trash-can"></i> SUPPRIMER</a>
 
                       </form>
                     </td>

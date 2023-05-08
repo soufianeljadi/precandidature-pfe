@@ -9,6 +9,8 @@ use App\Http\Controllers\FormationController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Candidature;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +52,7 @@ Route::middleware('auth:etudiant')->group(function () {
 
   //? Les candidatures
   Route::get("mes-candidatures", [CandidatureController::class, "index"])->name("etudiant.candidature");
+
   Route::post("candidatures/details", [CandidatureController::class, "show"])->name("etudiant.candidaturedetails");
   Route::post("candidatures/delete", [CandidatureController::class, "destroy"])->name("etudiant.candidaturedelete");
 

@@ -6,10 +6,12 @@ use App\Exports\EtudiantsExport;
 use App\Models\Candidature;
 use App\Models\Enseignant;
 use App\Models\Region;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\Console\Input\Input;
+use Dompdf\Dompdf;
 
 class CandidatureController extends Controller
 {
@@ -37,6 +39,14 @@ class CandidatureController extends Controller
         });
       });
     }
+    if ($request->has('annee_diplome') && $request->get('annee_diplome') != "") {
+      $annee_diplome = $request->get('annee_diplome');
+      $query->whereHas('etudiant', function ($query) use ($annee_diplome) {
+        $query->whereHas('dossier', function ($query) use ($annee_diplome) {
+          $query->where('annee_obt_diplome', $annee_diplome);
+        });
+      });
+    }
 
     if ($request->has('serie_bac') && $request->get('serie_bac') != "") {
       $serie_bac = $request->get('serie_bac');
@@ -54,7 +64,23 @@ class CandidatureController extends Controller
         });
       });
     }
+    if ($request->has('mention_diplome') && $request->get('mention_diplome') != "") {
+      $mention_diplome = $request->get('mention_diplome');
+      $query->whereHas('etudiant', function ($query) use ($mention_diplome) {
+        $query->whereHas('dossier', function ($query) use ($mention_diplome) {
+          $query->where('mention_diplome', "=", $mention_diplome);
+        });
+      });
+    }
 
+    if ($request->has('region') && $request->get('region') != "") {
+      $region = $request->get('region');
+      $query->whereHas('etudiant', function ($query) use ($region) {
+        $query->whereHas('ville_etudiant', function ($query) use ($region) {
+          $query->where('region_id', $region);
+        });
+      });
+    }
 
 
 
@@ -116,9 +142,14 @@ class CandidatureController extends Controller
   public function show(Request $request)
   {
     $candidature =  Candidature::findOrFail($request->candidature_id);
-    return view("pages.etudiants.candidature_details")->with([
-      "candidature" => $candidature,
-    ]);
+    $pdf = PDF::loadView("pages.etudiants.candidature_details",compact("candidature"))->setOptions(['defaultFont' => 'sans-serif']);
+    return $pdf->download("CANDIDATURE.pdf");
+
+
+    // Download the PDF
+    // return view("pages.etudiants.candidature_details")->with([
+    //   "candidature" => $candidature,
+    // ]);
   }
 
   /**

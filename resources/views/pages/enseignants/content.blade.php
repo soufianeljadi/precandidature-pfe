@@ -10,12 +10,13 @@
   </div>
 </div>
 <!-- /Page Header -->
-<div class="row">
-  <div class="col">
-    <h5>Responsable Du Formation : <span class="text-info">{{ auth()->user()->formation->nom }} </span></h5>
+@isset(auth()->user()->formation)
+  <div class="row">
+    <div class="col">
+      <h5>Responsable Du Formation : <span class="text-info">{{ auth()->user()->formation->nom }} </span></h5>
+    </div>
   </div>
-</div>
-
+@endisset
 <div class="row">
   <div class="col-xl-3 col-sm-6 col-12">
     <div class="card">
@@ -44,9 +45,11 @@
           <span class="dash-widget-icon text-success">
             <i class="fe fe-credit-card"></i>
           </span>
-          <div class="dash-count">
-            <h3>{{ count(auth()->user()->formation->candidatures) }}</h3>
-          </div>
+          @isset(auth()->user()->formation)
+            <div class="dash-count">
+              <h3>{{ count(auth()->user()->formation->candidatures) }}</h3>
+            </div>
+          @endisset
         </div>
         <div class="dash-widget-info">
 

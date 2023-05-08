@@ -4,7 +4,7 @@
   Les candidatures
 @endsection
 @section('header')
-  @include('pages.admin.header')
+  @include('pages.enseignants.header')
 @endsection
 @section('styles')
 @endsection
@@ -71,10 +71,13 @@
                         <label class="col-form-label ">Mention Bac</label>
                         <select class="form-control" name="mention_bac">
                           <option disabled selected>-- Mention --</option>
-                          <option value="2">Très Bien</option>
-                          <option value="3">Bien</option>
-                          <option value="4">Assez Bien</option>
-                          <option value="5">Passable</option>
+                          <option {{ Request::get('mention_bac') == 1 ? 'selected' : '' }} value="1">Très Bien
+                          </option>
+                          <option {{ Request::get('mention_bac') == 2 ? 'selected' : '' }} value="2">Bien</option>
+                          <option {{ Request::get('mention_bac') == 3 ? 'selected' : '' }} value="3">Assez Bien
+                          </option>
+                          <option {{ Request::get('mention_bac') == 4 ? 'selected' : '' }} value="4">Passable
+                          </option>
                         </select>
                       </li>
                       <li class="col-2">
@@ -88,7 +91,8 @@
                           <option {{ Request::get('serie_bac') == 'pc' ? 'selected' : '' }} value="pc">Science
                             Physiques
                           </option>
-                          <option {{ Request::get('serie_bac') == 'svt' ? 'selected' : '' }} value="svt">Science vie et
+                          <option {{ Request::get('serie_bac') == 'svt' ? 'selected' : '' }} value="svt">Science vie
+                            et
                             terre </option>
                           <option {{ Request::get('serie_bac') == 'autre' ? 'selected' : '' }} value="autre">Autre
                           </option>
@@ -97,31 +101,35 @@
 
                       <li>
                         <label class="col-form-label ">Année obtention diplome </label>
-                        <input type="text" class="form-control bg-grey" name="annee_diplome" placeholder="2021">
+                        <input type="text" class="form-control bg-grey" name="annee_diplome" placeholder="2021"
+                          value="{{ Request::get('annee_diplome') }}">
                       </li>
                       <li class="col-2">
                         <label class="col-form-label ">Mention Diplome</label>
                         <select class="form-control" name="mention_diplome">
                           <option disabled selected>-- Mention --</option>
-                          <option value="2">Très Bien</option>
-                          <option value="3">Bien</option>
-                          <option value="4">Assez Bien</option>
-                          <option value="5">Passable</option>
+                          <option {{ Request::get('mention_diplome') == 1 ? 'selected' : '' }} value="1">Très Bien
+                          </option>
+                          <option {{ Request::get('mention_diplome') == 2 ? 'selected' : '' }} value="2">Bien
+                          </option>
+                          <option {{ Request::get('mention_diplome') == 3 ? 'selected' : '' }} value="3">Assez Bien
+                          </option>
+                          <option {{ Request::get('mention_diplome') == 4 ? 'selected' : '' }} value="4">Passable
+                          </option>
                         </select>
                       </li>
                       <li class="col-2">
                         <label class="col-form-label ">Region</label>
                         <select class="form-control" name="region">
                           <option disabled selected>-- Region --</option>
-                          @foreach ($regions as $region)
-                            <option value="{{ $region->id }}">{{ $region->nom }}</option>
+                          @foreach ($regions as $key => $region)
+                            <option {{ Request::get('region') == $region->id ? 'selected' : '' }}
+                              value="{{ $region->id }}">
+                              {{ $region->nom }}</option>
                           @endforeach
 
                         </select>
                       </li>
-
-
-
 
                     </ul>
                     <div class="row">
