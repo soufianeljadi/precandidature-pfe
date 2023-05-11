@@ -45,7 +45,7 @@
                 class="fa-solid fa-user-graduate"></i>Étudiants</span></a>
         </li>
         <li>
-          <a href="{{ route('candidatures.list') }}"><span><i
+          <a href="{{ route('locaux.index') }}"><span><i
                 style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
                 class="fa-solid fa-chalkboard-user"></i>Gestion de locaux</span></a>
         </li>

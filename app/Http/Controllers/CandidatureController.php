@@ -6,12 +6,10 @@ use App\Exports\EtudiantsExport;
 use App\Models\Candidature;
 use App\Models\Enseignant;
 use App\Models\Region;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\Console\Input\Input;
-use Dompdf\Dompdf;
 
 class CandidatureController extends Controller
 {
@@ -101,6 +99,7 @@ class CandidatureController extends Controller
 
   public function exportExcel(Request $request)
   {
+    return $this->getFiltredCandidatures($request);
     return Excel::download(new EtudiantsExport($this->getFiltredCandidatures($request)), 'reslutats.xlsx');
   }
 
@@ -142,14 +141,10 @@ class CandidatureController extends Controller
   public function show(Request $request)
   {
     $candidature =  Candidature::findOrFail($request->candidature_id);
-    $pdf = PDF::loadView("pages.etudiants.candidature_details",compact("candidature"))->setOptions(['defaultFont' => 'sans-serif']);
-    return $pdf->download("CANDIDATURE.pdf");
-
-
     // Download the PDF
-    // return view("pages.etudiants.candidature_details")->with([
-    //   "candidature" => $candidature,
-    // ]);
+    return view("pages.etudiants.candidature_details")->with([
+      "candidature" => $candidature,
+    ]);
   }
 
   /**

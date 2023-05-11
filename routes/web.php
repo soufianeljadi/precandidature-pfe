@@ -38,8 +38,6 @@ Route::post("/etudiant/login", [LoginController::class, "login"])->name("login.e
 Route::post("/etudiant/register", [LoginController::class, "register"])->name("etudiant.register");
 
 
-
-
 Route::middleware('auth:etudiant')->group(function () {
   Route::get("/etudiant/dashboard", [EtudiantController::class, "index"])->name("etudiant.dashboard");
   Route::get("/etudiant/profile", [EtudiantController::class, "profile"])->name("etudiant.profile");
@@ -70,7 +68,7 @@ Route::middleware('auth:etudiant')->group(function () {
 Route::middleware('auth:enseignant')->group(function () {
   Route::get("/enseignant/dashboard", [EnseignantController::class, "index"])->name("enseignant.dashboard");
   Route::get("/tous-candidatures-estfbs", [CandidatureController::class, "candidatures"])->name("candidatures.list");
-  Route::get("/export-excel", [CandidatureController::class, "exportExcel"])->name("export.excel");
+  Route::post("/export-excel", [CandidatureController::class, "exportExcel"])->name("export.excel");
   // Route::get("/filtrer-resultats",[CandidatureController::class,"filtrer"])->name("candidatures.filter");
 });
 

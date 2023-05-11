@@ -23,5 +23,8 @@ return array(
     | ],
     */
 
-    'options' => array(),
+
+    // 'options' => [
+    //   'showDuration'      => 300,
+    // ],
 );

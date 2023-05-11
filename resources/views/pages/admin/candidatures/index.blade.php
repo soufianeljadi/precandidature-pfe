@@ -145,11 +145,22 @@
 
                       </div>
                       <div class="my-2 col">
-                        <a href="{{ route('export.excel') }}" class="btn btn-success">Excel</a>
+
                       </div>
                     </div>
                   </div>
                 </div>
+              </form>
+              <form action="{{ route('export.excel') }}" method="POST">
+                @csrf
+                <input type="hidden" name="region" value="{{ Request::get('region') }}">
+                <input type="hidden" name="mention_diplome" value="{{ Request::get('mention_diplome') }}">
+                <input type="hidden" name="serie_bac" value="{{ Request::get('serie_bac') }}">
+                <input type="hidden" name="mention_bac" value="{{ Request::get('mention_bac') }}">
+                <input type="hidden" name="annee_bac" value="{{ Request::get('annee_bac') }}">
+                <input type="hidden" name="annee_diplome" value="{{ Request::get('annee_diplome') }}">
+                <input type="hidden" name="moyenne_bac" value="{{ Request::get('moyenne_bac') }}">
+                <input type="submit" value="Get Excel" class="btn btn-success">
               </form>
 
             </div>

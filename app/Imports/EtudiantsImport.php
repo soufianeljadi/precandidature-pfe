@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Excel;
 class EtudiantsImport implements ToCollection
 {
 
+
   public function collection(Collection $rows)
   {
     $students = [];
@@ -53,10 +54,9 @@ class EtudiantsImport implements ToCollection
         ];
       }
 
-      return $data;
       // Create a new Excel file and add the data to the first sheet
       $filename = 'students_' . ($key + 1) . '.xlsx';
-      Excel::download(new EtudiantsExport($data), $filename, Excel::XLSX);
+      return Excel::download(new EtudiantsExport($data), $filename, Excel::XLSX);
     }
   }
 }

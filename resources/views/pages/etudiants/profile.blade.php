@@ -272,14 +272,14 @@
                 <div class="col-lg-9">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexe" id="gender_male" value="1"
-                      {{ auth()->user()->sexe || old('sexe') == 1 ? 'checked' : '' }}>
+                      {{ auth()->user()->sexe == 1 || old('sexe') == 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender_male">
                       Male
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexe" id="gender_female" value="0"
-                      {{ auth()->user()->sexe || old('sexe') == 0 ? 'checked' : '' }}>
+                      {{ auth()->user()->sexe == 0 || old('sexe') == 0 ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender_female">
                       Female
                     </label>
@@ -389,7 +389,8 @@
                         </div>
                       @endif
 
-                      <input type="file" class="upload   @error('photo') is-invalid @enderror" name="photo">
+                      <input type="file" class="form-control upload   @error('photo') is-invalid @enderror"
+                        name="photo">
                       <small class="form-text text-muted">Fichier .JPG Taille maximale de 200Ko</small>
 
                       @error('photo')
@@ -600,7 +601,7 @@
                         </div>
                       @endif
 
-                      <input type="file" class="upload   @error('bac_document') is-invalid @enderror"
+                      <input type="file" class="form-control upload   @error('bac_document') is-invalid @enderror"
                         name="bac_document">
                       <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
 
@@ -799,7 +800,7 @@
               <h5 class="comp-title">Documents</h5>
               <div class="line"></div>
             </div>
-            <div class="col-12 col-md-6 col-xl-3">
+            <div class="col-12 col-md-6 col-xl-4">
               <div class="form-group">
                 <div class="change-avatar">
                   <div class="upload-img">
@@ -812,7 +813,7 @@
                               class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
-                      <input type="file" class="upload   @error('releve_note') is-invalid @enderror"
+                      <input type="file" class="form-control upload   @error('releve_note') is-invalid @enderror"
                         name="releve_note">
                       <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
 
@@ -829,7 +830,7 @@
 
 
 
-            <div class="col-12 col-md-6 col-xl-3">
+            <div class="col-12 col-md-6 col-xl-4">
               <div class="form-group">
                 <div class="change-avatar">
                   <div class="upload-img">
@@ -843,7 +844,8 @@
                               class="fa-solid fa-download"></i></a>
                         </div>
                       @endif
-                      <input type="file" class="upload  @error('diplome_document') is-invalid @enderror"
+                      <input type="file"
+                        class="form-control upload  @error('diplome_document') is-invalid @enderror"
                         name="diplome_document">
                       <small class="form-text text-muted">Fichier .PDF Taille maximale de 700Ko</small>
 
@@ -858,7 +860,7 @@
               </div>
             </div>
 
-            <div class="col-12 col-md-6 col-xl-3">
+            <div class="col-12 col-md-6 col-xl-4">
               <div class="form-group">
                 <div class="change-avatar">
                   <div class="upload-img">
