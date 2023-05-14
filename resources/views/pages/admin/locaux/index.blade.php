@@ -42,7 +42,10 @@
               </ul>
             </div>
           @endif
-          <h4 class="card-title">Gestion des locaux</h4>
+          <h3 class="card-title">Gestion des locaux</h3>
+          <h6 class="text-primary "><i class="fa-regular fa-circle-question me-2"></i> Veuillez importer le fichier
+            excel
+            retenu par le responsable d'une formation !</h6>
           <form action="{{ route('locaux.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -62,7 +65,7 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Nombre des Etudiants par Local </label>
                   <div class="col-lg-9">
-                    <input type="number" name="nbr_etudiants" id="nbr_etudiants">
+                    <input type="number" name="nbr_etudiants" id="nbr_etudiants" placeholder="EX:20">
 
                     @error('nbr_etudiants')
                       <div class="invalid-feedback">

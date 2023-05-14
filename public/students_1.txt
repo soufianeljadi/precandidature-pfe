@@ -1,4 +1,0 @@
-4	sd	Aanas	Ilyass	نبيل	الياس	ILYASS222
-2	ILYASS222	Achr	Ilyass	نبيل	الياس	ILYASS222
-3	ILYASS222	Bersh	Ilyass	نبيل	الياس	ILYASS222
-4	ILYASS222	Wahs	Ilyass	نبيل	الياس	ILYASS222

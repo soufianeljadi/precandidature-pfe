@@ -46,43 +46,57 @@ class LocalController extends Controller
     $nbr_etudiants = $request->nbr_etudiants;
     // Chunk the data into files of 20 students
     $chunks = array_chunk($data[0], $nbr_etudiants);
+    // Create a new CSV file
 
+
+    // Write the chunks to the CSV file
     foreach ($chunks as $index => $chunk) {
-      $filename = 'students_' . ($index + 1) . '.txt';
-      $file = fopen(public_path($filename), 'w');
-      foreach ($chunk as $student) {
-        fwrite($file, implode("\t", $student) . "\n");
+      $filename = 'local_' . $index + 1 . '.csv';
+      $file_handle = fopen($filename, 'w, , encoding="UTF-16"');
+      foreach ($chunk as $row) {
+        fputcsv($file_handle, $row);
       }
-      fclose($file);
     }
+    fclose($file_handle);
+    toastr()->success('The Files are saved Successfully in public folder!');
+
+    return redirect()->route("locaux.index");
+
+
+    // foreach ($chunks as $index => $chunk) {
+    //   $filename = 'students_' . ($index + 1) . '.txt';
+    //   $file = fopen(public_path($filename), 'w');
+    //   foreach ($chunk as $student) {
+    //     fwrite($file, implode("\t", $student) . "\n");
+    //   }
+    //   fclose($file);
+    // }
 
 
 
-    $filename = 'students_1.txt'; // replace with your file name
-    $path = public_path($filename);
+    // $filename = 'students_1.txt'; // replace with your file name
+    // $path = public_path($filename);
 
-    $file = fopen($path, "r");
+    // $file = fopen($path, "r");
 
-    $data = array();
+    // $data = array();
 
-    while(! feof($file))
-    {
-        $row = fgetcsv($file, 0, "\t");
+    // while (!feof($file)) {
+    //   $row = fgetcsv($file, 0, "\t");
 
-        if ($row) {
-            $data[] = $row;
-        }
-    }
+    //   if ($row) {
+    //     $data[] = $row;
+    //   }
+    // }
 
-    fclose($file);
-    $collection = new Collection($data);
+    // fclose($file);
+    // $collection = new Collection($data);
 
-    Excel::store($collection, 'file.xlsx');
-
+    // Excel::store($collection, 'file.xlsx');
 
 
 
-    return "DONE";
+
   }
 
   /**
