@@ -99,7 +99,6 @@ class CandidatureController extends Controller
 
   public function exportExcel(Request $request)
   {
-    return $this->getFiltredCandidatures($request);
     return Excel::download(new EtudiantsExport($this->getFiltredCandidatures($request)), 'reslutats.xlsx');
   }
 

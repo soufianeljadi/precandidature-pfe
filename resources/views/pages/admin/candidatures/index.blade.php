@@ -135,7 +135,7 @@
                     <div class="row">
                       <div class="my-2 col">
                         <button type="submit" class="form-control text-white btn btn-primary">
-                          Filtrer les résultats
+                          <i class="fa-solid fa-sort me-2"></i> Filtrer les résultats
                         </button>
                       </div>
                       <div class="my-2 col">
@@ -261,25 +261,4 @@
       $('#myTable').DataTable();
     });
   </script> --}}
-  <script>
-    document.getElementById('filter-button').addEventListener('click', function() {
-      // Retrieve filter values
-      var annee_bac = document.getElementById('annee_bac').value;
-      var serie_bac = document.getElementById('serie_bac').value;
-
-      // Send AJAX request
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/candidatures?annee_bac=' + annee_bac + '&serie_bac=' + serie_bac);
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          // Update table with filtered data
-          var table = document.getElementById('candidatures-table');
-          table.innerHTML = xhr.responseText;
-        } else {
-          console.error('Error: ' + xhr.statusText);
-        }
-      };
-      xhr.send();
-    });
-  </script>
 @endsection

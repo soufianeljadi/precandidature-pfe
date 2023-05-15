@@ -75,7 +75,8 @@
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-success" type="submit">GENERER</button>
+                  <button class="btn btn-success" type="submit"><i
+                      class="fa-solid fa-file-export me-2"></i>GENERER</button>
                 </div>
               </div>
             </div>

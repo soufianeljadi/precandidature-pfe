@@ -60,7 +60,8 @@
         <div class="card-header">
           {{-- <h4 class="card-title">Datatable des enseignant</h4> --}}
           <p class="card-text">
-            <a href="{{ route('formation.create') }}" type="button" class="btn btn-primary">Ajouter une
+            <a href="{{ route('formation.create') }}" type="button" class="btn btn-primary"><i
+                class="fa-solid fa-plus me-2"></i>Ajouter une
               formation</a>
             {{-- <button type="button" class="btn btn-primary">Primary</button>
             <button type="button" class="btn btn-primary">Primary</button> --}}
