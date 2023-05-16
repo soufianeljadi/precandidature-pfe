@@ -15,7 +15,7 @@ Ce référentiel contient le code source d'un site web d'inscription aux formati
 
 - Les enseignants peuvent se connecter en utilisant leurs identifiants.
 - Les enseignants ont accès à une liste d'étudiants inscrits dans leur filière.
-- Les enseignants peuvent filtrer les étudiants en utilisant des critères spécifiques et ajouter des commentaires à leur sujet.
+- Les enseignants peuvent filtrer les étudiants en utilisant des critères spécifiques.
 - Les enseignants peuvent générer un fichier Excel contenant les informations des étudiants filtrés et l'envoyer à l'administrateur.
 
 ### Pour l'administrateur
