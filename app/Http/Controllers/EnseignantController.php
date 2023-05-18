@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEnseignantRequest;
+use App\Models\Candidature;
 use App\Models\Enseignant;
+use App\Models\Etudiant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,8 +17,12 @@ class EnseignantController extends Controller
    */
   public function index()
   {
+
     return view("pages.enseignants.dashboard")->with([
-      "ens" => Enseignant::all(),
+      // "ens" => Enseignant::all(),
+      "nbr_etudiants" => Etudiant::count(),
+      "candidatures_today" => isset(auth()->user()->formation) ? auth()->user()->formation->candidatures()->whereDate('created_at', Carbon::today())
+      ->count() : null,
     ]);
   }
 

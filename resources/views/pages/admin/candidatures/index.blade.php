@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h3 class="page-title"> Les candidatures du formation
-          {{ auth()->user()->formation->nom ?? '' }} </h3>
+          {{ auth()->user()->formation->nom ?? 'NONE' }} </h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
           <li class="breadcrumb-item active"> Les candidatures </li>
