@@ -66,7 +66,7 @@ class LocalController extends Controller
     }
 
 
-    // // Write the chunks to the CSV file
+     // Write the chunks to the CSV file the previous
     // foreach ($chunks as $index => $chunk) {
     //   $filename = 'local_' . $index + 1 . '.csv';
     //   $file_handle = fopen($filename, 'w, , encoding="UTF-16"');
