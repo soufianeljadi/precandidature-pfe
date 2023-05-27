@@ -306,23 +306,8 @@
 
                               <div class="col-12 col-md-6 col-xl-2">
                                 <div class="form-group">
-                                  <label>Sexe</label>
-                                  <div class="col-lg-9">
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="sexe" id="gender_male"
-                                        disabled value="1" {{ $etudiant->sexe == 1 ? 'checked' : '' }}>
-                                      <label class="form-check-label" for="gender_male">
-                                        Male
-                                      </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="sexe" id="gender_female"
-                                        disabled value="0" {{ $etudiant->sexe == 0 ? 'checked' : '' }}>
-                                      <label class="form-check-label" for="gender_female">
-                                        Female
-                                      </label>
-                                    </div>
-                                  </div>
+                                  <label>Sexe : {{ $etudiant->sexe == 1 ? 'Masculin' : 'Féminin' }}</label>
+
                                 </div>
                               </div>
                               {{-- END ROW 2 --}}
@@ -396,25 +381,11 @@
                                   </div> --}}
                               <div class="col-12 col-md-6 col-xl-2">
                                 <div class="form-group">
-                                  <label>Vous êtes fonctionnaire ? </label>
-                                  <div class="col-lg-9">
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="fonctionnaire"
-                                        id="oui" value="1" disabled
-                                        {{ $etudiant->fonctionnaire == 1 ? 'checked' : '' }}>
-                                      <label class="form-check-label" for="oui">
-                                        Oui
-                                      </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="fonctionnaire"
-                                        id="no" value="0" disabled
-                                        {{ $etudiant->fonctionnaire == 0 ? 'checked' : '' }}>
-                                      <label class="form-check-label" for="no">
-                                        Non
-                                      </label>
-                                    </div>
-                                  </div>
+                                  <label>Fonctionnaire :
+                                    {{ ($etudiant->fonctionnaire == 1 ? 'OUI' : $etudiant->fonctionnaire == 0) ? 'NON' : 'INCONNU' }}
+                                  </label>
+
+
                                 </div>
                               </div>
                               {{-- END ROW 3 --}}

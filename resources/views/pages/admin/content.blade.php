@@ -130,124 +130,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6 d-flex">
-
-    <!-- Recent Orders -->
-    {{-- <div class="card card-table flex-fill">
-      <div class="card-header">
-        <h4 class="card-title"></h4>
-      </div>
-      <div class="card-body">Mentor List
-        <div class="table-responsive">
-          <table class="table table-hover table-center mb-0">
-            <thead>
-              <tr>
-                <th>Mentor Name</th>
-                <th>Course</th>
-                <th>Earned</th>
-                <th>Reviews</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-08.jpg" alt="User Image"></a>
-                    <a href="profile.html">James Amen</a>
-                  </h2>
-                </td>
-                <td>Maths</td>
-                <td>$3200.00</td>
-                <td>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star-o text-secondary"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-07.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jessica Fogarty</a>
-                  </h2>
-                </td>
-                <td>Business Maths</td>
-                <td>$3100.00</td>
-                <td>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star-o text-secondary"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-17.jpg" alt="User Image"></a>
-                    <a href="profile.html">Jose Anderson</a>
-                  </h2>
-                </td>
-                <td>Algebra</td>
-                <td>$4000.00</td>
-                <td>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star-o text-secondary"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-06.jpg" alt="User Image"></a>
-                    <a href="profile.html">Sofia Brient</a>
-                  </h2>
-                </td>
-                <td>Integrated Sum</td>
-                <td>$3200.00</td>
-                <td>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star-o text-secondary"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="table-avatar">
-                    <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
-                        src="admin_assets/img/profiles/avatar-14.jpg" alt="User Image"></a>
-                    <a href="profile.html">Marvin Campbell</a>
-                  </h2>
-                </td>
-                <td>Flow chart</td>
-                <td>$3500.00</td>
-                <td>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star text-warning"></i>
-                  <i class="fe fe-star-o text-secondary"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div> --}}
-    <!-- /Recent Orders -->
-
-  </div>
-  <div class="col d-flex">
+  <div class="col-md-12 d-flex">
 
     <!-- Feed Activity -->
     <div class="card  card-table flex-fill">
@@ -286,6 +169,51 @@
     <!-- /Feed Activity -->
 
   </div>
+  <div class="col-md-12 d-flex">
+
+    <!-- Recent Orders -->
+    <div class="card card-table flex-fill">
+      <div class="card-header">
+        <h4 class="card-title">Nombre des utilisateurs par Region</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-center mb-0">
+            <thead>
+              <tr>
+                <th>Région</th>
+                <th>Nombre des étudiants</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($etudiants_par_region as $item)
+                <tr>
+                  <td>
+                    <h2 class="table-avatar">
+                      {{ $item->nom }}
+                    </h2>
+                  </td>
+                  <td>
+                    <h2 class="table-avatar">
+                      {{ $item->etudiants_count }}
+                    </h2>
+                  </td>
+
+                </tr>
+              @endforeach
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /Recent Orders -->
+
+  </div>
+
 </div>
 
 

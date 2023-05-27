@@ -124,6 +124,8 @@ Route::post("/estfbs/login", [LoginController::class, "login"])->name("login.usm
 Route::get('/logout', [LoginController::class, "logout"])->name('logout');
 
 
+
+
 // Route::middleware(['auth:etudiant'])->group(function () {
 //   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -43,21 +43,38 @@ class LocalController extends Controller
     usort($data[0], function ($a, $b) {
       return $a[2] <=> $b[2];
     });
-    $nbr_etudiants = $request->nbr_etudiants;
-    // Chunk the data into files of 20 students
-    $chunks = array_chunk($data[0], $nbr_etudiants);
-    // Create a new CSV file
 
 
-    // Write the chunks to the CSV file
-    foreach ($chunks as $index => $chunk) {
-      $filename = 'local_' . $index + 1 . '.csv';
-      $file_handle = fopen($filename, 'w, , encoding="UTF-16"');
+    $inputField1 = $request->input('inputField1');
+    $inputField2 = $request->input('inputField2');
+    $chunks = [];
+    foreach ($inputField2 as $index => $value) {
+      $chunkSize = $value;
+      $chunk = array_slice($data[0], 0, $chunkSize);
+      $chunks[$inputField1[$index]] = $chunk;
+      $data[0] = array_slice($data[0], $chunkSize);
+      if (empty($data[0])) {
+        break;
+      }
+    }
+    foreach ($chunks as $filename => $chunk) {
+      $file_handle = fopen($filename.'.csv', 'w, , encoding="UTF-16"');
       foreach ($chunk as $row) {
         fputcsv($file_handle, $row);
       }
+      fclose($file_handle);
     }
-    fclose($file_handle);
+
+
+    // // Write the chunks to the CSV file
+    // foreach ($chunks as $index => $chunk) {
+    //   $filename = 'local_' . $index + 1 . '.csv';
+    //   $file_handle = fopen($filename, 'w, , encoding="UTF-16"');
+    //   foreach ($chunk as $row) {
+    //     fputcsv($file_handle, $row);
+    //   }
+    // }
+    // fclose($file_handle);
     toastr()->success('The Files are saved Successfully in public folder!');
 
     return redirect()->route("locaux.index");

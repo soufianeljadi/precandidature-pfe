@@ -20,6 +20,7 @@ class UserController extends Controller
    */
   public function index()
   {
+
     $nbr_etudiants = Etudiant::count();
     $nbr_enseignants = Enseignant::count();
     $nbr_candidatures = Candidature::count();
@@ -41,20 +42,22 @@ class UserController extends Controller
       ->orderBy('total', 'desc')
       ->get();
 
-      $dates = CarbonPeriod::create(Carbon::now()->subDays(30), '1 day', Carbon::now())->toArray();
+    $dates = CarbonPeriod::create(Carbon::now()->subDays(30), '1 day', Carbon::now())->toArray();
 
-      $candidaturesParJour = Candidature::selectRaw('date(created_at) as jour, count(*) as nombreCandidatures')
+    $candidaturesParJour = Candidature::selectRaw('date(created_at) as jour, count(*) as nombreCandidatures')
       ->where('created_at', '>=', Carbon::now()->subDays(30))
       ->groupBy('jour')
       ->get();
 
-      $results = collect($dates)->map(function ($date) use ($candidaturesParJour) {
-        $candidature = $candidaturesParJour->firstWhere('jour', $date->toDateString());
-        return [
-            'jour' => $date->toDateString(),
-            'nombreCandidatures' => $candidature ? $candidature->nombreCandidatures : 0,
-        ];
+    $results = collect($dates)->map(function ($date) use ($candidaturesParJour) {
+      $candidature = $candidaturesParJour->firstWhere('jour', $date->toDateString());
+      return [
+        'jour' => $date->toDateString(),
+        'nombreCandidatures' => $candidature ? $candidature->nombreCandidatures : 0,
+      ];
     });
+
+    $etudiants_par_region = Region::withCount("etudiants")->get();
 
 
 
@@ -67,6 +70,7 @@ class UserController extends Controller
       "candidaturesParRegion"  => $candidaturesParRegion,
       "candidaturesParJour"  => $results,
       "nbr_candidatures_today"  => $nbr_candidatures_today,
+      "etudiants_par_region"  => $etudiants_par_region,
       // "candidaturesParRegion" => $candidaturesParRegion
 
     ]);
