@@ -34,6 +34,11 @@ class LocalController extends Controller
 
   public function store(Request $request)
   {
+    $request->validate([
+      "excel_file" => "required",
+      // 'inputField.*.input1' => 'required',
+      // 'inputField.*.input2' => 'required',
+    ]);
     $file = $request->file('excel_file');
     $data = Excel::toArray([], $file);
     // Remove metadata row

@@ -51,9 +51,9 @@
             <div class="row">
               <div class="col-xl-6">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">Excel FILE </label>
+                  <label class="col-lg-3 col-form-label">Fichier Excel </label>
                   <div class="col-lg-9">
-                    <input type="file" name="excel_file" id="file">
+                    <input type="file" name="excel_file" class="form-control" id="file" required>
 
                     @error('excel_file')
                       <div class="invalid-feedback">
@@ -64,6 +64,8 @@
                 </div>
 
                 <div id="inputRepeater">
+                  <label class="col-lg-3 col-form-label">Les locaux </label>
+
                   <div class="input-item">
                     <input type="text" class="form-control-sm" name="inputField1[]" placeholder="Nom du Local" />
                     <input type="text" class="form-control-sm" name="inputField2[]" placeholder="Capacite du Local" />

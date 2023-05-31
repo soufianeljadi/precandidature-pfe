@@ -89,7 +89,7 @@ class CandidatureController extends Controller
 
   public function candidatures(Request $request)
   {
-    return view("pages.admin.candidatures.index")->with([
+    return view("pages.enseignants.candidatures.index")->with([
       "candidatures" => $this->getFiltredCandidatures($request),
       "regions" => Region::all(),
 
