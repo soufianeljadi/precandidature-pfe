@@ -80,7 +80,7 @@ class LocalController extends Controller
     //   }
     // }
     // fclose($file_handle);
-    toastr()->success('The Files are saved Successfully in public folder!');
+    toastr()->success('Les fichiers sont enregistrés avec succès dans le dossier public!');
 
     return redirect()->route("locaux.index");
 

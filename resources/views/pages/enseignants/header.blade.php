@@ -3,10 +3,10 @@
 
       <!-- Logo -->
       <div class="header-left">
-        <a href="index.html" class="logo">
+        <a href="{{ url('/') }}" class="logo">
           <img src="{{ asset('assets/img/estfbs_test1.png') }}" alt="Logo">
         </a>
-        <a href="index.html" class="logo logo-small">
+        <a href="{{ url('/') }}" class="logo logo-small">
           <img src="{{ asset('assets/img/estfbs-ico.png') }}" alt="Logo" width="30" height="30">
         </a>
       </div>

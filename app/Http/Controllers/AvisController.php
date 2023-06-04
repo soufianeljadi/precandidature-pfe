@@ -47,7 +47,7 @@ class AvisController extends Controller
     if($request->formation_id == null ){
       $formation = Formation::findOrFail($request->formation_id);
       if($formation->avis){
-        return redirect()->back()->withErrors(['error' => "Un avis est deja cree pour la formation : " . $formation->nom ]);
+        return redirect()->back()->withErrors(['error' => "Un avis est déjà créé pour la formation: " . $formation->nom ]);
       }
     }
     try {
@@ -64,7 +64,7 @@ class AvisController extends Controller
 
 
 
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('Les données sont enregistrées avec succès !');
       return redirect()->route("avis.index");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
@@ -105,7 +105,7 @@ class AvisController extends Controller
     Storage::disk('upload_avis')->delete('avis/' . $avis->image_avis);
 
     $avis->delete();
-    toastr()->error('La avis a été bien supprimé !', " ");
+    toastr()->error('L\'avis a été bien supprimé !', " ");
     return redirect()->route("avis.index");
   }
 }

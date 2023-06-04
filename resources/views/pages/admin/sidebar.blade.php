@@ -47,8 +47,15 @@
         <li>
           <a href="{{ route('locaux.index') }}"><span><i
                 style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
-                class="fa-solid fa-chalkboard-user"></i>Gestion de locaux</span></a>
+                class="fa-solid fa-chalkboard-user"></i>Gestion des locaux</span></a>
         </li>
+        <li>
+          <a href="{{ route('notifications.index') }}"><span><i
+                style="font-size: 15px;line-height: 20px;margin-right: 5px;vertical-align: top;"
+                class="fa-regular fa-envelope"></i>Notifications SMS</span></a>
+
+        </li>
+
       </ul>
     </div>
   </div>
