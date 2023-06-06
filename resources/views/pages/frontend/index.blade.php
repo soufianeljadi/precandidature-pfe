@@ -94,7 +94,7 @@
 
           </div>
 
-          <a href="#" class="go-down-lin" style="color: #FE9445"><i class="fas fa-arrow-down"></i></a>
+          <a href="#procedure" class="go-down-lin" style="color: #FE9445"><i class="fas fa-arrow-down"></i></a>
         </div>
       </div>
     </section>
