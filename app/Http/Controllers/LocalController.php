@@ -34,6 +34,11 @@ class LocalController extends Controller
 
   public function store(Request $request)
   {
+    $request->validate([
+      "excel_file" => "required",
+      // 'inputField.*.input1' => 'required',
+      // 'inputField.*.input2' => 'required',
+    ]);
     $file = $request->file('excel_file');
     $data = Excel::toArray([], $file);
     // Remove metadata row
@@ -75,7 +80,7 @@ class LocalController extends Controller
     //   }
     // }
     // fclose($file_handle);
-    toastr()->success('The Files are saved Successfully in public folder!');
+    toastr()->success('Les fichiers sont enregistrés avec succès dans le dossier public!');
 
     return redirect()->route("locaux.index");
 

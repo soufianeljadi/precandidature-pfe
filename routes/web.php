@@ -7,6 +7,7 @@ use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\LocalController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Candidature;
@@ -112,6 +113,9 @@ Route::middleware('auth:web')->group(function () {
   //? Gestion des locaux
   Route::get('/gestion-locaux', [LocalController::class, 'index'])->name('locaux.index');
   Route::post('/gestion-locaux', [LocalController::class, 'store'])->name('locaux.store');
+  //? Notifications SMS
+  Route::get("notifications",[NotificationController::class,"index"])->name("notifications.index");
+  Route::post("notifications",[NotificationController::class,"store"])->name("notifications.store");
 });
 
 

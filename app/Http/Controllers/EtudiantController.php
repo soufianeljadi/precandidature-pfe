@@ -141,7 +141,7 @@ class EtudiantController extends Controller
 
 
     // DB::commit();
-    toastr()->success("Data Saved successfully!");
+    toastr()->success("Les données sont enregistrées avec succès");
     return redirect()->route("etudiant.profile");
     // } catch (\Exception $e) {
     //   // DB::rollback();
@@ -195,7 +195,7 @@ class EtudiantController extends Controller
       $etudiant->fonctionnaire = $request->fonctionnaire;
       $etudiant->description = $request->description;
       $etudiant->save();
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('Les données sont enregistrées avec succès !');
       return redirect()->route("etudiants.list");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);

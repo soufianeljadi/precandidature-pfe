@@ -52,7 +52,7 @@ class FormationController extends Controller
       $formation->duree = $request->duree;
       $formation->enseignant_id = $request->enseignant_id;
       $formation->save();
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('Les Données sont enregistrées avec succès !');
 
       return redirect()->route("formations.index");
     } catch (\Throwable $th) {
@@ -98,7 +98,7 @@ class FormationController extends Controller
       $formation->enseignant_id = $request->enseignant_id;
       $formation->duree = $request->duree;
       $formation->save();
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('Les données sont enregistrées avec succès');
       return redirect()->route("formations.index");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);

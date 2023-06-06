@@ -62,7 +62,7 @@ class EnseignantController extends Controller
       $enseignant->nationalite = $request->nationalite;
       $enseignant->matricule = $request->matricule;
       $enseignant->save();
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('Les données sont enregistrées avec succès!');
       return redirect()->route("enseignants.index");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
@@ -104,7 +104,7 @@ class EnseignantController extends Controller
       $enseignant->matricule = $request->matricule;
       $enseignant->password = Hash::make($request->password);
       $enseignant->save();
-      toastr()->success('Data saved Successfully !');
+      toastr()->success('les données sont enregistrées avec succès!');
       return redirect()->route("enseignants.index");
     } catch (\Throwable $th) {
       return redirect()->back()->withErrors(['error' => $th->getMessage()]);
