@@ -89,7 +89,7 @@
           </div>
           <div class="dash-widget-info">
 
-            <h6 class="text-muted">Candidatures Today</h6>
+            <h6 class="text-muted">Nombre des candidatures Aujourd'hui</h6>
             <div class="progress progress-sm">
               <div class="progress-bar bg-success w-50"></div>
             </div>

@@ -169,7 +169,7 @@
               <div class="form-group row">
                 <label class="col-lg-3 col-form-label">Téléphone</label>
                 <div class="col-lg-9">
-                  <input type="number" wire:model="telephone"
+                  <input type="text" wire:model="telephone"
                     class="form-control @error('telephone') is-invalid @enderror" value="{{ old('telephone') }}">
                   @error('telephone')
                     <div class="invalid-feedback">

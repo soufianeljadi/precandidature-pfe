@@ -7,7 +7,7 @@
   @include('pages.admin.sidebar')
 @endsection
 @section('header')
-  @include('pages.etudiants.header')
+  @include('pages.admin.header')
 @endsection
 @section('content')
   {{-- Contennt --}}

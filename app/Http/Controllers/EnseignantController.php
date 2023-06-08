@@ -90,6 +90,7 @@ class EnseignantController extends Controller
    */
   public function update(StoreEnseignantRequest $request)
   {
+
     try {
       $enseignant = Enseignant::find($request->id);
       $enseignant->nom = $request->nom;

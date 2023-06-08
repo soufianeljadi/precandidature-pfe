@@ -168,9 +168,10 @@
           {{-- Filter --}}
 
           <div class="table-responsive ">
-            <table class="datatable table table-stripped" id="myTable">
+            <table class="datatable table table-stripped table-hover " id="myTable">
               <thead>
-                <tr>
+                <tr class="table-info">
+                  <th>#</th>
                   <th>Nom et Prénom</th>
                   <th>Annee Bac</th>
                   <th>Moyenne Bac</th>
@@ -183,16 +184,16 @@
                   {{-- <th>Annee Bac</th>
                   <th>Annee Diplome</th> --}}
                   {{-- <th>Diplome document</th> --}}
-
-                  <th>Action</th>
+                  {{-- <th>Action</th> --}}
                 </tr>
               </thead>
               <tbody>
 
 
-
+                <?php $i = 1; ?>
                 @foreach ($candidatures as $candidature)
                   <tr>
+                    <td>{{ $i++ }}</td>
                     <td>{{ $candidature->etudiant->nom }} {{ $candidature->etudiant->prenom }}</td>
                     <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
                     <td>{{ $candidature->etudiant->dossier->moyenne_bac }}</td>
@@ -231,18 +232,18 @@
                     {{-- <td>{{ $candidature->etudiant->dossier->annee_obt_bac }}</td>
                     <td>{{ $candidature->etudiant->dossier->annee_obt_diplome }}</td> --}}
 
-                    <td>
+                    {{-- <td>
                       <a data-bs-toggle="modal" href="#view_candidature_{{ $candidature->id }}"
                         class="btn btn-sm bg-info-light"><i class="far fa-eye"></i></a>
                       <a data-bs-toggle="modal" href="#edit_enseignant_{{ $candidature->id }}"
                         class="btn btn-sm bg-warning-light"><i class="fa-solid fa-pen-to-square"></i></a>
-                      {{-- <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
-                          class="fa-solid fa-trash-can"></i></a> --}}
+                      <a href="{{ route('enseignant.delete', $enseignant->id) }}" class="btn btn-sm bg-danger-light"><i
+                          class="fa-solid fa-trash-can"></i></a>
                       <button style="margin: 0" type="button" class="btn btn-sm bg-danger-light"
                         data-bs-toggle="modal" data-bs-target="#delete_enseignant_{{ $candidature->id }}">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
-                    </td>
+                    </td> --}}
                   </tr>
                 @endforeach
 
