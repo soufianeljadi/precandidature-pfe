@@ -83,15 +83,15 @@
                         <td>{{ $candidature->etudiant->sexe == 1 ? 'Masculin' : 'Féminin ' }}</td>
                         <td>Ville : {{ $candidature->etudiant->ville_etudiant->nom }}</td>
                         <th>Fonctionnaire : {{ $candidature->etudiant->fonctionnaire == 1 ? 'Oui' : 'Non' }}</th>
-                        <td class="text-end">$3,000</td>
+                        {{-- <td class="text-end">$3,000</td> --}}
                       </tr>
-                      <tr>
+                      {{-- <tr>
                         <td>Ui Designer</td>
                         <td>Designing</td>
                         <td>$100 - $500</td>
                         <th>10%</th>
                         <td class="text-end">$11,000</td>
-                      </tr>
+                      </tr> --}}
                     </tbody>
                   </table>
                 </div>

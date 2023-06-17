@@ -71,50 +71,11 @@ class LocalController extends Controller
     }
 
 
-     // Write the chunks to the CSV file the previous
-    // foreach ($chunks as $index => $chunk) {
-    //   $filename = 'local_' . $index + 1 . '.csv';
-    //   $file_handle = fopen($filename, 'w, , encoding="UTF-16"');
-    //   foreach ($chunk as $row) {
-    //     fputcsv($file_handle, $row);
-    //   }
-    // }
-    // fclose($file_handle);
+
     toastr()->success('Les fichiers sont enregistrés avec succès dans le dossier public!');
 
     return redirect()->route("locaux.index");
 
-
-    // foreach ($chunks as $index => $chunk) {
-    //   $filename = 'students_' . ($index + 1) . '.txt';
-    //   $file = fopen(public_path($filename), 'w');
-    //   foreach ($chunk as $student) {
-    //     fwrite($file, implode("\t", $student) . "\n");
-    //   }
-    //   fclose($file);
-    // }
-
-
-
-    // $filename = 'students_1.txt'; // replace with your file name
-    // $path = public_path($filename);
-
-    // $file = fopen($path, "r");
-
-    // $data = array();
-
-    // while (!feof($file)) {
-    //   $row = fgetcsv($file, 0, "\t");
-
-    //   if ($row) {
-    //     $data[] = $row;
-    //   }
-    // }
-
-    // fclose($file);
-    // $collection = new Collection($data);
-
-    // Excel::store($collection, 'file.xlsx');
 
 
 

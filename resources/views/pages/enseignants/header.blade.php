@@ -33,7 +33,7 @@
       <ul class="nav user-menu">
 
         <!-- Notifications -->
-        <li class="nav-item dropdown noti-dropdown">
+        {{-- <li class="nav-item dropdown noti-dropdown">
           <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
             <i class="fe fe-bell"></i> <span class="badge badge-pill">3</span>
           </a>
@@ -110,7 +110,7 @@
               <a href="#">View all Notifications</a>
             </div>
           </div>
-        </li>
+        </li> --}}
         <!-- /Notifications -->
 
         <!-- User Menu -->
@@ -130,8 +130,8 @@
                 <p class="text-muted mb-0">Enseignant</p>
               </div>
             </div>
-            <a class="dropdown-item" href="#">My Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
+            {{-- <a class="dropdown-item" href="#">My Profile</a>
+            <a class="dropdown-item" href="#">Settings</a> --}}
             <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
           </div>
         </li>
