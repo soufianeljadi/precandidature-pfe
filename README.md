@@ -35,10 +35,10 @@ Ce référentiel contient le code source d'une application web d'inscription aux
 ## Installation
 
 1. Clonez le dépôt GitHub :
-```git clone https://github.com/soufianeljadi/restaurant-project ```
+```git clone https://github.com/soufianeljadi/precandidature-pfe ```
 
 2. Accédez au répertoire du projet :
-```cd restaurant-project```
+```cd precandidature-pfe```
 
 3. Installez les dépendances PHP via Composer :
 ```composer install```
